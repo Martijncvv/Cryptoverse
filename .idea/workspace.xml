@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="SendaFund setup">
+      <change afterPath="$PROJECT_DIR$/assets/constants/Styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/FundCard/FundCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/FundCardsWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/HeaderMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/HeaderMenu/MenuItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/HeroContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/Tag.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/explore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/+html.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/+html.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/+not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/+not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-example/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Collapsible.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/Collapsible.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ExternalLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ExternalLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HelloWave.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/HelloWave.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ParallaxScrollView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ParallaxScrollView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ThemedText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ThemedText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ThemedView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ThemedView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/ThemedText-test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/__tests__/ThemedText-test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/__snapshots__/ThemedText-test.tsx.snap" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/__tests__/__snapshots__/ThemedText-test.tsx.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navigation/TabBarIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/navigation/TabBarIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/Colors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useThemeColor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useThemeColor.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,24 +45,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Martijncvv"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Martijncvv&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Martijncvv/SendaFund.git",
-    "accountId": "5b130a65-a78b-4c78-9368-6b15a6c5d851"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Martijncvv/SendaFund.git&quot;,
+    &quot;accountId&quot;: &quot;5b130a65-a78b-4c78-9368-6b15a6c5d851&quot;
   }
-}]]></component>
+}</component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2jLBwKRtpHn88hL59Oz9bDz0oJL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,16 +79,43 @@
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.web.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/SendaFund/node_modules/prettier",
     "settings.editor.selected.configurable": "actions.on.save",
     "ts.external.directory.path": "/home/martijn/WebstormProjects/SendaFund/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/constants" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/(tabs)" />
+      <recent name="$PROJECT_DIR$/app-example" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="web" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="web" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.web" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
       </set>
     </attachedChunks>
   </component>
@@ -71,11 +127,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1721156713648</updated>
-      <workItem from="1721156714747" duration="2358000" />
+      <workItem from="1721156714747" duration="2534000" />
+      <workItem from="1721201223500" duration="17000" />
+      <workItem from="1725990163793" duration="5820000" />
     </task>
+    <task id="LOCAL-00001" summary="SendaFund setup">
+      <option name="closed" value="true" />
+      <created>1721159218979</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721159218979</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SendaFund setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="SendaFund setup" />
   </component>
 </project>
