@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
-import { MenuItem } from "@/components/HeaderMenu/MenuItem";
+import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 
 export const HeaderMenu = () => {
   return (

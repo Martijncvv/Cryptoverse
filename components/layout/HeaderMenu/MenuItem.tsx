@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   menuItem: {
     height: 36,
     marginLeft: 20,
+    justifyContent: "center",
   },
   menuText: {
     fontSize: Styles.typography.fontSize.md,

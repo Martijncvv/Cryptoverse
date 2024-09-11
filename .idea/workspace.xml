@@ -4,35 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="SendaFund setup">
-      <change afterPath="$PROJECT_DIR$/assets/constants/Styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/FundCard/FundCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/FundCardsWrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/HeaderMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/HeaderMenu/MenuItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/HeroContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/Tag.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- homepage setup">
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/explore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/+html.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/+html.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/+not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/+not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-example/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Collapsible.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/Collapsible.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ExternalLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ExternalLink.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/HelloWave.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/HelloWave.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ParallaxScrollView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ParallaxScrollView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ThemedText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ThemedText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ThemedView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/ThemedView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/__tests__/ThemedText-test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/__tests__/ThemedText-test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/__tests__/__snapshots__/ThemedText-test.tsx.snap" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/__tests__/__snapshots__/ThemedText-test.tsx.snap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navigation/TabBarIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components-example/navigation/TabBarIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/Colors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useThemeColor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useThemeColor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-example/FundScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FundCard/FundCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FundCard/FundCardPlaceholder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FundCard/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HeaderMenu/MenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +65,7 @@
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
     "npm.web.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/SendaFund/node_modules/prettier",
     "settings.editor.selected.configurable": "actions.on.save",
@@ -88,14 +75,24 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/constants" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/(tabs)" />
+      <recent name="$PROJECT_DIR$/components/layout" />
       <recent name="$PROJECT_DIR$/app-example" />
+      <recent name="$PROJECT_DIR$/app/(tabs)" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/components/wrapper" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="web" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -108,6 +105,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.web" />
       </list>
     </recent_temporary>
@@ -129,7 +127,10 @@
       <updated>1721156713648</updated>
       <workItem from="1721156714747" duration="2534000" />
       <workItem from="1721201223500" duration="17000" />
-      <workItem from="1725990163793" duration="5820000" />
+      <workItem from="1725990163793" duration="9669000" />
+      <workItem from="1725999852702" duration="5000" />
+      <workItem from="1726038559331" duration="34000" />
+      <workItem from="1726082157079" duration="2713000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -139,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721159218979</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- homepage setup">
+      <option name="closed" value="true" />
+      <created>1725999807157</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725999807157</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +156,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SendaFund setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="SendaFund setup" />
+    <MESSAGE value="- homepage setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="- homepage setup" />
   </component>
 </project>

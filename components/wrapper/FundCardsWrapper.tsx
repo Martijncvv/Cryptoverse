@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
-import { FundCard } from "@/components/FundCard/FundCard";
+import { FundCard } from "@/components/layout/FundCard/FundCard";
 import { Styles } from "@/assets/constants/Styles";
-import { FundCardPlaceholder } from "@/components/FundCard/FundCardPlaceholder";
+import { FundCardPlaceholder } from "@/components/layout/FundCard/FundCardPlaceholder";
 
 export const FundCardsWrapper = () => {
   return (
@@ -9,7 +9,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Help Build a Community Playground for Children"}
         closeDate={"10th July 2024"}
-        tags={["Community", "Playground"]}
+        tags={["Funding Now", "Guatemala"]}
         minDonation={25}
         percentageRaised={50}
       />
@@ -17,7 +17,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Aid for Earthquake Victims in the City"}
         closeDate={"5th August 2024"}
-        tags={["Disaster Relief", "Emergency"]}
+        tags={["Funding Now", "Guatemala"]}
         minDonation={30}
         percentageRaised={80}
       />
@@ -25,7 +25,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Support Mental Health Awareness Programs"}
         closeDate={"1st September 2024"}
-        tags={["Health", "Awareness"]}
+        tags={["Funding Now", "Guatemala"]}
         minDonation={40}
         percentageRaised={70}
       />
@@ -33,7 +33,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Fund Scholarships for Underprivileged Students"}
         closeDate={"20th October 2024"}
-        tags={["Education", "Scholarships"]}
+        tags={["Funding Now", "Guatemala"]}
         minDonation={50}
         percentageRaised={90}
       />

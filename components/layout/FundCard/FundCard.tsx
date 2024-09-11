@@ -3,12 +3,19 @@ import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { Tag } from "@/components/ui/Tag";
 import { ButtonSF } from "@/components/form/ButtonSF";
-import { ProgressBar } from "@/components/FundCard/ProgressBar";
+import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
+
+export type TabOptions = "Funding Now" | "Guatemala";
+
+export const tabColorMap = {
+  "Funding Now": Colors.orange.medium,
+  Guatemala: Colors.green.light,
+};
 
 interface FundCardProps {
   title: string;
   closeDate: string;
-  tags: string[];
+  tags: TabOptions[];
   minDonation: number;
   percentageRaised: number;
 }
@@ -23,8 +30,9 @@ export const FundCard: React.FC<FundCardProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.tagsContainer}>
-        <Tag text="Funding Now" backgroundColor={Colors.orange.medium} />
-        <Tag text="Guatemala" backgroundColor={Colors.green.light} />
+        {tags.map((tag, index) => (
+          <Tag key={index} text={tag} backgroundColor={tabColorMap[tag]} />
+        ))}
       </View>
 
       <Text style={styles.dateText}>Close Date: {closeDate}</Text>

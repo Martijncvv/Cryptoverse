@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 
   progressBarText: {
     fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.semiBold,
+    fontWeight: Styles.typography.fontWeight.medium,
     color: Colors.neutrals.black,
     zIndex: 2,
     position: "relative",
