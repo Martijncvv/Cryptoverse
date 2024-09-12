@@ -21,12 +21,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
 const styles = StyleSheet.create({
   progressBar: {
-    height: 40,
     flex: 1,
+    height: 40,
     flexDirection: "row",
     alignItems: "center",
     position: "relative",
     paddingLeft: Styles.spacing.xl,
+    // backgroundColor: "red",
 
     borderWidth: 1,
     borderColor: Colors.neutrals.black,

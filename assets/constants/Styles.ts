@@ -10,6 +10,7 @@ export const Styles = {
     xl: 16,
     xxl: 20,
     xxxl: 24,
+    xxxxl: 32,
     max: 100,
   },
   borderRadius: {

@@ -1,16 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
-import { Tag } from "@/components/ui/Tag";
+import { TabOptions, Tag } from "@/components/ui/Tag";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
-
-export type TabOptions = "Funding Now" | "Guatemala";
-
-export const tabColorMap = {
-  "Funding Now": Colors.orange.medium,
-  Guatemala: Colors.green.light,
-};
 
 interface FundCardProps {
   title: string;
@@ -31,7 +24,7 @@ export const FundCard: React.FC<FundCardProps> = ({
     <View style={styles.container}>
       <View style={styles.tagsContainer}>
         {tags.map((tag, index) => (
-          <Tag key={index} text={tag} backgroundColor={tabColorMap[tag]} />
+          <Tag key={index} text={tag} />
         ))}
       </View>
 
@@ -91,10 +84,12 @@ const styles = StyleSheet.create({
     color: Colors.neutrals.white,
   },
   footer: {
+    flex: 1,
     marginTop: 40,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     gap: Styles.spacing.md,
+    // backgroundColor: "green",
   },
 });

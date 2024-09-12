@@ -2,8 +2,9 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
-import { TabOptions } from "@/components/layout/FundCard/FundCard";
 import { ButtonSF } from "@/components/form/ButtonSF";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { TabOptions, Tag } from "@/components/ui/Tag";
 
 interface FundingInfoCardProps {
   title: string;
@@ -14,26 +15,40 @@ interface FundingInfoCardProps {
 }
 
 export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
-  title = "Help Build a Community Playground for Children",
-  closeDate = "10th July 2024",
-  tags = ["Funding Now", "Guatemala"],
-  percentageRaised = 50,
-  description = "Join us in empowering the young minds of Panajachel, Guatemala! We're raising funds to provide 200 school backpacks, filled with essential supplies, to support the education and dreams of these vibrant children.",
+  title,
+  closeDate,
+  tags,
+  percentageRaised,
+  description,
 }) => {
   // todo taggs in top left
   return (
     <View style={styles.container}>
-      <Image
-        source={require("@/assets/images/react-logo.png")}
-        style={styles.fundingPicture}
-      />
+      <View style={styles.imageContainer}>
+        <View style={styles.imageContainerTags}>
+          {tags.map((tag, index) => (
+            <Tag key={index} text={tag} />
+          ))}
+        </View>
+        <Image
+          source={require("@/assets/images/guatemala-happy-kids.jpg")}
+          style={styles.fundingPicture}
+        />
+      </View>
       <Text style={styles.fundTitleText}>{title}</Text>
       <Text style={styles.dateText}>Close Date: {closeDate}</Text>
-      <ProgressBar progressPercentage={percentageRaised} />
+      <View style={styles.progressBarWrapper}>
+        <ProgressBar progressPercentage={percentageRaised} />
+      </View>
       <Text style={styles.subtitle}>About the cause</Text>
       <Text style={styles.description}>{description}</Text>
-      <Pressable>
-        <Text style={styles.moreDetails}>More details</Text>
+      <Pressable style={styles.moreDetailsButton}>
+        <Text style={styles.moreDetailsText}>More details</Text>
+        <Ionicons
+          name="arrow-forward-circle-outline"
+          size={16}
+          color={Colors.neutrals.black}
+        />
       </Pressable>
       <View style={styles.footerButtons}>
         <ButtonSF text="See Cause" onPress={() => console.log("Donate")} />
@@ -41,6 +56,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
           text="Share"
           color={"white"}
           onPress={() => console.log("Donate")}
+          icon={"share-social-outline"}
         />
       </View>
     </View>
@@ -50,7 +66,6 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
 const styles = StyleSheet.create({
   container: {
     width: 500,
-    height: 750,
     padding: Styles.spacing.xl,
 
     borderWidth: 1,
@@ -58,36 +73,65 @@ const styles = StyleSheet.create({
     borderRadius: Styles.borderRadius.lg,
     backgroundColor: Colors.neutrals.light,
   },
-  fundingPicture: {
-    flex: 1,
-    height: 300,
+  imageContainer: {
+    width: "100%",
+    aspectRatio: 16 / 9,
+    overflow: "hidden",
     borderRadius: Styles.borderRadius.xs,
     borderWidth: 1,
     borderColor: Colors.neutrals.black,
+
+    marginBottom: Styles.spacing.xxl,
+  },
+  fundingPicture: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+  },
+  imageContainerTags: {
+    position: "absolute",
+    top: Styles.spacing.xl,
+    left: Styles.spacing.xl,
+    flexDirection: "row",
+    gap: Styles.spacing.sm,
+    zIndex: 2,
   },
   fundTitleText: {
-    marginTop: Styles.spacing.sm,
     fontSize: Styles.typography.fontSize.xxxl,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.neutrals.black,
+    marginBottom: Styles.spacing.xl,
   },
   dateText: {
-    marginTop: Styles.spacing.xxxl,
     fontSize: Styles.typography.fontSize.xs,
     fontWeight: Styles.typography.fontWeight.medium,
     color: Colors.neutrals.black,
+    marginBottom: Styles.spacing.xs,
+  },
+  progressBarWrapper: {
+    height: 40,
+    marginBottom: Styles.spacing.xl,
   },
   subtitle: {
     fontSize: Styles.typography.fontSize.xl,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.neutrals.black,
+    marginBottom: Styles.spacing.lg,
   },
   description: {
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.neutrals.black,
+    marginBottom: Styles.spacing.sm,
   },
-  moreDetails: {
+  moreDetailsButton: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: Styles.spacing.xs,
+    marginBottom: Styles.spacing.xxxl,
+  },
+  moreDetailsText: {
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.neutrals.black,
