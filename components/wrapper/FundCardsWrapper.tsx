@@ -9,7 +9,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Help Build a Community Playground for Children"}
         closeDate={"10th July 2024"}
-        tags={["Funding Now", "Guatemala"]}
+        tags={["funding now", "guatemala"]}
         minDonation={25}
         percentageRaised={50}
       />
@@ -17,7 +17,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Aid for Earthquake Victims in the City"}
         closeDate={"5th August 2024"}
-        tags={["Funding Now", "Guatemala"]}
+        tags={["funding now", "guatemala"]}
         minDonation={30}
         percentageRaised={80}
       />
@@ -25,7 +25,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Support Mental Health Awareness Programs"}
         closeDate={"1st September 2024"}
-        tags={["Funding Now", "Guatemala"]}
+        tags={["funding now", "guatemala"]}
         minDonation={40}
         percentageRaised={70}
       />
@@ -33,7 +33,7 @@ export const FundCardsWrapper = () => {
       <FundCard
         title={"Fund Scholarships for Underprivileged Students"}
         closeDate={"20th October 2024"}
-        tags={["Funding Now", "Guatemala"]}
+        tags={["funding now", "guatemala"]}
         minDonation={50}
         percentageRaised={90}
       />

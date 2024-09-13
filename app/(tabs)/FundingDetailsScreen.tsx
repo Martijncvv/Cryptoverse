@@ -55,12 +55,10 @@ const styles = StyleSheet.create({
     color: Colors.neutrals.black,
   },
   textTwo: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
-
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.neutrals.black,
+    flexWrap: "wrap",
+    textAlign: "left",
   },
 });

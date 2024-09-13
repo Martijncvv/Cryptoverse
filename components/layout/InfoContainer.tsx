@@ -35,14 +35,13 @@ const styles = StyleSheet.create({
     width: 400,
     padding: Styles.spacing.lg,
     flexDirection: "row",
-    // alignItems: "flex-start",
+    alignSelf: "flex-start",
     gap: Styles.spacing.lg,
 
     borderWidth: 1,
     borderColor: Colors.neutrals.black,
     borderRadius: Styles.borderRadius.lg,
     backgroundColor: Colors.neutrals.white,
-    // backgroundColor: "red",
   },
   image: {
     width: 100,
@@ -51,12 +50,11 @@ const styles = StyleSheet.create({
   },
 
   infoWrapper: {
-    // flex: 1,
+    flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
     gap: Styles.spacing.lg,
-    backgroundColor: "blue",
   },
 
   title: {

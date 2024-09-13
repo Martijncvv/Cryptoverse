@@ -21,7 +21,6 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
   percentageRaised,
   description,
 }) => {
-  // todo taggs in top left
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
