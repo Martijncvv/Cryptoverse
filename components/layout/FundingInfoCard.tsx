@@ -53,7 +53,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
         <ButtonSF text="See Cause" onPress={() => console.log("Donate")} />
         <ButtonSF
           text="Share"
-          color={"white"}
+          color={"whiteOutlined"}
           onPress={() => console.log("Donate")}
           icon={"share-social-outline"}
         />

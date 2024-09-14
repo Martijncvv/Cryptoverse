@@ -4,9 +4,10 @@ import { Colors } from "@/assets/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 interface ButtonSFProps {
-  text: string;
+  text?: string;
   onPress: () => void;
-  color?: "white" | "black";
+  disabled?: boolean;
+  color?: "white" | "black" | "whiteOutlined";
   icon?: string;
   iconSize?: number;
 }
@@ -14,22 +15,26 @@ interface ButtonSFProps {
 export const ButtonSF: React.FC<ButtonSFProps> = ({
   text,
   onPress,
+  disabled,
   color = "black",
   icon,
   iconSize = 16,
 }) => {
   const backgroundColorMap = {
-    white: Colors.neutrals.white,
+    whiteOutlined: Colors.neutrals.white,
     black: Colors.neutrals.black,
+    white: Colors.neutrals.white,
   };
-  const fontColorMap = {
-    white: Colors.neutrals.black,
+  const textColorMap = {
+    whiteOutlined: Colors.neutrals.black,
     black: Colors.neutrals.white,
+    white: Colors.neutrals.black,
   };
 
   const borderColorMap = {
-    white: Colors.neutrals.black,
+    whiteOutlined: Colors.neutrals.black,
     black: Colors.neutrals.black,
+    white: "transparent",
   };
 
   return (
@@ -40,18 +45,21 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
         borderColor: borderColorMap[color],
       }}
       onPress={onPress}
+      disabled={disabled}
     >
-      <Text
-        style={{
-          ...styles.text,
-          color: fontColorMap[color],
-        }}
-      >
-        {text}
-      </Text>
+      {text ? (
+        <Text
+          style={{
+            ...styles.text,
+            color: textColorMap[color],
+          }}
+        >
+          {text}
+        </Text>
+      ) : null}
       {icon ? (
         // @ts-ignore
-        <Ionicons name={icon} size={iconSize} color={Colors.neutrals.black} />
+        <Ionicons name={icon} size={iconSize} color={textColorMap[color]} />
       ) : null}
     </Pressable>
   );

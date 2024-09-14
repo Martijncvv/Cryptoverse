@@ -4,6 +4,7 @@ import { InfoContainer } from "@/components/layout/InfoContainer";
 import { Styles } from "@/assets/constants/Styles";
 import { StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
+import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
 
 export default function FundingDetailsScreen() {
   return (
@@ -18,20 +19,23 @@ export default function FundingDetailsScreen() {
             "Join us in empowering the young minds of Panajachel, Guatemala! We're raising funds to provide 200 school backpacks, filled with essential supplies, to support the education and dreams of these vibrant children."
           }
         />
-        <InfoContainer
-          title={"How to support"}
-          image={require("@/assets/images/guatemala-happy-kids.jpg")}
-          children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
-        />
-        <InfoContainer
-          title={"How it works"}
-          image={require("@/assets/images/guatemala-happy-kids.jpg")}
-          children={
-            <Text style={styles.textTwo}>
-              Choose your favorite NFT Market Place (Zora or Solanart)
-            </Text>
-          }
-        />
+        <View style={styles.infoContainers}>
+          <InfoContainer
+            title={"How to support"}
+            image={require("@/assets/images/guatemala-happy-kids.jpg")}
+            children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
+          />
+          <InfoContainer
+            title={"How it works"}
+            image={require("@/assets/images/guatemala-happy-kids.jpg")}
+            children={
+              <Text style={styles.textTwo}>
+                Choose your favorite NFT Market Place (Zora or Solanart)
+              </Text>
+            }
+          />
+          <DonationsHistory />
+        </View>
       </View>
     </ScreenWrapper>
   );
@@ -42,8 +46,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     gap: Styles.spacing.xxxxl,
+    //wrap
+    flexWrap: "wrap",
   },
-
+  infoContainers: {
+    flexDirection: "row",
+    gap: Styles.spacing.md,
+    flex: 1,
+    flexWrap: "wrap",
+  },
   textOne: {
     paddingHorizontal: Styles.spacing.xl,
     paddingVertical: Styles.spacing.xs,
