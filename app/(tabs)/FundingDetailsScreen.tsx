@@ -5,6 +5,7 @@ import { Styles } from "@/assets/constants/Styles";
 import { StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 export default function FundingDetailsScreen() {
   return (
@@ -46,11 +47,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     gap: Styles.spacing.xxxxl,
-    //wrap
     flexWrap: "wrap",
   },
   infoContainers: {
+    minWidth: MIN_WIDTH,
     flexDirection: "row",
+    alignItems: "flex-start",
     gap: Styles.spacing.md,
     flex: 1,
     flexWrap: "wrap",

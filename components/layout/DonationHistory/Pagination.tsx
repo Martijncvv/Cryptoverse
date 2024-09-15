@@ -32,7 +32,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         />
       </Pressable>
       <Text style={styles.pageText}>{currentPage}</Text>
-      <Pressable onPress={handleNextPage} disabled={currentPage === 1}>
+      <Pressable onPress={handleNextPage}>
         <Ionicons
           name={"chevron-forward-outline"}
           size={20}

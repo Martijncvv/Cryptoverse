@@ -5,6 +5,8 @@ import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { TabOptions, Tag } from "@/components/ui/Tag";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
+import { router } from "expo-router";
 
 interface FundingInfoCardProps {
   title: string;
@@ -21,6 +23,10 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
   percentageRaised,
   description,
 }) => {
+  const handlePressDetails = () => {
+    router.push("/modal");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -41,7 +47,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
       </View>
       <Text style={styles.subtitle}>About the cause</Text>
       <Text style={styles.description}>{description}</Text>
-      <Pressable style={styles.moreDetailsButton}>
+      <Pressable style={styles.moreDetailsButton} onPress={handlePressDetails}>
         <Text style={styles.moreDetailsText}>More details</Text>
         <Ionicons
           name="arrow-forward-circle-outline"
@@ -64,8 +70,10 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 500,
+    flex: 1,
+    minWidth: MIN_WIDTH,
     padding: Styles.spacing.xl,
+    flexWrap: "wrap",
 
     borderWidth: 1,
     borderColor: Colors.neutrals.black,
@@ -73,6 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.neutrals.light,
   },
   imageContainer: {
+    // flex: 1,
     width: "100%",
     aspectRatio: 16 / 9,
     overflow: "hidden",

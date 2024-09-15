@@ -18,6 +18,11 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
     );
   };
 
+  const formatWeiToEth = (wei: string) => {
+    // round to 2 digits
+    return (parseFloat(wei) / 10 ** 18).toFixed(3);
+  };
+
   return (
     <Pressable
       onPress={() => handleRowClick(tx.hash, networkId)}
@@ -27,7 +32,7 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
       <Text style={styles.rowText}>{addressFormatter(tx.from)}</Text>
       <Text style={styles.rowText}>{timestampFormatter(tx.timeStamp)}</Text>
       <Text style={styles.rowText}>Ethereum</Text>
-      <Text style={styles.rowText}>{tx.value}</Text>
+      <Text style={styles.rowText}>{formatWeiToEth(tx.value)}</Text>
       <Text style={styles.rowText}>{tx.nonce}</Text>
     </Pressable>
   );

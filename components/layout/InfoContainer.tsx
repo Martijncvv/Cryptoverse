@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 interface InfoContainerProps {
   title: string;
@@ -32,10 +33,12 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
+    flex: 1,
+    minWidth: MIN_WIDTH,
     padding: Styles.spacing.lg,
     flexDirection: "row",
     alignSelf: "flex-start",
+    flexWrap: "wrap",
     gap: Styles.spacing.lg,
 
     borderWidth: 1,
@@ -54,6 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    flexWrap: "wrap",
     gap: Styles.spacing.lg,
   },
 

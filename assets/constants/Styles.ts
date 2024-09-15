@@ -11,6 +11,7 @@ export const Styles = {
     xxl: 20,
     xxxl: 24,
     xxxxl: 32,
+    modalPadding: 40,
     max: 100,
   },
   borderRadius: {

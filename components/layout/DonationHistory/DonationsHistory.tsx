@@ -5,6 +5,7 @@ import useAddressTxs from "@/hooks/api/useAddressTxs";
 import { useState } from "react";
 import { Pagination } from "@/components/layout/DonationHistory/Pagination";
 import { TxInfoRow } from "@/components/layout/DonationHistory/TxInfoRow";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 interface DonationsHistoryProps {
   // TODO
@@ -47,7 +48,7 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
       </View>
       {isLoading ? (
         <View style={styles.loadingIcon}>
-          <ActivityIndicator size="large" color={Colors.principal.default} />
+          <ActivityIndicator size="large" color={Colors.neutrals.dark} />
         </View>
       ) : null}
     </View>
@@ -62,7 +63,9 @@ const styles = StyleSheet.create({
     left: "50%",
   },
   container: {
-    minWidth: 800,
+    flex: 1,
+    minWidth: MIN_WIDTH,
+    minHeight: 400,
   },
   titleContainer: {
     flexDirection: "row",

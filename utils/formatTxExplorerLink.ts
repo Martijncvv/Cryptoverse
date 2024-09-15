@@ -8,5 +8,5 @@ export const formatTxExplorerLink = (txHash: string, networkId: string) => {
     throw new Error("formatTxExplorerLink-Network not found");
   }
 
-  return `https://${networkDetails.explorerUrl}"/tx/${txHash}`;
+  return `https://${networkDetails.explorerUrl}/tx/${txHash}`;
 };

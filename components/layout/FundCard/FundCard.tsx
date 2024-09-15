@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     color: Colors.neutrals.white,
   },
   footer: {
-    flex: 1,
     marginTop: 40,
     flexDirection: "row",
     justifyContent: "space-between",
