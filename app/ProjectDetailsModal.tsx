@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
@@ -8,14 +8,14 @@ import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { LocationDetails } from "@/components/layout/LocationDetails";
 import { SpendingDetails } from "@/components/layout/SpendingDetails";
 
-export default function Modal() {
+export default function ProjectDetailsModal() {
   const closeModal = () => {
     router.back();
   };
 
   return (
     <View style={styles.overlay}>
-      <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <BackButton onPress={closeModal} />
         <View style={styles.contentContainer}>
           <View style={styles.column}>
@@ -35,7 +35,7 @@ Supporting this cause will have a profound impact on the entire community. Educa
             <SpendingDetails />
           </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: Styles.spacing.modalPadding,
     flexDirection: "column",
-    minHeight: 600,
-    gap: Styles.spacing.xxl,
 
+    gap: Styles.spacing.xxl,
     borderRadius: Styles.borderRadius.xxxl,
     backgroundColor: Colors.neutrals.white,
+    flexGrow: 0,
   },
 
   modalTitle: {

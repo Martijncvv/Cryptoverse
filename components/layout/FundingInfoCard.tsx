@@ -24,7 +24,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
   description,
 }) => {
   const handlePressDetails = () => {
-    router.push("/modal");
+    router.push("/ProjectDetailsModal");
   };
 
   return (
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     marginBottom: Styles.spacing.sm,
   },
   moreDetailsButton: {
+    paddingVertical: Styles.spacing.xs,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",

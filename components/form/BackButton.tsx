@@ -22,10 +22,11 @@ export const BackButton: React.FC<BackButtonProps> = ({ onPress }) => {
 
 const styles = StyleSheet.create({
   backButton: {
+    paddingVertical: Styles.spacing.xs,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
     gap: Styles.spacing.xxs,
+    alignSelf: "flex-start",
   },
   backText: {
     fontSize: Styles.typography.fontSize.sm,
