@@ -26,6 +26,7 @@ const fetchAddressTxs = async (
   const { data } = await axios.get(
     `https://${networkDetails.domain}/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=${page}&offset=10&sort=desc&apikey=${SHARED_API_KEY_ETHERSCAN}`,
   );
+  console.log("data123: ", data);
   return data;
 };
 

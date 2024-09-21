@@ -20,21 +20,24 @@ export default function FundingDetailsScreen() {
             "Join us in empowering the young minds of Panajachel, Guatemala! We're raising funds to provide 200 school backpacks, filled with essential supplies, to support the education and dreams of these vibrant children."
           }
         />
-        <View style={styles.infoContainers}>
-          <InfoContainer
-            title={"How to support"}
-            image={require("@/assets/images/guatemala-happy-kids.jpg")}
-            children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
-          />
-          <InfoContainer
-            title={"How it works"}
-            image={require("@/assets/images/guatemala-happy-kids.jpg")}
-            children={
-              <Text style={styles.textTwo}>
-                Choose your favorite NFT Market Place (Zora or Solanart)
-              </Text>
-            }
-          />
+
+        <View style={styles.rightColumn}>
+          <View style={styles.infoContainers}>
+            <InfoContainer
+              title={"How to support"}
+              image={require("@/assets/images/guatemala-happy-kids.jpg")}
+              children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
+            />
+            <InfoContainer
+              title={"How it works"}
+              image={require("@/assets/images/guatemala-happy-kids.jpg")}
+              children={
+                <Text style={styles.textTwo}>
+                  Choose your favorite NFT Market Place (Zora or Solanart)
+                </Text>
+              }
+            />
+          </View>
           <DonationsHistory />
         </View>
       </View>
@@ -49,13 +52,21 @@ const styles = StyleSheet.create({
     gap: Styles.spacing.xxxxl,
     flexWrap: "wrap",
   },
+  rightColumn: {
+    flex: 1,
+    width: "60%",
+    minWidth: MIN_WIDTH,
+    justifyContent: "flex-start",
+    gap: Styles.spacing.xxxxl,
+  },
   infoContainers: {
     minWidth: MIN_WIDTH,
     flexDirection: "row",
     alignItems: "flex-start",
-    gap: Styles.spacing.md,
-    flex: 1,
+    gap: Styles.spacing.xxxl,
+    // flex: 1,
     flexWrap: "wrap",
+    // backgroundColor: "green",
   },
   textOne: {
     paddingHorizontal: Styles.spacing.xl,

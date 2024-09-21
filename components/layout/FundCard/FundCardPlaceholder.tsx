@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 export const FundCardPlaceholder = ({}) => {
   return <View style={styles.container}></View>;
@@ -8,7 +9,9 @@ export const FundCardPlaceholder = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
+    flex: 1,
+    minWidth: MIN_WIDTH,
+    maxWidth: 400,
     height: 400,
 
     borderWidth: 1,

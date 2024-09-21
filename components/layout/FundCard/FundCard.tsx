@@ -4,6 +4,7 @@ import { Styles } from "@/assets/constants/Styles";
 import { TabOptions, Tag } from "@/components/ui/Tag";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 interface FundCardProps {
   title: string;
@@ -29,7 +30,16 @@ export const FundCard: React.FC<FundCardProps> = ({
       </View>
 
       <Text style={styles.dateText}>Close Date: {closeDate}</Text>
-      <Text style={styles.fundTitleText}>{title}</Text>
+      <Text
+        style={[
+          styles.fundTitleText,
+          {
+            fontSize: Styles.typography.fontSize.xxxl,
+          },
+        ]}
+      >
+        {title}
+      </Text>
 
       <Text style={styles.minDonationText}>
         Donation starts from USDC {minDonation}
@@ -44,8 +54,9 @@ export const FundCard: React.FC<FundCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
-    maxHeight: 400,
+    minWidth: MIN_WIDTH,
+    maxWidth: 400,
+    flex: 1,
     padding: Styles.spacing.xxxl,
     borderWidth: 1,
     borderColor: Colors.neutrals.black,
@@ -66,7 +77,6 @@ const styles = StyleSheet.create({
   },
   fundTitleText: {
     marginTop: Styles.spacing.sm,
-    fontSize: Styles.typography.fontSize.xxxl,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.neutrals.black,
   },
