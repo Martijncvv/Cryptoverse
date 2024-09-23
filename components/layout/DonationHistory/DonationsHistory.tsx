@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     paddingBottom: Styles.spacing.xs,
   },
   table: {
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: Colors.neutrals.black,
     borderRadius: Styles.borderRadius.lg,
   },

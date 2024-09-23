@@ -2,12 +2,14 @@ import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 import { FundingInfoCard } from "@/components/layout/FundingInfoCard";
 import { InfoContainer } from "@/components/layout/InfoContainer";
 import { Styles } from "@/assets/constants/Styles";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 export default function FundingDetailsScreen() {
+  const { width: windowWidth } = useWindowDimensions();
+
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -25,7 +27,7 @@ export default function FundingDetailsScreen() {
           <View style={styles.infoContainers}>
             <InfoContainer
               title={"How to support"}
-              image={require("@/assets/images/guatemala-happy-kids.jpg")}
+              image={require("@/assets/images/backpack-green.png")}
               children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
             />
             <InfoContainer

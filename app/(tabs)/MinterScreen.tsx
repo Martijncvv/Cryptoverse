@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { WalletComponents } from "@/components/onchain/WalletWrapper";
 import { OnchainProviders } from "@/components/onchain/OnchainProviders";
 import ZoraCollectMint from "@/components/onchain/ZoraCollectMint";
+import "@coinbase/onchainkit/src/styles.css";
 
 const debugPremintProps = {
   contractName: "Pixel Seasons",
@@ -15,17 +16,15 @@ const debugPremintProps = {
   pricePerToken: 0n,
 };
 
-const collectionAddress: string = "0x772e26af969ccfc761dceb72aec7a5dde6ead081";
-const uid: number = 1;
+const COLLECTION_ADDRESS: string = "0x772e26af969ccfc761dceb72aec7a5dde6ead081";
+const uid: number = 2;
 
-export default function MinterPageScreen() {
+export default function MinterScreen() {
   return (
     <OnchainProviders>
       <ScreenWrapper>
         <View style={styles.container}>
-          {/*<CreatePremint {...debugPremintProps} />*/}
-          {/*<ZoraCollectPremint contractAddress={collectionAddress} uid={uid} />*/}
-          <ZoraCollectMint contractAddress={collectionAddress} uid={uid} />
+          <ZoraCollectMint contractAddress={COLLECTION_ADDRESS} uid={uid} />
         </View>
         <WalletComponents />
       </ScreenWrapper>

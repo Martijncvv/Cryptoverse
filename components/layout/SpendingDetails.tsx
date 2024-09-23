@@ -9,6 +9,55 @@ interface SpendingDetailsProps {
 }
 
 export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
+  const styles = StyleSheet.create({
+    container: {
+      width: "100%",
+      padding: Styles.spacing.xxxl,
+
+      backgroundColor: Colors.neutrals.light,
+      borderRadius: Styles.borderRadius.lg,
+      borderWidth: 1,
+      borderColor: Colors.neutrals.black,
+    },
+    title: {
+      fontSize: Styles.typography.fontSize.xxl,
+      fontWeight: Styles.typography.fontWeight.bold,
+      color: Colors.neutrals.black,
+
+      marginBottom: Styles.spacing.xl,
+    },
+    infoContainerWrapper: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      flexWrap: "wrap",
+    },
+
+    infoContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: Styles.spacing.xl,
+    },
+    number: {
+      fontSize: 64,
+      fontWeight: Styles.typography.fontWeight.normal,
+      color: Colors.principal.default,
+    },
+    label: {
+      fontSize: Styles.typography.fontSize.md,
+      fontWeight: Styles.typography.fontWeight.normal,
+      color: Colors.neutrals.black,
+    },
+    footerText: {
+      paddingHorizontal: Styles.spacing.sm,
+      marginTop: Styles.spacing.sm,
+
+      textAlign: "center",
+      fontSize: Styles.typography.fontSize.xxs,
+      fontWeight: Styles.typography.fontWeight.normal,
+      color: Colors.neutrals.black,
+    },
+  });
+
   return (
     <View>
       <View style={styles.container}>
@@ -32,52 +81,3 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    padding: Styles.spacing.xxxl,
-
-    backgroundColor: Colors.neutrals.light,
-    borderRadius: Styles.borderRadius.lg,
-    borderWidth: 1,
-    borderColor: Colors.neutrals.black,
-  },
-  title: {
-    fontSize: Styles.typography.fontSize.xxl,
-    fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
-
-    marginBottom: Styles.spacing.xl,
-  },
-  infoContainerWrapper: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-  },
-
-  infoContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Styles.spacing.xl,
-  },
-  number: {
-    fontSize: 64,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.principal.default,
-  },
-  label: {
-    maxWidth: 100,
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
-  },
-  footerText: {
-    paddingHorizontal: Styles.spacing.sm,
-    marginTop: Styles.spacing.sm,
-
-    fontSize: Styles.typography.fontSize.xxs,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
-  },
-});

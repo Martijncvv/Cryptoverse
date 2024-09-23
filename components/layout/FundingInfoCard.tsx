@@ -1,12 +1,12 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
 import { ButtonSF } from "@/components/form/ButtonSF";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { TabOptions, Tag } from "@/components/ui/Tag";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { router } from "expo-router";
+import { MoreDetailsButton } from "@/components/form/MoreDetailsButton";
 
 interface FundingInfoCardProps {
   title: string;
@@ -47,16 +47,9 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
       </View>
       <Text style={styles.subtitle}>About the cause</Text>
       <Text style={styles.description}>{description}</Text>
-      <Pressable style={styles.moreDetailsButton} onPress={handlePressDetails}>
-        <Text style={styles.moreDetailsText}>More details</Text>
-        <Ionicons
-          name="arrow-forward-circle-outline"
-          size={16}
-          color={Colors.neutrals.black}
-        />
-      </Pressable>
+      <MoreDetailsButton onPress={handlePressDetails} />
       <View style={styles.footerButtons}>
-        <ButtonSF text="See Cause" onPress={() => console.log("Donate")} />
+        <ButtonSF text="Donate now" onPress={() => console.log("Donate")} />
         <ButtonSF
           text="Share"
           color={"whiteOutlined"}
@@ -143,7 +136,7 @@ const styles = StyleSheet.create({
   moreDetailsText: {
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
+    color: Colors.neutrals.dark,
   },
   footerButtons: {
     flexDirection: "row",

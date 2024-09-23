@@ -2,7 +2,7 @@ export const Colors = {
   principal: {
     light: "#AED6FB",
     default: "#1A4CFF",
-    dark: "#000929",
+    dark: "#041862",
   },
 
   neutrals: {
@@ -10,7 +10,7 @@ export const Colors = {
     light: "#F5F5F5",
     medium: "#C1C1C3",
     default: "#898690",
-    dark: "#45424D",
+    dark: "#6F6C75",
     black: "#0A0A0B",
   },
 

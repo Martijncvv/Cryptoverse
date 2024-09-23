@@ -5,6 +5,7 @@ import {
   Name,
 } from "@coinbase/onchainkit/esm/identity";
 import { color } from "@coinbase/onchainkit/esm/styles/theme";
+
 import {
   ConnectWallet,
   Wallet,

@@ -1,33 +1,41 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 
 export const HeroContainer = () => {
-  const { width } = Dimensions.get("window");
+  const { width: windowWidth } = useWindowDimensions();
 
-  console.log("width: ", width);
   const styles = StyleSheet.create({
     container: {
       marginTop: 100,
       marginBottom: 100,
-      flexDirection: "row",
-      justifyContent: "space-between",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
-    headerContainer: {
-      width: "50%",
-    },
+
     headerText: {
+      width: "90%",
+      textAlign: "center",
+      marginBottom: Styles.typography.fontSize.xl,
+
       fontSize:
-        width > 600
+        windowWidth > 600
           ? Styles.typography.fontSize.hero
           : Styles.typography.fontSize.title,
       fontWeight: Styles.typography.fontWeight.extraBold,
       color: Colors.principal.dark,
     },
     subText: {
-      width: "80%",
+      width: windowWidth > 600 ? "60%" : "90%",
       marginTop: Styles.spacing.md,
-      fontSize: Styles.typography.fontSize.xl,
+
+      textAlign: "center",
+      fontSize:
+        windowWidth > 600
+          ? Styles.typography.fontSize.xxxl
+          : Styles.typography.fontSize.xl,
+      fontWeight: Styles.typography.fontWeight.medium,
       color: Colors.principal.dark,
     },
 
@@ -39,17 +47,10 @@ export const HeroContainer = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Small donations</Text>
-        <Text style={styles.headerText}>Big Impacts</Text>
-        <Text style={styles.subText}>
-          Sharing the economy and knowledge of the Chain with our communities.
-        </Text>
-      </View>
-      <Image
-        source={require("@/assets/images/react-logo.png")}
-        style={styles.heroImage}
-      />
+      <Text style={styles.headerText}>Small donations, big impacts</Text>
+      <Text style={styles.subText}>
+        Sharing the economy and knowledge of the Chain with our communities.
+      </Text>
     </View>
   );
 };

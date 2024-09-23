@@ -12,10 +12,10 @@ export const BackButton: React.FC<BackButtonProps> = ({ onPress }) => {
     <Pressable onPress={onPress} style={styles.backButton}>
       <Ionicons
         name={"chevron-back-outline"}
-        size={Styles.typography.fontSize.md}
+        size={Styles.typography.fontSize.lg}
         color={Colors.principal.default}
       />
-      <Text style={styles.backText}>Back</Text>
+      <Text style={styles.backText}>BACK</Text>
     </Pressable>
   );
 };
@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
   backButton: {
     paddingVertical: Styles.spacing.xs,
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    gap: Styles.spacing.xxs,
+    gap: Styles.spacing.xs,
     alignSelf: "flex-start",
   },
   backText: {
-    fontSize: Styles.typography.fontSize.sm,
+    paddingTop: 1,
+    fontSize: Styles.typography.fontSize.md,
     color: Colors.principal.default,
   },
 });

@@ -1,13 +1,15 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { FundCard } from "@/components/layout/FundCard/FundCard";
 import { Styles } from "@/assets/constants/Styles";
 import { FundCardPlaceholder } from "@/components/layout/FundCard/FundCardPlaceholder";
 
 export const FundCardsWrapper = () => {
+  const { height, width: windowWidth } = useWindowDimensions();
+
   return (
     <View style={styles.container}>
       <FundCard
-        title={"Help Build a Community Playground for Children"}
+        title={"Help Build a Community Playground"}
         closeDate={"10th July 2024"}
         tags={["funding now", "guatemala"]}
         minDonation={25}
@@ -31,7 +33,7 @@ export const FundCardsWrapper = () => {
       />
 
       <FundCard
-        title={"Fund Scholarships for Underprivileged Students"}
+        title={"Fund Scholarships for Students"}
         closeDate={"20th October 2024"}
         tags={["funding now", "guatemala"]}
         minDonation={50}

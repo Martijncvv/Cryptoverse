@@ -1,35 +1,47 @@
-import { Image, StyleSheet, View } from "react-native";
-import { Styles } from "@/assets/constants/Styles";
+import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
+import { Styles } from "@/assets/constants/Styles";
+import { useRouter } from "expo-router";
 
 export const HeaderMenu = () => {
+  const { height, width: windowWidth } = useWindowDimensions();
+  const router = useRouter();
+  if (windowWidth < 724) {
+    return null;
+  }
+
+  const styles = StyleSheet.create({
+    container: {
+      height: 50,
+      paddingHorizontal: 40,
+      flexDirection: "row",
+      flexWrap: "wrap",
+      alignItems: "center",
+      gap: Styles.spacing.xxxxl,
+    },
+
+    sendaLogo: {
+      flexBasis: windowWidth > 600 ? 50 : "100%",
+      height: 50,
+      marginRight: "auto",
+    },
+  });
+
   return (
     <View style={styles.container}>
       <Image
         source={require("@/assets/images/react-logo.png")}
         style={styles.sendaLogo}
       />
-      <View style={styles.menuContainer}>
-        <MenuItem text="Fundraisings Results" />
-        <MenuItem text="About Us" />
-      </View>
+      <MenuItem
+        text="Fundraisings Results"
+        onPress={() => router.push("FundingDetailsScreen")}
+      />
+      <MenuItem text="About Us" onPress={() => router.push("MinterScreen")} />
+      <MenuItem
+        text="MinterScreen"
+        onPress={() => router.push("MinterScreen")}
+      />
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    height: 50,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  menuContainer: {
-    flexDirection: "row",
-    marginLeft: "auto",
-    gap: Styles.spacing.md,
-  },
-  sendaLogo: {
-    width: 50,
-    height: 50,
-  },
-});

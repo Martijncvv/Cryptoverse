@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: Styles.spacing.lg,
 
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: Colors.neutrals.black,
     borderRadius: Styles.borderRadius.lg,
     backgroundColor: Colors.neutrals.white,
@@ -55,15 +55,15 @@ const styles = StyleSheet.create({
   infoWrapper: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "flex-start",
     flexWrap: "wrap",
     gap: Styles.spacing.lg,
   },
 
   title: {
-    fontSize: Styles.typography.fontSize.xl,
-    fontWeight: "bold",
+    fontSize: Styles.typography.fontSize.xxl,
+    fontWeight: Styles.typography.fontWeight.extraBold,
     marginBottom: Styles.spacing.sm,
   },
 });

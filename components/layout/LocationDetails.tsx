@@ -1,4 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 
@@ -10,6 +16,47 @@ interface LocationDetailsProps {
 }
 
 export const LocationDetails: React.FC<LocationDetailsProps> = () => {
+  const { width: windowWidth } = useWindowDimensions();
+
+  const styles = StyleSheet.create({
+    container: {
+      width: "100%",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      gap: Styles.spacing.xxxl,
+    },
+    map: {
+      width: windowWidth < 724 ? "100%" : "40%",
+      height: "auto",
+      aspectRatio: 1,
+      borderRadius: Styles.borderRadius.md,
+    },
+    locationDetails: {
+      width: windowWidth < 724 ? "100%" : "50%",
+      flexDirection: "column",
+    },
+    locationName: {
+      marginBottom: Styles.spacing.xs,
+
+      fontSize: Styles.typography.fontSize.xxl,
+      fontWeight: Styles.typography.fontWeight.semiBold,
+    },
+    cityName: {
+      marginBottom: Styles.spacing.xl,
+
+      fontSize: Styles.typography.fontSize.md,
+      fontWeight: Styles.typography.fontWeight.normal,
+      color: Colors.principal.default,
+    },
+    description: {
+      flex: 1,
+      flexShrink: 1,
+      fontSize: Styles.typography.fontSize.md,
+      fontWeight: Styles.typography.fontWeight.normal,
+      color: Colors.neutrals.black,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <Image
@@ -27,42 +74,3 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: Styles.spacing.xxxl,
-  },
-  map: {
-    width: "40%",
-    height: "auto",
-    aspectRatio: 1,
-    borderRadius: Styles.borderRadius.md,
-  },
-  locationDetails: {
-    width: "50%",
-    flexDirection: "column",
-  },
-  locationName: {
-    marginBottom: Styles.spacing.xs,
-
-    fontSize: Styles.typography.fontSize.xxl,
-    fontWeight: Styles.typography.fontWeight.semiBold,
-  },
-  cityName: {
-    marginBottom: Styles.spacing.xl,
-
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.principal.default,
-  },
-  description: {
-    flex: 1,
-    flexShrink: 1,
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
-  },
-});
