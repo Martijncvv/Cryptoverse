@@ -2,11 +2,12 @@ import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 import { FundingInfoCard } from "@/components/layout/FundingInfoCard";
 import { InfoContainer } from "@/components/layout/InfoContainer";
 import { Styles } from "@/assets/constants/Styles";
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { BoxedText } from "@/components/ui/BoxedText";
+import { TextSF } from "@/components/ui/TextSF";
 
 export default function FundingDetailsScreen() {
   const { width: windowWidth } = useWindowDimensions();
@@ -35,9 +36,9 @@ export default function FundingDetailsScreen() {
               title={"How it works"}
               image={require("@/assets/images/guatemala-happy-kids.jpg")}
               children={
-                <Text style={styles.textTwo}>
+                <TextSF style={styles.textTwo}>
                   Choose your favorite NFT Market Place (Zora or Solanart)
-                </Text>
+                </TextSF>
               }
             />
           </View>

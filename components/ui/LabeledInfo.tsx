@@ -1,6 +1,7 @@
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface LabeledInfoProps {
   label?: string;
@@ -43,8 +44,8 @@ export const LabeledInfo: React.FC<LabeledInfoProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
-      <Text style={styles.text}>{text}</Text>
+      <TextSF style={styles.label}>{label}</TextSF>
+      <TextSF style={styles.text}>{text}</TextSF>
     </View>
   );
 };

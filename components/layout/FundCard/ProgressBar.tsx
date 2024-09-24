@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface ProgressBarProps {
   progressPercentage: number;
@@ -14,7 +15,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <View style={styles.progressBar}>
       <View style={[styles.progressFill, { width: `${clampedPercentage}%` }]} />
-      <Text style={styles.progressBarText}>{progressPercentage}% Raised</Text>
+      <TextSF style={styles.progressBarText}>
+        {progressPercentage}% Raised
+      </TextSF>
     </View>
   );
 };

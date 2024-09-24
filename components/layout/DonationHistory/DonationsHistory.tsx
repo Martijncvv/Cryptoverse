@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import useAddressTxs from "@/hooks/api/useAddressTxs";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Pagination } from "@/components/layout/DonationHistory/Pagination";
 import { TxInfoRow } from "@/components/layout/DonationHistory/TxInfoRow";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface DonationsHistoryProps {
   // TODO
@@ -29,17 +30,17 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Donations History</Text>
+        <TextSF style={styles.title}>Donations History</TextSF>
         <Pagination currentPage={page} onPageChange={handlePageChange} />
       </View>
       {/*HEADER*/}
       <View style={styles.table}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Donor</Text>
-          <Text style={styles.headerText}>Date</Text>
-          <Text style={styles.headerText}>Network</Text>
-          <Text style={styles.headerText}>Qty</Text>
-          <Text style={styles.headerText}>Total</Text>
+          <TextSF style={styles.headerText}>Donor</TextSF>
+          <TextSF style={styles.headerText}>Date</TextSF>
+          <TextSF style={styles.headerText}>Network</TextSF>
+          <TextSF style={styles.headerText}>Qty</TextSF>
+          <TextSF style={styles.headerText}>Total</TextSF>
         </View>
         {/*LIST*/}
         {data?.result?.map((tx: any) => (

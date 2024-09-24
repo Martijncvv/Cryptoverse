@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface PaginationProps {
   currentPage: number;
@@ -31,7 +32,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           color={Colors.neutrals.black}
         />
       </Pressable>
-      <Text style={styles.pageText}>{currentPage}</Text>
+      <TextSF style={styles.pageText}>{currentPage}</TextSF>
       <Pressable onPress={handleNextPage}>
         <Ionicons
           name={"chevron-forward-outline"}

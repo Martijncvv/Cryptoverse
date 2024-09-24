@@ -1,6 +1,7 @@
 import { Styles } from "@/assets/constants/Styles";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface SpendingDetailsProps {
   spendingName?: string;
@@ -61,23 +62,23 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.title}>Spending Plan</Text>
+        <TextSF style={styles.title}>Spending Plan</TextSF>
 
         <View style={styles.infoContainerWrapper}>
           <View style={styles.infoContainer}>
-            <Text style={styles.number}>72%</Text>
-            <Text style={styles.label}>Straight to purchases</Text>
+            <TextSF style={styles.number}>72%</TextSF>
+            <TextSF style={styles.label}>Straight to purchases</TextSF>
           </View>
           <View style={styles.infoContainer}>
-            <Text style={styles.number}>18%</Text>
-            <Text style={styles.label}>operational costs*</Text>
+            <TextSF style={styles.number}>18%</TextSF>
+            <TextSF style={styles.label}>operational costs*</TextSF>
           </View>
         </View>
       </View>
-      <Text style={styles.footerText}>
+      <TextSF style={styles.footerText}>
         Operational cost consist on paying gasoline, food and other needs for
         the people purchasing and delivering the assets.*
-      </Text>
+      </TextSF>
     </View>
   );
 };

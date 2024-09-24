@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
@@ -7,6 +7,7 @@ import { TabOptions, Tag } from "@/components/ui/Tag";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { router } from "expo-router";
 import { MoreDetailsButton } from "@/components/form/MoreDetailsButton";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface FundingInfoCardProps {
   title: string;
@@ -40,13 +41,13 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
           style={styles.fundingPicture}
         />
       </View>
-      <Text style={styles.fundTitleText}>{title}</Text>
-      <Text style={styles.dateText}>Close Date: {closeDate}</Text>
+      <TextSF style={styles.fundTitleText}>{title}</TextSF>
+      <TextSF style={styles.dateText}>Close Date: {closeDate}</TextSF>
       <View style={styles.progressBarWrapper}>
         <ProgressBar progressPercentage={percentageRaised} />
       </View>
-      <Text style={styles.subtitle}>About the cause</Text>
-      <Text style={styles.description}>{description}</Text>
+      <TextSF style={styles.subtitle}>About the cause</TextSF>
+      <TextSF style={styles.description}>{description}</TextSF>
       <MoreDetailsButton onPress={handlePressDetails} />
       <View style={styles.footerButtons}>
         <ButtonSF

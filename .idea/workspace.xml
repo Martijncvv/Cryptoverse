@@ -4,18 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu">
-      <change afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/BoxedText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/SubTitle.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup: donateModal">
+      <change afterPath="$PROJECT_DIR$/components/layout/CardContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/CopyableText.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/TextSF.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/BackButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/BackButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/ButtonSF.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/BoxedText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/BoxedText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/SubTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/SubTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Tag.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +191,8 @@
       <workItem from="1727031945002" duration="35000" />
       <workItem from="1727069616430" duration="3708000" />
       <workItem from="1727116453243" duration="10027000" />
-      <workItem from="1727156314990" duration="2744000" />
+      <workItem from="1727156314990" duration="3313000" />
+      <workItem from="1727189178656" duration="3660000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -270,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727126162923</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- setup: donateModal">
+      <option name="closed" value="true" />
+      <created>1727162387781</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727162387784</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +317,7 @@
     <MESSAGE value="- finish modal" />
     <MESSAGE value="- setup: onchain" />
     <MESSAGE value="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu" />
+    <MESSAGE value="- setup: donateModal" />
+    <option name="LAST_COMMIT_MESSAGE" value="- setup: donateModal" />
   </component>
 </project>

@@ -1,9 +1,10 @@
-import { Linking, Pressable, StyleSheet, Text } from "react-native";
+import { Linking, Pressable, StyleSheet } from "react-native";
 import { addressFormatter } from "@/utils/addressFormatter";
 import { timestampFormatter } from "@/utils/timestampFormatter";
 import { formatTxExplorerLink } from "@/utils/formatTxExplorerLink";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface TxInfoRowProps {
   tx: any;
@@ -29,11 +30,11 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
       key={tx.hash}
       style={styles.row}
     >
-      <Text style={styles.rowText}>{addressFormatter(tx.from)}</Text>
-      <Text style={styles.rowText}>{timestampFormatter(tx.timeStamp)}</Text>
-      <Text style={styles.rowText}>Ethereum</Text>
-      <Text style={styles.rowText}>{formatWeiToEth(tx.value)}</Text>
-      <Text style={styles.rowText}>{tx.nonce}</Text>
+      <TextSF style={styles.rowText}>{addressFormatter(tx.from)}</TextSF>
+      <TextSF style={styles.rowText}>{timestampFormatter(tx.timeStamp)}</TextSF>
+      <TextSF style={styles.rowText}>Ethereum</TextSF>
+      <TextSF style={styles.rowText}>{formatWeiToEth(tx.value)}</TextSF>
+      <TextSF style={styles.rowText}>{tx.nonce}</TextSF>
     </Pressable>
   );
 };

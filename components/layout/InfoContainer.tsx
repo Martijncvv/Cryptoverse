@@ -1,13 +1,8 @@
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Image, ImageSourcePropType, StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface InfoContainerProps {
   title: string;
@@ -24,7 +19,7 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
       <View style={styles.infoWrapper}>
-        <Text style={styles.title}>{title}</Text>
+        <TextSF style={styles.title}>{title}</TextSF>
         {children}
       </View>
     </View>

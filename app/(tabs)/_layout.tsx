@@ -6,20 +6,20 @@ import {
   Image,
   Pressable,
   StyleSheet,
-  Text,
   useWindowDimensions,
   View,
 } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 const CustomDrawerContent = () => {
   const router = useRouter();
   return (
     <View style={styles.drawerContent}>
       <View style={styles.drawerHeader}>
-        <Text style={styles.drawerTitle}>SendaFund</Text>
+        <TextSF style={styles.drawerTitle}>SendaFund</TextSF>
       </View>
       <View style={styles.drawerBody}>
         {["index", "FundingDetailsScreen", "MinterScreen"].map(
@@ -34,7 +34,7 @@ const CustomDrawerContent = () => {
                 size={24}
                 color={Colors.principal.default}
               />
-              <Text style={styles.drawerItemText}>{screen}</Text>
+              <TextSF style={styles.drawerItemText}>{screen}</TextSF>
             </Pressable>
           ),
         )}

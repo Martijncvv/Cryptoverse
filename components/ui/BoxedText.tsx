@@ -1,6 +1,7 @@
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface BoxedTextProps {
   text: string;
@@ -32,7 +33,7 @@ export const BoxedText: React.FC<BoxedTextProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{text}</Text>
+      <TextSF style={styles.text}>{text}</TextSF>
     </View>
   );
 };

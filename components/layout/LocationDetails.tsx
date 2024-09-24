@@ -1,12 +1,7 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface LocationDetailsProps {
   imageSource?: string;
@@ -65,11 +60,11 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
       />
 
       <View style={styles.locationDetails}>
-        <Text style={styles.locationName}>San Lucas Toliman</Text>
-        <Text style={styles.cityName}>Sololam Guatemala</Text>
-        <Text
+        <TextSF style={styles.locationName}>San Lucas Toliman</TextSF>
+        <TextSF style={styles.cityName}>Sololam Guatemala</TextSF>
+        <TextSF
           style={styles.description}
-        >{`The school is located in San Pedro La Laguna, it hosts over 500 kids from all around Lake Atitlán. Most of the parents are farmers and don’t have a monthly payment.`}</Text>
+        >{`The school is located in San Pedro La Laguna, it hosts over 500 kids from all around Lake Atitlán. Most of the parents are farmers and don’t have a monthly payment.`}</TextSF>
       </View>
     </View>
   );

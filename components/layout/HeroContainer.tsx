@@ -1,6 +1,7 @@
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 export const HeroContainer = () => {
   const { width: windowWidth } = useWindowDimensions();
@@ -47,10 +48,10 @@ export const HeroContainer = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Small donations, big impacts</Text>
-      <Text style={styles.subText}>
+      <TextSF style={styles.headerText}>Small donations, big impacts</TextSF>
+      <TextSF style={styles.subText}>
         Sharing the economy and knowledge of the Chain with our communities.
-      </Text>
+      </TextSF>
     </View>
   );
 };

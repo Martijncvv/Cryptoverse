@@ -1,9 +1,10 @@
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { TabOptions, Tag } from "@/components/ui/Tag";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface FundCardProps {
   title: string;
@@ -90,12 +91,12 @@ export const FundCard: React.FC<FundCardProps> = ({
         ))}
       </View>
 
-      <Text style={styles.dateText}>Close Date: {closeDate}</Text>
-      <Text style={styles.fundTitleText}>{title}</Text>
+      <TextSF style={styles.dateText}>Close Date: {closeDate}</TextSF>
+      <TextSF style={styles.fundTitleText}>{title}</TextSF>
 
-      <Text style={styles.minDonationText}>
+      <TextSF style={styles.minDonationText}>
         Donation starts from USDC {minDonation}
-      </Text>
+      </TextSF>
       <View style={styles.footer}>
         <ProgressBar progressPercentage={percentageRaised} />
         <ButtonSF text="See Cause" onPress={() => console.log("Donate")} />

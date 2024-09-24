@@ -1,6 +1,7 @@
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface SubTitleProps {
   text: string;
@@ -15,5 +16,5 @@ export const SubTitle: React.FC<SubTitleProps> = ({ text }) => {
     },
   });
 
-  return <Text style={styles.text}>{text}</Text>;
+  return <TextSF style={styles.text}>{text}</TextSF>;
 };

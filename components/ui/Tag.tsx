@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface TagProps {
   text: TabOptions;
@@ -45,7 +46,7 @@ export const Tag: React.FC<TagProps> = ({
           color={Colors.neutrals.black}
         />
       ) : null}
-      <Text style={styles.text}>{text}</Text>
+      <TextSF style={styles.text}>{text}</TextSF>
     </View>
   );
 };

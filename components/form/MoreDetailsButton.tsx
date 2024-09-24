@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
+import { TextSF } from "@/components/ui/TextSF";
 
 interface MoreDetailsButtonProps {
   onPress?: () => void;
@@ -12,7 +13,7 @@ export const MoreDetailsButton: React.FC<MoreDetailsButtonProps> = ({
 }) => {
   return (
     <Pressable style={styles.moreDetailsButton} onPress={onPress}>
-      <Text style={styles.moreDetailsText}>More details</Text>
+      <TextSF style={styles.moreDetailsText}>More details</TextSF>
       <Ionicons
         name="arrow-forward-circle-outline"
         size={16}

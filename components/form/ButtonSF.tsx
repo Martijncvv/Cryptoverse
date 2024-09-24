@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import { Pressable, StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import { TextSF } from "@/components/ui/TextSF";
 
 type ButtonColor = "white" | "black" | "whiteOutlined";
 
@@ -74,7 +69,7 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
           style={styles.icon}
         />
       )}
-      {text && <Text style={contentStyle}>{text}</Text>}
+      {text && <TextSF style={contentStyle}>{text}</TextSF>}
     </>
   );
 
