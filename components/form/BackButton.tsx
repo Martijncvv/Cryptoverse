@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   },
   backText: {
     paddingTop: 1,
-    fontSize: Styles.typography.fontSize.md,
     color: Colors.principal.default,
   },
 });

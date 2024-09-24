@@ -23,7 +23,6 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
     title: {
       fontSize: Styles.typography.fontSize.xxl,
       fontWeight: Styles.typography.fontWeight.bold,
-      color: Colors.neutrals.black,
 
       marginBottom: Styles.spacing.xl,
     },
@@ -40,22 +39,15 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
     },
     number: {
       fontSize: 64,
-      fontWeight: Styles.typography.fontWeight.normal,
       color: Colors.principal.default,
     },
-    label: {
-      fontSize: Styles.typography.fontSize.md,
-      fontWeight: Styles.typography.fontWeight.normal,
-      color: Colors.neutrals.black,
-    },
+    label: {},
     footerText: {
       paddingHorizontal: Styles.spacing.sm,
       marginTop: Styles.spacing.sm,
 
       textAlign: "center",
       fontSize: Styles.typography.fontSize.xxs,
-      fontWeight: Styles.typography.fontWeight.normal,
-      color: Colors.neutrals.black,
     },
   });
 

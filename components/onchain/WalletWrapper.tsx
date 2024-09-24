@@ -12,15 +12,17 @@ import {
   WalletDropdown,
   WalletDropdownDisconnect,
 } from "@coinbase/onchainkit/esm/wallet";
+import { StyleSheet, View } from "react-native";
 
 export function WalletComponents() {
   return (
-    <div className="flex justify-end">
+    <View style={styles.container}>
       <Wallet>
         <ConnectWallet>
           <Avatar className="h-6 w-6" />
           <Name />
         </ConnectWallet>
+
         <WalletDropdown>
           <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
             <Avatar />
@@ -30,6 +32,12 @@ export function WalletComponents() {
           <WalletDropdownDisconnect />
         </WalletDropdown>
       </Wallet>
-    </div>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: 180,
+  },
+});

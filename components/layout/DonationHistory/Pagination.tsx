@@ -62,7 +62,5 @@ const styles = StyleSheet.create({
     borderColor: Colors.neutrals.black,
 
     fontSize: Styles.typography.fontSize.xs,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
   },
 });

@@ -1,8 +1,8 @@
 import {
+  Pressable,
   ScrollView,
   StyleSheet,
   useWindowDimensions,
-  View,
 } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { BackButton } from "@/components/form/BackButton";
@@ -10,11 +10,13 @@ import { BackButton } from "@/components/form/BackButton";
 interface ModalWrapperProps {
   children: React.ReactNode;
   onBackPress: () => void;
+  style?: any;
 }
 
 export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   children,
   onBackPress,
+  style,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
 
@@ -39,11 +41,15 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   });
 
   return (
-    <View style={styles.overlay}>
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+    <>
+      <Pressable style={styles.overlay} onPress={onBackPress} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={[styles.container, style]}
+      >
         <BackButton onPress={onBackPress} />
         {children}
       </ScrollView>
-    </View>
+    </>
   );
 };

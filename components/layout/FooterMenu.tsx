@@ -1,16 +1,8 @@
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 
 export const FooterMenu = () => {
-  const { height, width: windowWidth } = useWindowDimensions();
-
   const styles = StyleSheet.create({
     container: {
       marginTop: Styles.spacing.xxl,
@@ -24,7 +16,7 @@ export const FooterMenu = () => {
 
     linkText: {
       color: Colors.neutrals.white,
-      fontSize: Styles.typography.fontSize.md,
+
       fontWeight: Styles.typography.fontWeight.semiBold,
     },
   });

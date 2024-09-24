@@ -3,7 +3,7 @@ import { FundCardsWrapper } from "@/components/wrapper/FundCardsWrapper";
 import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 import { OnchainProviders } from "@/components/onchain/OnchainProviders";
 
-export default function Index() {
+export default function HomeScreen() {
   return (
     <OnchainProviders>
       <ScreenWrapper>

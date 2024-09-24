@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     gap: Styles.spacing.sm,
   },
   tokenIcon: {
-    width: 20,
-    height: 20,
+    height: 16,
   },
 });

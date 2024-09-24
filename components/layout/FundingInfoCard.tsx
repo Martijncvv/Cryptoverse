@@ -104,13 +104,10 @@ const styles = StyleSheet.create({
   fundTitleText: {
     fontSize: Styles.typography.fontSize.xxxl,
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
     marginBottom: Styles.spacing.xl,
   },
   dateText: {
     fontSize: Styles.typography.fontSize.xs,
-    fontWeight: Styles.typography.fontWeight.medium,
-    color: Colors.neutrals.black,
     marginBottom: Styles.spacing.xs,
   },
   progressBarWrapper: {
@@ -120,13 +117,9 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: Styles.typography.fontSize.xl,
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
     marginBottom: Styles.spacing.lg,
   },
   description: {
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
     marginBottom: Styles.spacing.sm,
   },
   moreDetailsButton: {
@@ -138,7 +131,6 @@ const styles = StyleSheet.create({
     marginBottom: Styles.spacing.xxxl,
   },
   moreDetailsText: {
-    fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.neutrals.dark,
   },

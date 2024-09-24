@@ -31,15 +31,10 @@ export const LabeledInfo: React.FC<LabeledInfoProps> = ({
     },
 
     label: {
-      fontSize: Styles.typography.fontSize.md,
       fontWeight: Styles.typography.fontWeight.extraBold,
       color: Colors.neutrals.dark,
     },
-    text: {
-      fontSize: Styles.typography.fontSize.md,
-      fontWeight: Styles.typography.fontWeight.normal,
-      color: Colors.neutrals.black,
-    },
+    text: {},
   });
 
   return (

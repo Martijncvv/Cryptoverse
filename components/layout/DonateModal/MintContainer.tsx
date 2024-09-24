@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     color: Colors.neutrals.dark,
   },
   totalValue: {
-    fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.principal.default,
   },

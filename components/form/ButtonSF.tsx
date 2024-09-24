@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.bold,
   },
   icon: {

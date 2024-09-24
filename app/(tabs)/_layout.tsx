@@ -22,8 +22,8 @@ const CustomDrawerContent = () => {
         <TextSF style={styles.drawerTitle}>SendaFund</TextSF>
       </View>
       <View style={styles.drawerBody}>
-        {["index", "FundingDetailsScreen", "MinterScreen"].map(
-          (screen, index, drawerLabel) => (
+        {["HomeScreen", "FundingDetailsScreen", "MinterScreen"].map(
+          (screen, index) => (
             <Pressable
               key={index}
               style={styles.drawerItem}
@@ -45,7 +45,7 @@ const CustomDrawerContent = () => {
 
 const getIconName = (screenName: string) => {
   switch (screenName) {
-    case "index":
+    case "HomeScreen":
       return "home-outline";
     case "FundingDetailsScreen":
       return "cash-outline";
@@ -59,7 +59,7 @@ const getIconName = (screenName: string) => {
 export default function TabLayout() {
   const { width: windowWidth } = useWindowDimensions();
 
-  if (windowWidth < 724) {
+  if (windowWidth > 100 && windowWidth < 724) {
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Drawer
@@ -71,7 +71,7 @@ export default function TabLayout() {
             },
             drawerPosition: "right",
             headerShown: true,
-            header: ({ navigation, route, options }) => {
+            header: ({ navigation }) => {
               return (
                 <View style={styles.header}>
                   <View style={styles.headerLeft}>
@@ -109,7 +109,7 @@ export default function TabLayout() {
             }}
           />
           <Drawer.Screen
-            name="MinterPageScreen"
+            name="MinterScreen"
             options={{
               drawerLabel: "Minter Page",
               title: "Minter Page",
@@ -128,7 +128,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="HomeScreen"
         options={{
           title: "HomeScreen",
         }}
@@ -180,8 +180,6 @@ const styles = StyleSheet.create({
   },
   drawerItemText: {
     marginLeft: Styles.spacing.md,
-    fontSize: Styles.typography.fontSize.md,
-    color: Colors.neutrals.black,
   },
   header: {
     flexDirection: "row",

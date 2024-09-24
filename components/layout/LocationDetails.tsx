@@ -39,16 +39,11 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
     cityName: {
       marginBottom: Styles.spacing.xl,
 
-      fontSize: Styles.typography.fontSize.md,
-      fontWeight: Styles.typography.fontWeight.normal,
       color: Colors.principal.default,
     },
     description: {
       flex: 1,
       flexShrink: 1,
-      fontSize: Styles.typography.fontSize.md,
-      fontWeight: Styles.typography.fontWeight.normal,
-      color: Colors.neutrals.black,
     },
   });
 

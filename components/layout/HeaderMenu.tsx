@@ -2,9 +2,10 @@ import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
+import { WalletComponents } from "@/components/onchain/WalletWrapper";
 
 export const HeaderMenu = () => {
-  const { height, width: windowWidth } = useWindowDimensions();
+  const { width: windowWidth } = useWindowDimensions();
   const router = useRouter();
   if (windowWidth < 724) {
     return null;
@@ -42,6 +43,7 @@ export const HeaderMenu = () => {
         text="MinterScreen"
         onPress={() => router.push("MinterScreen")}
       />
+      <WalletComponents />
     </View>
   );
 };

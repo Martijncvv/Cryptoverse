@@ -1,6 +1,5 @@
-import { StyleSheet, useWindowDimensions, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { router } from "expo-router";
-import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { LabeledInfo } from "@/components/ui/LabeledInfo";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
@@ -10,15 +9,12 @@ import { ModalWrapper } from "@/components/wrapper/ModalWrapper";
 import { TextSF } from "@/components/ui/TextSF";
 
 export default function ProjectDetailsModal() {
-  const { width: windowWidth } = useWindowDimensions();
-
   const closeModal = () => {
     router.back();
   };
 
   return (
     <ModalWrapper onBackPress={closeModal}>
-      {/*<BackButton onPress={closeModal} />*/}
       <View style={styles.contentContainer}>
         <View style={styles.column}>
           <TextSF style={styles.modalTitle}>More about the project</TextSF>
@@ -45,20 +41,20 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: Styles.typography.fontSize.title,
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
   },
   contentContainer: {
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: Styles.spacing.xxl,
+    gap: 48,
   },
   column: {
     flex: 1,
     minWidth: MIN_WIDTH,
+    paddingTop: Styles.spacing.md,
     flexDirection: "column",
     alignItems: "flex-start",
-    gap: Styles.spacing.xxl,
+    gap: Styles.spacing.xl,
   },
   labelsContainer: {
     width: "100%",
@@ -71,6 +67,5 @@ const styles = StyleSheet.create({
     width: "100%",
     flexWrap: "wrap",
     fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
   },
 });

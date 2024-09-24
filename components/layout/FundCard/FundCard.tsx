@@ -69,7 +69,6 @@ export const FundCard: React.FC<FundCardProps> = ({
       backgroundColor: Colors.principal.default,
       borderRadius: Styles.borderRadius.md,
 
-      fontSize: Styles.typography.fontSize.md,
       fontWeight: Styles.typography.fontWeight.bold,
       color: Colors.neutrals.white,
     },

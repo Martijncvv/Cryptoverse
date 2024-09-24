@@ -2,16 +2,13 @@ import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 import { FundingInfoCard } from "@/components/layout/FundingInfoCard";
 import { InfoContainer } from "@/components/layout/InfoContainer";
 import { Styles } from "@/assets/constants/Styles";
-import { StyleSheet, useWindowDimensions, View } from "react-native";
-import { Colors } from "@/assets/constants/Colors";
+import { StyleSheet, View } from "react-native";
 import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { BoxedText } from "@/components/ui/BoxedText";
 import { TextSF } from "@/components/ui/TextSF";
 
 export default function FundingDetailsScreen() {
-  const { width: windowWidth } = useWindowDimensions();
-
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -74,9 +71,6 @@ const styles = StyleSheet.create({
   },
 
   textTwo: {
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
     flexWrap: "wrap",
     textAlign: "left",
   },

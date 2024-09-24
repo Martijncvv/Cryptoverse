@@ -46,6 +46,10 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
         {data?.result?.map((tx: any) => (
           <TxInfoRow key={tx.hash} tx={tx} networkId={networkId} />
         ))}
+        {/*PLACEHOLDER*/}
+        {data?.result?.length === 0 ? (
+          <TextSF style={styles.headerText}>No donations found</TextSF>
+        ) : null}
       </View>
       {isLoading ? (
         <View style={styles.loadingIcon}>
@@ -58,7 +62,6 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
 
 const styles = StyleSheet.create({
   loadingIcon: {
-    // center on parent container
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -76,7 +79,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: Styles.typography.fontSize.xxl,
     fontWeight: Styles.typography.fontWeight.extraBold,
-    color: Colors.neutrals.black,
     paddingBottom: Styles.spacing.xs,
   },
   table: {
@@ -100,9 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "left",
     paddingLeft: Styles.spacing.xl,
-
     fontSize: Styles.typography.fontSize.xs,
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
   },
 });
