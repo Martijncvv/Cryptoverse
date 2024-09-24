@@ -24,7 +24,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
   description,
 }) => {
   const handlePressDetails = () => {
-    router.push("/ProjectDetailsModal");
+    router.push("ProjectDetailsModal");
   };
 
   return (
@@ -49,7 +49,10 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
       <Text style={styles.description}>{description}</Text>
       <MoreDetailsButton onPress={handlePressDetails} />
       <View style={styles.footerButtons}>
-        <ButtonSF text="Donate now" onPress={() => console.log("Donate")} />
+        <ButtonSF
+          text="Donate now"
+          onPress={() => router.push("DonateModal")}
+        />
         <ButtonSF
           text="Share"
           color={"whiteOutlined"}

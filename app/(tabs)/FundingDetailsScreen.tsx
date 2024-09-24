@@ -6,6 +6,7 @@ import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { DonationsHistory } from "@/components/layout/DonationHistory/DonationsHistory";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
+import { BoxedText } from "@/components/ui/BoxedText";
 
 export default function FundingDetailsScreen() {
   const { width: windowWidth } = useWindowDimensions();
@@ -28,7 +29,7 @@ export default function FundingDetailsScreen() {
             <InfoContainer
               title={"How to support"}
               image={require("@/assets/images/backpack-green.png")}
-              children={<Text style={styles.textOne}>1 Backpack = $20.00</Text>}
+              children={<BoxedText text={"1 Backpack = $20.00"} />}
             />
             <InfoContainer
               title={"How it works"}
@@ -70,16 +71,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     // backgroundColor: "green",
   },
-  textOne: {
-    paddingHorizontal: Styles.spacing.xl,
-    paddingVertical: Styles.spacing.xs,
-    backgroundColor: Colors.principal.light,
-    borderRadius: Styles.borderRadius.sm,
 
-    fontSize: Styles.typography.fontSize.md,
-    fontWeight: Styles.typography.fontWeight.medium,
-    color: Colors.neutrals.black,
-  },
   textTwo: {
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,

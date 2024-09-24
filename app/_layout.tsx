@@ -42,6 +42,12 @@ export default function RootLayout() {
             presentation: "transparentModal",
           }}
         />
+        <Stack.Screen
+          name="DonateModal"
+          options={{
+            presentation: "transparentModal",
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </QueryClientProvider>

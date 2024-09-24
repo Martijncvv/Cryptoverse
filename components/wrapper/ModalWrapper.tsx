@@ -4,17 +4,17 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
+import { BackButton } from "@/components/form/BackButton";
 
 interface ModalWrapperProps {
   children: React.ReactNode;
+  onBackPress: () => void;
 }
 
 export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   children,
-}: {
-  children: React.ReactNode;
+  onBackPress,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
 
@@ -33,7 +33,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
 
       gap: Styles.spacing.xxl,
       borderRadius: Styles.borderRadius.xxxl,
-      backgroundColor: Colors.neutrals.white,
+      backgroundColor: "#FFFFFF",
       flexGrow: 0,
     },
   });
@@ -41,6 +41,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   return (
     <View style={styles.overlay}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        <BackButton onPress={onBackPress} />
         {children}
       </ScrollView>
     </View>

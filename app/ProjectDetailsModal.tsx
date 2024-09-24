@@ -2,7 +2,6 @@ import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { router } from "expo-router";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
-import { BackButton } from "@/components/form/BackButton";
 import { LabeledInfo } from "@/components/ui/LabeledInfo";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { LocationDetails } from "@/components/layout/LocationDetails";
@@ -17,8 +16,8 @@ export default function ProjectDetailsModal() {
   };
 
   return (
-    <ModalWrapper>
-      <BackButton onPress={closeModal} />
+    <ModalWrapper onBackPress={closeModal}>
+      {/*<BackButton onPress={closeModal} />*/}
       <View style={styles.contentContainer}>
         <View style={styles.column}>
           <Text style={styles.modalTitle}>More about the project</Text>
