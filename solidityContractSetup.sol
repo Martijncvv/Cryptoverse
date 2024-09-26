@@ -14,14 +14,15 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 // todo Ultimate ERC-1155 Smart Contract Tutorial w/Mint, Payment, & Whitelist
 // todo https://www.youtube.com/watch?v=wYOPh8TX_Tw
+// BASE SEPOLIA USDC: 0x036CbD53842c5426634e7929541eC2318f3dCF7e
 
 contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     IERC20 public paymentToken;
 
     // Prices in USDC (assuming 6 decimal places)
-    uint256 public constant NFT_PRICE_0 = 10 * 10**6; // 10 USDC
-    uint256 public constant NFT_PRICE_1 = 20 * 10**6; // 20 USDC
-    uint256 public constant NFT_PRICE_2 = 30 * 10**6; // 30 USDC
+    uint256 public NFT_PRICE_0 = 1 * 10**6; // 10 USDC
+    uint256 public NFT_PRICE_1 = 2 * 10**6; // 20 USDC
+    uint256 public NFT_PRICE_2 = 3 * 10**6; // 30 USDC
 
     uint256 public MAX_SUPPLY = 1000;
 
@@ -57,7 +58,7 @@ contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     function setNFTPrice(uint256 id, uint256 newPrice) public onlyOwner {
         if (id == 0) NFT_PRICE_0 = newPrice;
         else if (id == 1) NFT_PRICE_1 = newPrice;
-        else if (id == 3) NFT_PRICE_3 = newPrice;
+        else if (id == 3) NFT_PRICE_2 = newPrice;
         else revert("Invalid token ID");
     }
 
@@ -96,6 +97,15 @@ contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
      function withdraw(address _addr) external onlyOwner {
         uint256 balance = paymentToken.balanceOf(address(this));
         require(paymentToken.transfer(_addr, balance), "Transfer failed");
+    }
+
+    // ALLOWANCE APPROVER
+    function approvePaymentToken(uint256 amount) external {
+        require(paymentToken.approve(address(this), amount), "Approval failed");
+    }
+
+    function checkAllowance(address owner) external view returns (uint256) {
+        return paymentToken.allowance(owner, address(this));
     }
 
     // The following functions are overrides required by Solidity.
