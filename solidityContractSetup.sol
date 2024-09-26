@@ -15,35 +15,27 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 // todo Ultimate ERC-1155 Smart Contract Tutorial w/Mint, Payment, & Whitelist
 // todo https://www.youtube.com/watch?v=wYOPh8TX_Tw
 // BASE SEPOLIA USDC: 0x036CbD53842c5426634e7929541eC2318f3dCF7e
+// ERC1155 CONTRACT LISTED ADDRESS:; 0x30C7E39F0dCDCd7358714856Ae8BA24830cc6f10
 
 contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     IERC20 public paymentToken;
 
-    // Prices in USDC (assuming 6 decimal places)
-    uint256 public NFT_PRICE_0 = 1 * 10**6; // 1 USDC
-    uint256 public NFT_PRICE_1 = 2 * 10**6; // 2 USDC
-    uint256 public NFT_PRICE_2 = 3 * 10**6; // 3 USDC
+    mapping(uint256 => uint256) public tokenSupplies;
+    mapping(uint256 => uint256) public tokenPrices;
 
-    uint256 public MAX_SUPPLY = 1000;
+    event TokenConfigUpdated(uint256 indexed tokenId, uint256 maxSupply, uint256 price);
 
-     constructor(address initialOwner, address _paymentToken)
+    constructor(address initialOwner, address _paymentToken)
         ERC1155("ipfs://Qmaa6TuP2s9pSKczHF4rwWhTKUdygrrDs8RmYYqCjP3Hye/")
         Ownable(initialOwner)
     {
         paymentToken = IERC20(_paymentToken);
     }
 
-    // GET SETTINGS
-    function uri(uint256 _id) public view virtual override returns (string memory) {
-        require(exists(_id), "URI: none existent token");
-        return string(abi.encodePacked(super.uri(_id), Strings.toString(_id), ".json"));
-    }
-
-    function getNFTPrice(uint256 id) public view returns (uint256) {
-        if (id == 0) return NFT_PRICE_0;
-        if (id == 1) return NFT_PRICE_1;
-        if (id == 3) return NFT_PRICE_2;
-        revert("Invalid token ID");
+    function setTokenConfig(uint256 tokenId, uint256 maxSupply, uint256 price) public onlyOwner {
+        tokenSupplies[tokenId] = maxSupply;
+        tokenPrices[tokenId] = price;
+        emit TokenConfigUpdated(tokenId, maxSupply, price);
     }
 
     // SET SETTINGS
@@ -55,28 +47,24 @@ contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
         paymentToken = IERC20(_newPaymentToken);
     }
 
-    function setNFTPrice(uint256 id, uint256 newPrice) public onlyOwner {
-        if (id == 0) NFT_PRICE_0 = newPrice;
-        else if (id == 1) NFT_PRICE_1 = newPrice;
-        else if (id == 3) NFT_PRICE_2 = newPrice;
-        else revert("Invalid token ID");
+    // GET SETTINGS
+    function uri(uint256 _id) public view virtual override returns (string memory) {
+        require(exists(_id), "URI: none existent token");
+        return string(abi.encodePacked(super.uri(_id), Strings.toString(_id), ".json"));
     }
 
-    // PAUSE
-    function pause() public onlyOwner {
-        _pause();
-    }
 
-    function unpause() public onlyOwner {
-        _unpause();
+    function getTokenConfig(uint256 tokenId) public view returns (uint256 maxSupply, uint256 price) {
+        return (tokenSupplies[tokenId], tokenPrices[tokenId]);
     }
 
 
     //  MINT
     function mint(uint256 id, uint256 amount) public {
-        uint256 price = getNFTPrice(id);
+        require(tokenSupplies[id] > 0, "Token not configured");
+        require(totalSupply(id) + amount <= tokenSupplies[id], "Exceeds max supply");
+        uint256 price = tokenPrices[id];
         require(paymentToken.transferFrom(msg.sender, address(this), price * amount), "Payment failed");
-        require(totalSupply(id) + amount <= MAX_SUPPLY, "Sorry, mint limit reached");
         _mint(msg.sender, id, amount, "");
     }
 
@@ -84,6 +72,10 @@ contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
         public
         onlyOwner
     {
+        for (uint256 i = 0; i < ids.length; i++) {
+            require(tokenSupplies[ids[i]] > 0, "Token not configured");
+            require(totalSupply(ids[i]) + amounts[i] <= tokenSupplies[ids[i]], "Exceeds max supply");
+        }
         _mintBatch(to, ids, amounts, data);
     }
 
@@ -94,10 +86,21 @@ contract MyTokenTest is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
         payable(_addr).transfer(balance);
     }
 
-     function withdraw(address _addr) external onlyOwner {
+    function withdrawPaymentToken(address _addr) external onlyOwner {
         uint256 balance = paymentToken.balanceOf(address(this));
         require(paymentToken.transfer(_addr, balance), "Transfer failed");
     }
+
+
+    // PAUSE
+    function pause() public onlyOwner {
+        _pause();
+    }
+
+    function unpause() public onlyOwner {
+        _unpause();
+    }
+
 
     // The following functions are overrides required by Solidity.
     function _update(address from, address to, uint256[] memory ids, uint256[] memory values)

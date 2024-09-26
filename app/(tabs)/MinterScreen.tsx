@@ -2,7 +2,6 @@ import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 import { StyleSheet, View } from "react-native";
 import { WalletComponents } from "@/components/onchain/WalletWrapper";
 import { OnchainProviders } from "@/components/onchain/OnchainProviders";
-import ZoraCollectMint from "@/components/onchain/ZoraCollectMint";
 import "@coinbase/onchainkit/src/styles.css";
 
 const debugPremintProps = {
@@ -23,9 +22,7 @@ export default function MinterScreen() {
   return (
     <OnchainProviders>
       <ScreenWrapper>
-        <View style={styles.container}>
-          <ZoraCollectMint contractAddress={COLLECTION_ADDRESS} uid={uid} />
-        </View>
+        <View style={styles.container}></View>
         <WalletComponents />
       </ScreenWrapper>
     </OnchainProviders>

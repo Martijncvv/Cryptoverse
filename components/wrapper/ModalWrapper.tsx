@@ -22,10 +22,12 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
 
   const styles = StyleSheet.create({
     overlay: {
+      height: "100%",
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
+      zIndex: 999,
     },
     container: {
       width: windowWidth < 724 ? "100%" : "80%",
@@ -39,17 +41,18 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
       flexGrow: 0,
     },
   });
-
+  // todo onpress
   return (
     <>
-      <Pressable style={styles.overlay} onPress={onBackPress} />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={[styles.container, style]}
-      >
-        <BackButton onPress={onBackPress} />
-        {children}
-      </ScrollView>
+      <Pressable style={styles.overlay}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[styles.container, style]}
+        >
+          <BackButton onPress={onBackPress} />
+          {children}
+        </ScrollView>
+      </Pressable>
     </>
   );
 };
