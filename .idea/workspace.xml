@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- onchainkit styling">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/TransactionComponents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/TxsComponent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +180,7 @@
       <workItem from="1727448348256" duration="1002000" />
       <workItem from="1727449361957" duration="1361000" />
       <workItem from="1727462464465" duration="5016000" />
+      <workItem from="1727473283619" duration="3030000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />

@@ -6,6 +6,7 @@ import { BoxedText } from "@/components/ui/BoxedText";
 import { CustomDonationCard } from "@/components/layout/DonateModal/CustomDonationCard";
 import { MintContainer } from "@/components/layout/DonateModal/MintContainer";
 import { TextSF } from "@/components/ui/TextSF";
+import { MIN_WIDTH } from "@/assets/constants/Constants";
 
 export default function DonateModal() {
   const { width: windowWidth } = useWindowDimensions();
@@ -17,7 +18,7 @@ export default function DonateModal() {
   return (
     <ModalWrapper
       onBackPress={closeModal}
-      style={{ width: windowWidth > 724 ? "30%" : "100%" }}
+      style={{ width: windowWidth > 724 ? "30%" : "100%", minWidth: MIN_WIDTH }}
     >
       <View style={styles.contentContainer}>
         <TextSF style={styles.modalTitle}>Choose your preferred method</TextSF>

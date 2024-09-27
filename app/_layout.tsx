@@ -5,9 +5,9 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, http } from "@wagmi/core";
-import { base, baseSepolia } from "viem/chains";
+import { base, baseSepolia } from "wagmi/chains";
 import { coinbaseWallet } from "wagmi/connectors";
-import { OnchainProviders } from "@/components/onchain/OnchainProviders";
+import { WagmiProvider } from "wagmi";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -53,8 +53,7 @@ export default function RootLayout() {
   }
 
   return (
-    // <WagmiProvider config={config}>
-    <OnchainProviders>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <Stack
           screenOptions={{
@@ -77,6 +76,6 @@ export default function RootLayout() {
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>
-    </OnchainProviders>
+    </WagmiProvider>
   );
 }

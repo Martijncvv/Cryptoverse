@@ -3,8 +3,8 @@ import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
 import { Avatar, Name } from "@coinbase/onchainkit/esm/identity";
-import { base } from "viem/chains";
-import { useAccount } from "wagmi";
+import { base } from "wagmi/chains";
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
 import { ConnectWallet } from "@coinbase/onchainkit/esm/wallet";
 import { addressFormatter } from "@/utils/addressFormatter";
 import { TextSF } from "@/components/ui/TextSF";
@@ -17,6 +17,10 @@ export const HeaderMenu = () => {
   }
 
   const { address } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+
   console.log("address123: ", address);
 
   const router = useRouter();

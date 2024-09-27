@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { CardContainer } from "@/components/layout/CardContainer";
@@ -6,17 +6,20 @@ import { SubTitle } from "@/components/ui/SubTitle";
 import { TextSF } from "@/components/ui/TextSF";
 import {
   BaseError,
+  useAccount,
+  useEnsAvatar,
+  useEnsName,
   useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
 import {
-  BASE_SEPOLIA_CHAIN_ID,
   BASE_SEPOLIA_USDC_CONTRACT_ADDRESS,
   TEST_1155_CONTRACT_ADDRESS,
 } from "@/assets/constants/Constants";
 import { ERC20ApprovalAbi } from "@/components/onchain/contracts/erc20Abi";
 import { TestERC1155Abi } from "@/components/onchain/contracts/erc1155Abi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { baseSepolia } from "wagmi/chains";
 
 interface MintContainerProps {}
 
@@ -30,52 +33,83 @@ const TOKEN_ID_COST: Record<TokenId, number> = {
 const DECIMALS = 6;
 
 export const MintContainer: React.FC<MintContainerProps> = ({}) => {
-  const [selectedId, setSelectedId] = useState<TokenId>("0");
-  const { data: hash, isPending, error, writeContract } = useWriteContract();
-  // https://github.com/wevm/wagmi/issues/3219
-  const { isLoading, isSuccess } = useWaitForTransactionReceipt({
-    chainId: BASE_SEPOLIA_CHAIN_ID,
-    hash,
-  });
+  const [selectedId, setSelectedId] = useState<TokenId | "">("");
+  const { address } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
-  console.log("hash", hash);
+  const {
+    data: hashApprove,
+    isPending: isPendingApprove,
+    error: errorApprove,
+    writeContract: writeApproveContract,
+  } = useWriteContract();
+  const {
+    data: hashMint,
+    isPending: isPendingMint,
+    error: errorMint,
+    writeContract: writeMintContract,
+  } = useWriteContract();
+
+  // https://github.com/wevm/wagmi/issues/3219
+  const { isLoading: approvalIsLoading, isSuccess: approvalIsSuccess } =
+    useWaitForTransactionReceipt({
+      chainId: baseSepolia.id,
+      hash: hashApprove,
+    });
+
+  useEffect(() => {
+    if (hashApprove && selectedId && approvalIsSuccess) {
+      // wait 10 seconds
+      setTimeout(() => {
+        mint(selectedId);
+      }, 10000);
+    }
+  }, [approvalIsSuccess]);
+
+  console.log("hashApprove", hashApprove);
 
   const approve = async (id: TokenId) => {
     setSelectedId(id);
     try {
-      const result = await writeContract({
+      writeApproveContract({
         address: BASE_SEPOLIA_USDC_CONTRACT_ADDRESS,
         abi: ERC20ApprovalAbi,
         functionName: "approve",
         args: [TEST_1155_CONTRACT_ADDRESS, BigInt(TOKEN_ID_COST[id])],
       });
-      console.log("Transaction submitted:", result);
     } catch (error) {
-      console.error("Transaction failed:", error);
+      console.error("Approval transaction failed:", error);
     }
   };
 
-  const mint = async (id: TokenId) => {
-    writeContract({
+  // TODO CHECK IF CONTRACT SETTINGS ARE SET; MAX SUPPLY, COST SETTIGNS ETC.
+  const mint = async (id: string) => {
+    console.log("minting #", id);
+    writeMintContract({
       address: TEST_1155_CONTRACT_ADDRESS,
       abi: TestERC1155Abi,
       functionName: "mint",
       args: [BigInt(id), BigInt(1)],
     });
   };
-  console.log("isSuccess", isSuccess);
+
+  console.log("approvalIsSuccess", approvalIsSuccess);
+  console.log("ensAvatar", ensAvatar);
 
   return (
     <CardContainer gap={Styles.spacing.xl}>
       <View>
+        {ensAvatar && <Image alt="ENS Avatar" source={ensAvatar} />}
         <SubTitle text={"Select amount of donation package"} />
         {/*{hash && <TextSF>Transaction Hash: {hash}</TextSF>}*/}
-        {isPending && <TextSF>Transaction is pending...</TextSF>}
-        {isLoading && <TextSF>Waiting for confirmation...</TextSF>}
-        {isSuccess && <TextSF>Transaction confirmed.</TextSF>}
-        {error && (
+        {isPendingApprove && <TextSF>Transaction is pending...</TextSF>}
+        {approvalIsLoading && <TextSF>Waiting for confirmation...</TextSF>}
+        {approvalIsSuccess && <TextSF>Transaction confirmed.</TextSF>}
+        {errorApprove && (
           <TextSF>
-            Error: {(error as BaseError).shortMessage || error.message}
+            Error:{" "}
+            {(errorApprove as BaseError).shortMessage || errorApprove.message}
           </TextSF>
         )}
         <Text style={styles.subTitle}>Total includes transaction fees</Text>
