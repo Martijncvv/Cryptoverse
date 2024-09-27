@@ -64,6 +64,7 @@ export const TransactionComponents = () => {
   ) : (
     <Wallet>
       <ConnectWallet>
+        {/*// @ts-ignore*/}
         <Avatar className="h-6 w-6" chain={base} />
         <Name />
       </ConnectWallet>

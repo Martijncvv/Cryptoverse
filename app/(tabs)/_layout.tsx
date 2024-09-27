@@ -22,22 +22,20 @@ const CustomDrawerContent = () => {
         <TextSF style={styles.drawerTitle}>SendaFund</TextSF>
       </View>
       <View style={styles.drawerBody}>
-        {["HomeScreen", "FundingDetailsScreen", "MinterScreen"].map(
-          (screen, index) => (
-            <Pressable
-              key={index}
-              style={styles.drawerItem}
-              onPress={() => router.push(screen)}
-            >
-              <Ionicons
-                name={getIconName(screen)}
-                size={24}
-                color={Colors.principal.default}
-              />
-              <TextSF style={styles.drawerItemText}>{screen}</TextSF>
-            </Pressable>
-          ),
-        )}
+        {["HomeScreen", "FundingDetailsScreen"].map((screen, index) => (
+          <Pressable
+            key={index}
+            style={styles.drawerItem}
+            onPress={() => router.push(screen)}
+          >
+            <Ionicons
+              name={getIconName(screen)}
+              size={24}
+              color={Colors.principal.default}
+            />
+            <TextSF style={styles.drawerItemText}>{screen}</TextSF>
+          </Pressable>
+        ))}
       </View>
     </View>
   );
@@ -49,8 +47,6 @@ const getIconName = (screenName: string) => {
       return "home-outline";
     case "FundingDetailsScreen":
       return "cash-outline";
-    case "MinterScreen":
-      return "wallet-outline";
     default:
       return "document-outline";
   }
@@ -108,13 +104,6 @@ export default function TabLayout() {
               title: "Funding Details",
             }}
           />
-          <Drawer.Screen
-            name="MinterScreen"
-            options={{
-              drawerLabel: "Minter Page",
-              title: "Minter Page",
-            }}
-          />
         </Drawer>
       </GestureHandlerRootView>
     );
@@ -137,12 +126,6 @@ export default function TabLayout() {
         name="FundingDetailsScreen"
         options={{
           title: "FundingDetailsScreen",
-        }}
-      />
-      <Tabs.Screen
-        name="MinterScreen"
-        options={{
-          title: "MinterScreen",
         }}
       />
     </Tabs>
