@@ -2,27 +2,24 @@ import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
-import {
-  ConnectWallet,
-  Wallet,
-  WalletDropdown,
-  WalletDropdownDisconnect,
-} from "@coinbase/onchainkit/esm/wallet";
-import {
-  Address,
-  Avatar,
-  Badge,
-  Identity,
-  Name,
-} from "@coinbase/onchainkit/esm/identity";
+import { Avatar, Name } from "@coinbase/onchainkit/esm/identity";
 import { base } from "viem/chains";
+import { useAccount } from "wagmi";
+import { ConnectWallet } from "@coinbase/onchainkit/esm/wallet";
+import { addressFormatter } from "@/utils/addressFormatter";
+import { TextSF } from "@/components/ui/TextSF";
+// AddressReact
 
 export const HeaderMenu = () => {
   const { width: windowWidth } = useWindowDimensions();
-  const router = useRouter();
   if (windowWidth < 724) {
     return null;
   }
+
+  const { address } = useAccount();
+  console.log("address123: ", address);
+
+  const router = useRouter();
 
   const styles = StyleSheet.create({
     container: {
@@ -32,7 +29,7 @@ export const HeaderMenu = () => {
       flexWrap: "wrap",
       alignItems: "center",
       gap: Styles.spacing.xxxxl,
-      backgroundColor: "red",
+      // backgroundColor: "yellow",
     },
 
     sendaLogo: {
@@ -42,30 +39,22 @@ export const HeaderMenu = () => {
     },
     walletField: {
       height: 50,
+      width: 50,
       flexShrink: 1,
       borderRadius: 20,
     },
-    avatarLarge: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
+    avatar: {
+      width: 20,
+      height: 20,
+      borderRadius: 15,
     },
-    avatarSmall: {
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-    },
-    walletContainer: {
+
+    accountField: {
       flexDirection: "row",
       alignItems: "center",
-      backgroundColor: "#f0f0f0",
-      borderRadius: 25,
-      padding: 5,
-    },
-    walletText: {
-      marginLeft: 10,
-      fontSize: 14,
-      color: "#333",
+      justifyContent: "center",
+      gap: Styles.spacing.sm,
+      // backgroundColor: "red",
     },
   });
 
@@ -84,22 +73,20 @@ export const HeaderMenu = () => {
         text="MinterScreen"
         onPress={() => router.push("MinterScreen")}
       />
-      <View style={styles.walletField}>
-        <Wallet style={{ width: 30, backgroundColor: "green" }}>
-          <ConnectWallet>
-            <Avatar chain={base} style={styles.avatarLarge} />
-            <Name style={styles.walletText} />
-          </ConnectWallet>
 
-          <WalletDropdown style={{ width: 30, backgroundColor: "green" }}>
-            <Identity hasCopyAddressOnClick>
-              <Badge />
-              <Address />
-            </Identity>
-            <WalletDropdownDisconnect />
-          </WalletDropdown>
-        </Wallet>
-      </View>
+      {address ? (
+        <View style={styles.accountField}>
+          <Avatar address={address} chain={base} style={styles.avatar} />
+          <TextSF>{addressFormatter(address)}</TextSF>
+        </View>
+      ) : (
+        <View style={styles.accountField}>
+          <ConnectWallet>
+            <Avatar chain={base} style={styles.avatar} />
+            <Name />
+          </ConnectWallet>
+        </View>
+      )}
     </View>
   );
 };

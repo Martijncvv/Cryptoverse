@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- allow ERC20 minting">
-      <change afterPath="$PROJECT_DIR$/components/onchain/TransactionComponents.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/onchain/contracts/erc1155Contract.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/onchain/contracts/erc20Contract.ts" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- onchainkit styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/MinterScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/MinterScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/constants/Constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solidityContractSetup.sol" beforeDir="false" afterPath="$PROJECT_DIR$/solidityContractSetup.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/TransactionComponents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/TxsComponent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +176,11 @@
       <workItem from="1727246375958" duration="1224000" />
       <workItem from="1727277054759" duration="1312000" />
       <workItem from="1727297991959" duration="5188000" />
-      <workItem from="1727375435404" duration="8459000" />
+      <workItem from="1727375435404" duration="10673000" />
+      <workItem from="1727423345575" duration="28000" />
+      <workItem from="1727448348256" duration="1002000" />
+      <workItem from="1727449361957" duration="1361000" />
+      <workItem from="1727462464465" duration="5016000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -335,7 +334,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727337735623</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="- setup erc20 approval&#10;- setup erc1155 mint">
+      <option name="closed" value="true" />
+      <created>1727386253964</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727386253965</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- onchainkit styling">
+      <option name="closed" value="true" />
+      <created>1727450714235</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727450714235</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,6 +375,8 @@
     <MESSAGE value="- solidity contract setup" />
     <MESSAGE value="- allow ERC20 payments" />
     <MESSAGE value="- allow ERC20 minting" />
-    <option name="LAST_COMMIT_MESSAGE" value="- allow ERC20 minting" />
+    <MESSAGE value="- setup erc20 approval&#10;- setup erc1155 mint" />
+    <MESSAGE value="- onchainkit styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="- onchainkit styling" />
   </component>
 </project>

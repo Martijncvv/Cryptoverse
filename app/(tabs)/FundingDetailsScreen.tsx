@@ -8,7 +8,6 @@ import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { BoxedText } from "@/components/ui/BoxedText";
 import { TextSF } from "@/components/ui/TextSF";
 import { useAccount } from "wagmi";
-import { TransactionComponents } from "@/components/onchain/TransactionComponents";
 
 export default function FundingDetailsScreen() {
   const { address } = useAccount();
@@ -43,7 +42,7 @@ export default function FundingDetailsScreen() {
             />
           </View>
           <DonationsHistory />
-          <TransactionComponents />
+          {/*<TxsComponent />*/}
         </View>
       </View>
     </ScreenWrapper>

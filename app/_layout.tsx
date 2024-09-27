@@ -4,6 +4,9 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createConfig, http } from "@wagmi/core";
+import { base, baseSepolia } from "viem/chains";
+import { coinbaseWallet } from "wagmi/connectors";
 import { OnchainProviders } from "@/components/onchain/OnchainProviders";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -12,6 +15,25 @@ SplashScreen.preventAutoHideAsync();
 export const unstable_settings = {
   initialRouteName: "index",
 };
+
+declare module "wagmi" {
+  interface Register {
+    config: typeof config;
+  }
+}
+const connector = coinbaseWallet({
+  appName: "SendaFund",
+  appLogoUrl: "https://example.com/myLogoUrl.png", // todo senda logo
+});
+
+const config = createConfig({
+  chains: [base, baseSepolia],
+  connectors: [connector],
+  transports: {
+    [base.id]: http(),
+    [baseSepolia.id]: http(),
+  },
+});
 
 export default function RootLayout() {
   const queryClient = new QueryClient();
@@ -31,6 +53,7 @@ export default function RootLayout() {
   }
 
   return (
+    // <WagmiProvider config={config}>
     <OnchainProviders>
       <QueryClientProvider client={queryClient}>
         <Stack
