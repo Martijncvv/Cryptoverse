@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, http } from "@wagmi/core";
-import { base, baseSepolia } from "wagmi/chains";
+import { base } from "wagmi/chains";
 import { coinbaseWallet } from "wagmi/connectors";
 import { WagmiProvider } from "wagmi";
 
+const SENDAFUND_PROJECT_ID = "ff8280abe8d88f732eb4946fe6349acc";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -26,12 +27,14 @@ const connector = coinbaseWallet({
   appLogoUrl: "https://example.com/myLogoUrl.png", // todo senda logo
 });
 
-const config = createConfig({
-  chains: [base, baseSepolia],
+export const config = createConfig({
+  chains: [base],
+  // chains: [base, baseSepolia],
   connectors: [connector],
+
   transports: {
     [base.id]: http(),
-    [baseSepolia.id]: http(),
+    // [baseSepolia.id]: http(),
   },
 });
 

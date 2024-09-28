@@ -16,8 +16,8 @@ import {
   BASE_SEPOLIA_USDC_CONTRACT_ADDRESS,
   TEST_1155_CONTRACT_ADDRESS,
 } from "@/assets/constants/Constants";
-import { ERC20ApprovalAbi } from "@/components/onchain/contracts/erc20Abi";
-import { TestERC1155Abi } from "@/components/onchain/contracts/erc1155Abi";
+import { ERC20ApprovalAbi } from "@/assets/contracts/erc20Abi";
+import { TestERC1155Abi } from "@/assets/contracts/erc1155Abi";
 import { useEffect, useState } from "react";
 import { baseSepolia } from "wagmi/chains";
 
@@ -83,7 +83,6 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
     }
   };
 
-  // TODO CHECK IF CONTRACT SETTINGS ARE SET; MAX SUPPLY, COST SETTIGNS ETC.
   const mint = async (id: string) => {
     console.log("minting #", id);
     writeMintContract({
@@ -131,7 +130,6 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
           style={styles.totalValue}
         >{`${selectedId ? TOKEN_ID_COST[selectedId] / 10 ** DECIMALS : "?"} USDC`}</TextSF>
       </View>
-      {/*<TxsComponent />*/}
     </CardContainer>
   );
 };

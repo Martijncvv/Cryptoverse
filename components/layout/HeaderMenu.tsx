@@ -2,12 +2,7 @@ import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
-import { Avatar, Name } from "@coinbase/onchainkit/esm/identity";
-import { base } from "wagmi/chains";
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
-import { ConnectWallet } from "@coinbase/onchainkit/esm/wallet";
-import { addressFormatter } from "@/utils/addressFormatter";
-import { TextSF } from "@/components/ui/TextSF";
+import { AccountField } from "@/components/onchain/AccountField";
 // AddressReact
 
 export const HeaderMenu = () => {
@@ -15,13 +10,6 @@ export const HeaderMenu = () => {
   if (windowWidth < 724) {
     return null;
   }
-
-  const { address } = useAccount();
-  const { disconnect } = useDisconnect();
-  const { data: ensName } = useEnsName({ address });
-  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
-
-  console.log("address123: ", address);
 
   const router = useRouter();
 
@@ -68,6 +56,7 @@ export const HeaderMenu = () => {
         source={require("@/assets/images/react-logo.png")}
         style={styles.sendaLogo}
       />
+
       <MenuItem
         text="Fundraisings Results"
         onPress={() => router.push("FundingDetailsScreen")}
@@ -77,20 +66,7 @@ export const HeaderMenu = () => {
         text="MinterScreen"
         onPress={() => router.push("MinterScreen")}
       />
-
-      {address ? (
-        <View style={styles.accountField}>
-          <Avatar address={address} chain={base} style={styles.avatar} />
-          <TextSF>{addressFormatter(address)}</TextSF>
-        </View>
-      ) : (
-        <View style={styles.accountField}>
-          <ConnectWallet>
-            <Avatar chain={base} style={styles.avatar} />
-            <Name />
-          </ConnectWallet>
-        </View>
-      )}
+      <AccountField />
     </View>
   );
 };
