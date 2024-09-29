@@ -8,8 +8,8 @@ import { createConfig, http } from "@wagmi/core";
 import { baseSepolia } from "wagmi/chains";
 import { coinbaseWallet } from "wagmi/connectors";
 import { WagmiProvider } from "wagmi";
+import { base } from "viem/chains";
 
-const SENDAFUND_PROJECT_ID = "ff8280abe8d88f732eb4946fe6349acc";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -24,14 +24,13 @@ declare module "wagmi" {
 }
 
 export const config = createConfig({
-  chains: [baseSepolia],
-  // chains: [base]
+  chains: [baseSepolia, base],
   connectors: [
     coinbaseWallet({ appName: "SendaFund", preference: "smartWalletOnly" }),
   ],
   transports: {
-    // [base.id]: http(),
     [baseSepolia.id]: http(),
+    [base.id]: http(),
   },
 });
 

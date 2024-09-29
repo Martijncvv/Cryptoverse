@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup baseENS">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup menu">
+      <change afterPath="$PROJECT_DIR$/utils/getChainLogo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +65,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.format.executor&quot;: &quot;Run&quot;,
     &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Debug&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
     &quot;npm.web.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
@@ -68,11 +75,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images/coins" />
+      <recent name="$PROJECT_DIR$/assets/images/networks" />
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/components/layout" />
       <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/components/layout/DonationHistory" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -181,6 +188,8 @@
       <workItem from="1727517921485" duration="18000" />
       <workItem from="1727518290991" duration="5045000" />
       <workItem from="1727556394008" duration="260000" />
+      <workItem from="1727597104357" duration="5068000" />
+      <workItem from="1727619140238" duration="4285000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -366,7 +375,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727523421305</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- setup menu">
+      <option name="closed" value="true" />
+      <created>1727602145144</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727602145144</updated>
+    </task>
+    <task id="LOCAL-00025" summary="- setup menu">
+      <option name="closed" value="true" />
+      <created>1727602169895</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727602169895</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,6 +420,7 @@
     <MESSAGE value="- onchainkit styling" />
     <MESSAGE value="- WAGMI setup" />
     <MESSAGE value="- setup baseENS" />
-    <option name="LAST_COMMIT_MESSAGE" value="- setup baseENS" />
+    <MESSAGE value="- setup menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="- setup menu" />
   </component>
 </project>

@@ -13,6 +13,7 @@ import { Styles } from "@/assets/constants/Styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/assets/constants/Colors";
 import { TextSF } from "@/components/ui/TextSF";
+import { AccountField } from "@/components/onchain/AccountField";
 
 const CustomDrawerContent = () => {
   const router = useRouter();
@@ -36,6 +37,7 @@ const CustomDrawerContent = () => {
             <TextSF style={styles.drawerItemText}>{screen}</TextSF>
           </Pressable>
         ))}
+        <AccountField />
       </View>
     </View>
   );
@@ -59,7 +61,7 @@ export default function TabLayout() {
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Drawer
-          drawerContent={(props) => <CustomDrawerContent />}
+          drawerContent={() => <CustomDrawerContent />}
           screenOptions={{
             drawerType: "front",
             drawerStyle: {
@@ -154,12 +156,13 @@ const styles = StyleSheet.create({
   },
   drawerBody: {
     flex: 1,
+    gap: Styles.spacing.md,
     paddingTop: Styles.spacing.lg,
+    paddingHorizontal: Styles.spacing.md,
   },
   drawerItem: {
     flexDirection: "row",
     alignItems: "center",
-    padding: Styles.spacing.md,
   },
   drawerItemText: {
     marginLeft: Styles.spacing.md,

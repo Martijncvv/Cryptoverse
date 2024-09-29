@@ -3,6 +3,7 @@ import {
   ScrollView,
   StyleSheet,
   useWindowDimensions,
+  View,
 } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { BackButton } from "@/components/form/BackButton";
@@ -49,7 +50,9 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
           showsVerticalScrollIndicator={false}
           style={[styles.container, style]}
         >
-          <BackButton onPress={onBackPress} />
+          <View style={{ marginTop: -15 }}>
+            <BackButton onPress={onBackPress} />
+          </View>
           {children}
         </ScrollView>
       </Pressable>

@@ -61,11 +61,11 @@ export const HeaderMenu = () => {
         text="Fundraisings Results"
         onPress={() => router.push("FundingDetailsScreen")}
       />
-      <MenuItem text="About Us" onPress={() => router.push("MinterScreen")} />
       <MenuItem
-        text="MinterScreen"
-        onPress={() => router.push("MinterScreen")}
+        text="About Us"
+        onPress={() => router.push("FundingDetailsScreen")}
       />
+
       <AccountField />
     </View>
   );

@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
   projectDescription: {
     width: "100%",
     flexWrap: "wrap",
-    fontSize: Styles.typography.fontSize.md,
+    fontSize: Styles.typography.fontSize.xl,
   },
 });

@@ -29,15 +29,15 @@ export const CustomDonationCard: React.FC<CustomDonationCardProps> = ({}) => {
         <TextSF style={styles.subTitle}>Please consider sending only</TextSF>
         <Image
           style={styles.tokenIcon}
-          source={require("@/assets/images/ethereum-eth-logo.png")}
+          source={require("@/assets/images/networks/ethereum-chain-logo.png")}
         />
         <Image
           style={styles.tokenIcon}
-          source={require("@/assets/images/usd-coin-usdc-logo.png")}
+          source={require("@/assets/images/coins/usdc-coin-logo.png")}
         />
         <Image
           style={styles.tokenIcon}
-          source={require("@/assets/images/tether-usdt-logo.png")}
+          source={require("@/assets/images/coins/tether-coin-logo.png")}
         />
       </View>
     </CardContainer>
