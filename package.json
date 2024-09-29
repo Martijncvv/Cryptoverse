@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.32.0",
+    "@coinbase/wallet-sdk": "^4.1.0",
     "@dev-plugins/react-query": "^0.0.7",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/drawer": "^6.7.2",
