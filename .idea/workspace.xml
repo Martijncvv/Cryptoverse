@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- WAGMI setup">
-      <change afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup baseENS">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/HomeScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/OnchainProviders.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/TxsComponent.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/contracts/erc1155Abi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/contracts/erc1155Abi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/contracts/erc20Abi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/contracts/erc20Abi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +58,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.format.executor&quot;: &quot;Run&quot;,
     &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Debug&quot;,
     &quot;npm.web.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
@@ -188,7 +179,8 @@
       <workItem from="1727462464465" duration="5016000" />
       <workItem from="1727473283619" duration="3111000" />
       <workItem from="1727517921485" duration="18000" />
-      <workItem from="1727518290991" duration="3554000" />
+      <workItem from="1727518290991" duration="5045000" />
+      <workItem from="1727556394008" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -366,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727476376018</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="- setup baseENS">
+      <option name="closed" value="true" />
+      <created>1727523421305</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727523421305</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +394,7 @@
     <MESSAGE value="- setup erc20 approval&#10;- setup erc1155 mint" />
     <MESSAGE value="- onchainkit styling" />
     <MESSAGE value="- WAGMI setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="- WAGMI setup" />
+    <MESSAGE value="- setup baseENS" />
+    <option name="LAST_COMMIT_MESSAGE" value="- setup baseENS" />
   </component>
 </project>

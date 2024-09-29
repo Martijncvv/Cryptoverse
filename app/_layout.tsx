@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, http } from "@wagmi/core";
-import { base } from "wagmi/chains";
+import { baseSepolia } from "wagmi/chains";
 import { coinbaseWallet } from "wagmi/connectors";
 import { WagmiProvider } from "wagmi";
 
@@ -22,19 +22,16 @@ declare module "wagmi" {
     config: typeof config;
   }
 }
-const connector = coinbaseWallet({
-  appName: "SendaFund",
-  appLogoUrl: "https://example.com/myLogoUrl.png", // todo senda logo
-});
 
 export const config = createConfig({
-  chains: [base],
-  // chains: [base, baseSepolia],
-  connectors: [connector],
-
+  chains: [baseSepolia],
+  // chains: [base]
+  connectors: [
+    coinbaseWallet({ appName: "SendaFund", preference: "smartWalletOnly" }),
+  ],
   transports: {
-    [base.id]: http(),
-    // [baseSepolia.id]: http(),
+    // [base.id]: http(),
+    [baseSepolia.id]: http(),
   },
 });
 
