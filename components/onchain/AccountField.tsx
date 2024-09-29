@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
+import {
+  Connector,
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useSwitchChain,
+} from "wagmi";
 import {
   Image,
   Pressable,
@@ -10,8 +16,7 @@ import {
 import { TextSF } from "@/components/ui/TextSF";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { Styles } from "@/assets/constants/Styles";
-import { base } from "wagmi/chains";
-import { mainnet } from "viem/chains";
+import { base, mainnet } from "viem/chains";
 import type {
   Basename,
   GetName,
@@ -98,8 +103,7 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
     },
   });
 
-  const handleConnectPress = (connector) => {
-    console.log("connectors: ", connectors);
+  const handleConnectPress = (connector: Connector) => {
     connect({ connector });
     setIsExpanded(false);
   };

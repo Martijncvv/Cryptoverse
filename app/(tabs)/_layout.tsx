@@ -74,7 +74,7 @@ export default function TabLayout() {
                 <View style={styles.header}>
                   <View style={styles.headerLeft}>
                     <Image
-                      source={require("@/assets/images/react-logo.png")}
+                      source={require("@/assets/images/senda-logo.png")}
                       style={styles.logo}
                     />
                   </View>
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 40,
     height: 40,
+    resizeMode: "contain",
     marginBottom: Styles.spacing.md,
   },
   drawerTitle: {

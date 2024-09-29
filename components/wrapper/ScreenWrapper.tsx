@@ -1,4 +1,9 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { HeaderMenu } from "@/components/layout/HeaderMenu";
 import { FooterMenu } from "@/components/layout/FooterMenu";
@@ -13,6 +18,24 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const { width: windowWidth } = useWindowDimensions();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: Colors.neutrals.white,
+    },
+    scrollViewContent: {
+      flexGrow: 1,
+    },
+    contentContainer: {
+      flex: 1,
+      paddingHorizontal: Styles.spacing.xxxxl,
+      paddingTop: windowWidth < 724 ? 0 : 40,
+      paddingBottom: Styles.spacing.md,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -27,18 +50,3 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.neutrals.white,
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    paddingHorizontal: Styles.spacing.xxxxl,
-    paddingBottom: Styles.spacing.md, // Reduced padding to allow footer to be closer to content
-  },
-});

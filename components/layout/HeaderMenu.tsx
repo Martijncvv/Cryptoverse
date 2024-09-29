@@ -1,8 +1,15 @@
-import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { MenuItem } from "@/components/layout/HeaderMenu/MenuItem";
 import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
 import { AccountField } from "@/components/onchain/AccountField";
+import { Colors } from "@/assets/constants/Colors";
 // AddressReact
 
 export const HeaderMenu = () => {
@@ -21,12 +28,15 @@ export const HeaderMenu = () => {
       flexWrap: "wrap",
       alignItems: "center",
       gap: Styles.spacing.xxxxl,
-      // backgroundColor: "yellow",
+
+      borderBottomWidth: 1,
+      borderColor: Colors.neutrals.default,
     },
 
     sendaLogo: {
       flexBasis: windowWidth > 600 ? 50 : "100%",
-      height: 50,
+      // height: 50,
+      resizeMode: "contain",
       marginRight: "auto",
     },
     walletField: {
@@ -52,10 +62,12 @@ export const HeaderMenu = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require("@/assets/images/react-logo.png")}
-        style={styles.sendaLogo}
-      />
+      <Pressable onPress={() => router.push("HomeScreen")}>
+        <Image
+          source={require("@/assets/images/senda-logo.png")}
+          style={styles.sendaLogo}
+        />
+      </Pressable>
 
       <MenuItem
         text="Fundraisings Results"

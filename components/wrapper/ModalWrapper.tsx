@@ -20,19 +20,21 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   style,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
+  const isMobileView = windowWidth < 724;
 
   const styles = StyleSheet.create({
     overlay: {
       height: "100%",
       flex: 1,
-      justifyContent: "center",
+      justifyContent: "flex-end",
       alignItems: "center",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 999,
     },
     container: {
-      width: windowWidth < 724 ? "100%" : "80%",
-      padding: windowWidth < 724 ? Styles.spacing.xl : 40,
+      height: "90%",
+      width: isMobileView ? "100%" : "80%",
+      padding: isMobileView ? Styles.spacing.xl : 40,
 
       flexDirection: "column",
 
@@ -50,7 +52,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
           showsVerticalScrollIndicator={false}
           style={[styles.container, style]}
         >
-          <View style={{ marginTop: -15 }}>
+          <View style={{ marginTop: isMobileView ? 0 : -15 }}>
             <BackButton onPress={onBackPress} />
           </View>
           {children}
