@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup menu">
-      <change afterPath="$PROJECT_DIR$/utils/getChainLogo.ts" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getChainLogo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getChainLogo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +185,8 @@
       <workItem from="1727518290991" duration="5045000" />
       <workItem from="1727556394008" duration="260000" />
       <workItem from="1727597104357" duration="5068000" />
-      <workItem from="1727619140238" duration="4285000" />
+      <workItem from="1727619140238" duration="8733000" />
+      <workItem from="1727800499141" duration="416000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -391,14 +388,37 @@
       <option name="project" value="LOCAL" />
       <updated>1727602169895</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="- mobile login layout">
+      <option name="closed" value="true" />
+      <created>1727623992784</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727623992784</updated>
+    </task>
+    <task id="LOCAL-00027" summary="- sendalogo">
+      <option name="closed" value="true" />
+      <created>1727624200919</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727624200919</updated>
+    </task>
+    <task id="LOCAL-00028" summary="- styling">
+      <option name="closed" value="true" />
+      <created>1727626146822</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1727626146822</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SendaFund setup" />
     <MESSAGE value="- homepage setup" />
     <MESSAGE value="- setup FundingDetailsScreen" />
     <MESSAGE value="- progress FundingDetailsScreen" />
@@ -421,6 +441,9 @@
     <MESSAGE value="- WAGMI setup" />
     <MESSAGE value="- setup baseENS" />
     <MESSAGE value="- setup menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="- setup menu" />
+    <MESSAGE value="- mobile login layout" />
+    <MESSAGE value="- sendalogo" />
+    <MESSAGE value="- styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="- styling" />
   </component>
 </project>

@@ -31,6 +31,7 @@ export const HeaderMenu = () => {
 
       borderBottomWidth: 1,
       borderColor: Colors.neutrals.default,
+      backgroundColor: Colors.neutrals.white,
     },
 
     sendaLogo: {
@@ -62,11 +63,11 @@ export const HeaderMenu = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.push("HomeScreen")}>
-        <Image
-          source={require("@/assets/images/senda-logo.png")}
-          style={styles.sendaLogo}
-        />
+      <Pressable
+        onPress={() => router.push("HomeScreen")}
+        style={styles.sendaLogo}
+      >
+        <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
 
       <MenuItem

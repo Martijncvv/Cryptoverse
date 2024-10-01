@@ -1,3 +1,5 @@
+import {ImageSourcePropType} from "react-native";
+
 /**
  * Returns the logo image for a given blockchain network based on its chain ID.
  *
@@ -12,7 +14,7 @@
  * const unknownChainLogo = getChainLogo(999);
  * // Returns path to default Ethereum logo for unknown chain IDs
  */
-export const getChainLogo = (chainId: number): string => {
+export const getChainLogo = (chainId: number): ImageSourcePropType => {
   switch (chainId) {
     case 1:
       return require("@/assets/images/networks/ethereum-chain-logo.png");

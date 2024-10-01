@@ -122,7 +122,7 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
             size={24}
             color={Colors.principal.default}
           />
-          <TextSF>Connect Wallet</TextSF>
+          <TextSF>Sign in</TextSF>
         </Pressable>
         {isExpanded ? (
           <View
@@ -149,7 +149,7 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
     );
   }
 
-  if (address) {
+  if (address && chainId) {
     return (
       <View style={styles.container}>
         <Pressable onPress={toggleExpand} style={styles.accountInfo}>
@@ -172,7 +172,10 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
           </View>
         )}
         {chainId !== base?.id ? (
-          <ButtonSF onPress={handleSwitchChain} text={"Switch to Base"} />
+          <ButtonSF
+            onPress={handleSwitchChain}
+            text={"Wrong network, get Based"}
+          />
         ) : null}
       </View>
     );
