@@ -1,10 +1,11 @@
-import { StyleSheet, useWindowDimensions, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { FundCard } from "@/components/layout/FundCard/FundCard";
 import { Styles } from "@/assets/constants/Styles";
 import { FundCardPlaceholder } from "@/components/layout/FundCard/FundCardPlaceholder";
+import { useRouter } from "expo-router";
 
 export const FundCardsWrapper = () => {
-  const { height, width: windowWidth } = useWindowDimensions();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
@@ -14,6 +15,7 @@ export const FundCardsWrapper = () => {
         tags={["funding now", "guatemala"]}
         minDonation={25}
         percentageRaised={50}
+        onPress={() => router.push("FundingDetailsScreen")}
       />
 
       <FundCard
@@ -24,21 +26,6 @@ export const FundCardsWrapper = () => {
         percentageRaised={80}
       />
 
-      <FundCard
-        title={"Support Mental Health Awareness Programs"}
-        closeDate={"1st September 2024"}
-        tags={["funding now", "guatemala"]}
-        minDonation={40}
-        percentageRaised={70}
-      />
-
-      <FundCard
-        title={"Fund Scholarships for Students"}
-        closeDate={"20th October 2024"}
-        tags={["funding now", "guatemala"]}
-        minDonation={50}
-        percentageRaised={90}
-      />
       <FundCardPlaceholder />
     </View>
   );
@@ -51,7 +38,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "flex-start",
-
     gap: Styles.spacing.xxxl,
   },
 });

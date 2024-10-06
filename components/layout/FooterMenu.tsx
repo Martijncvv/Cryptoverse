@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
+import { TextSF } from "@/components/ui/TextSF";
 
 export const FooterMenu = () => {
   const styles = StyleSheet.create({
@@ -16,7 +17,6 @@ export const FooterMenu = () => {
 
     linkText: {
       color: Colors.neutrals.white,
-
       fontWeight: Styles.typography.fontWeight.semiBold,
     },
   });
@@ -24,7 +24,7 @@ export const FooterMenu = () => {
   return (
     <View style={styles.container}>
       <Pressable>
-        <Text style={styles.linkText}>Sendafund.xyz</Text>
+        <TextSF style={styles.linkText}>Sendafund.xyz</TextSF>
       </Pressable>
     </View>
   );

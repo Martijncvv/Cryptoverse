@@ -14,6 +14,8 @@ interface ModalWrapperProps {
   style?: any;
 }
 
+// TODO BE ABLE TO SEND NOTIFICATIONS TO THE NFT
+
 export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   children,
   onBackPress,
@@ -26,14 +28,13 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
     overlay: {
       height: "100%",
       flex: 1,
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 999,
     },
     container: {
-      height: "90%",
-      width: isMobileView ? "100%" : "80%",
+      flexShrink: 1,
       padding: isMobileView ? Styles.spacing.xl : 40,
 
       flexDirection: "column",
@@ -44,19 +45,18 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
       flexGrow: 0,
     },
   });
-  // todo onpress
+
   return (
     <>
       <Pressable style={styles.overlay}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={[styles.container, style]}
-        >
-          <View style={{ marginTop: isMobileView ? 0 : -15 }}>
-            <BackButton onPress={onBackPress} />
-          </View>
-          {children}
-        </ScrollView>
+        <View style={[styles.container, style]}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View>
+              <BackButton onPress={onBackPress} />
+            </View>
+            {children}
+          </ScrollView>
+        </View>
       </Pressable>
     </>
   );

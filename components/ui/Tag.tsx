@@ -14,7 +14,7 @@ interface TagProps {
 export type TabOptions = "funding now" | "guatemala";
 
 const tabColorMap: Record<string, string> = {
-  "funding now": Colors.orange.medium,
+  "funding now": Colors.orange.default,
   guatemala: Colors.green.light,
   default: Colors.neutrals.white,
 };

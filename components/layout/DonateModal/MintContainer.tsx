@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { CardContainer } from "@/components/layout/CardContainer";
@@ -20,6 +20,8 @@ import { ERC20ApprovalAbi } from "@/assets/contracts/erc20Abi";
 import { TestERC1155Abi } from "@/assets/contracts/erc1155Abi";
 import { useEffect, useState } from "react";
 import { baseSepolia } from "wagmi/chains";
+import { Toast } from "@/components/ui/Toast";
+import { ButtonSF } from "@/components/form/ButtonSF";
 
 interface MintContainerProps {}
 
@@ -34,6 +36,7 @@ const DECIMALS = 6;
 
 export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   const [selectedId, setSelectedId] = useState<TokenId | "">("");
+
   const { address } = useAccount();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
@@ -69,8 +72,15 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
 
   console.log("hashApprove", hashApprove);
 
+  const handleMintPress = () => {
+    if (selectedId) {
+      approve(selectedId);
+    } else {
+      Alert.alert("Please select a donation package");
+    }
+  };
+
   const approve = async (id: TokenId) => {
-    setSelectedId(id);
     try {
       writeApproveContract({
         address: BASE_SEPOLIA_USDC_CONTRACT_ADDRESS,
@@ -96,31 +106,40 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   console.log("approvalIsSuccess", approvalIsSuccess);
   console.log("ensAvatar", ensAvatar);
 
+  const handleOptionPress = (id: TokenId) => {
+    setSelectedId(id);
+  };
+
   return (
     <CardContainer gap={Styles.spacing.xl}>
       <View>
         {ensAvatar && <Image alt="ENS Avatar" source={ensAvatar} />}
         <SubTitle text={"Select amount of donation package"} />
-        {/*{hash && <TextSF>Transaction Hash: {hash}</TextSF>}*/}
-        {isPendingApprove && <TextSF>Transaction is pending...</TextSF>}
-        {approvalIsLoading && <TextSF>Waiting for confirmation...</TextSF>}
-        {approvalIsSuccess && <TextSF>Transaction confirmed.</TextSF>}
-        {errorApprove && (
-          <TextSF>
-            Error:{" "}
-            {(errorApprove as BaseError).shortMessage || errorApprove.message}
-          </TextSF>
-        )}
         <Text style={styles.subTitle}>Total includes transaction fees</Text>
       </View>
       <View style={styles.donationOptionsField}>
         {(["0", "1", "2"] as const).map((id) => (
           <Pressable
             key={id}
-            style={styles.donationOptionBox}
-            onPress={() => approve(id)}
+            style={[
+              styles.donationOptionBox,
+              selectedId === id && {
+                ...styles.donationOptionBoxSelected,
+              },
+            ]}
+            onPress={() => handleOptionPress(id)}
           >
-            <TextSF style={styles.donationOptionText}> {Number(id) + 1}</TextSF>
+            <TextSF
+              style={[
+                styles.donationOptionText,
+                selectedId === id && {
+                  ...styles.donationOptionTextSelected,
+                },
+              ]}
+            >
+              {" "}
+              {Number(id) + 1}
+            </TextSF>
           </Pressable>
         ))}
       </View>
@@ -130,6 +149,30 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
           style={styles.totalValue}
         >{`${selectedId ? TOKEN_ID_COST[selectedId] / 10 ** DECIMALS : "?"} USDC`}</TextSF>
       </View>
+      <ButtonSF
+        onPress={handleMintPress}
+        text={"Mint"}
+        icon={"wallet"}
+        iconPosition={"post"}
+        disabled={!selectedId}
+      />
+      {isPendingApprove && (
+        <Toast text="Transaction is pending..." type="pending" />
+      )}
+      {approvalIsLoading && (
+        <Toast text={"Waiting for confirmation..."} type="pending" />
+      )}
+      {approvalIsSuccess && (
+        <Toast text={"Transaction confirmed."} type="success" />
+      )}
+      {errorApprove && (
+        <Toast
+          text={
+            (errorApprove as BaseError).shortMessage || errorApprove.message
+          }
+          type="error"
+        />
+      )}
     </CardContainer>
   );
 };
@@ -141,21 +184,30 @@ const styles = StyleSheet.create({
   },
 
   donationOptionsField: {
+    flexShrink: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     gap: Styles.spacing.sm,
   },
 
   donationOptionBox: {
-    flexBasis: "30%",
-    paddingVertical: Styles.spacing.xl,
-
+    flex: 1,
+    paddingVertical: Styles.spacing.md,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: Styles.borderRadius.lg,
     borderWidth: 1,
-    borderColor: Colors.principal.light,
-    backgroundColor: "#E6F1FC", // todo
+    borderColor: Colors.neutrals.default,
+    backgroundColor: Colors.neutrals.white,
+  },
+  donationOptionBoxSelected: {
+    borderColor: Colors.principal.default,
+  },
+  donationOptionTextSelected: {
+    color: Colors.principal.default,
   },
   donationOptionText: {
+    display: "flex",
     fontSize: Styles.typography.fontSize.xl,
     fontWeight: Styles.typography.fontWeight.bold,
     textAlign: "center",

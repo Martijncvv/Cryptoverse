@@ -10,7 +10,6 @@ import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
 import { AccountField } from "@/components/onchain/AccountField";
 import { Colors } from "@/assets/constants/Colors";
-// AddressReact
 
 export const HeaderMenu = () => {
   const { width: windowWidth } = useWindowDimensions();
@@ -22,7 +21,7 @@ export const HeaderMenu = () => {
 
   const styles = StyleSheet.create({
     container: {
-      height: 50,
+      height: 70,
       paddingHorizontal: 40,
       flexDirection: "row",
       flexWrap: "wrap",

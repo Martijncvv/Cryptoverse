@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/HomeScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getChainLogo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getChainLogo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +187,12 @@
       <workItem from="1727556394008" duration="260000" />
       <workItem from="1727597104357" duration="5068000" />
       <workItem from="1727619140238" duration="8733000" />
-      <workItem from="1727800499141" duration="416000" />
+      <workItem from="1727800499141" duration="1363000" />
+      <workItem from="1727858140922" duration="646000" />
+      <workItem from="1727885035734" duration="1780000" />
+      <workItem from="1727938383261" duration="266000" />
+      <workItem from="1727941194909" duration="165000" />
+      <workItem from="1728060966765" duration="662000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -412,14 +418,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727626146822</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="- styling fixes">
+      <option name="closed" value="true" />
+      <created>1727800984300</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1727800984300</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- homepage setup" />
     <MESSAGE value="- setup FundingDetailsScreen" />
     <MESSAGE value="- progress FundingDetailsScreen" />
     <MESSAGE value="- FundingDetailsScreen&#10;- fix styling" />
@@ -444,6 +457,7 @@
     <MESSAGE value="- mobile login layout" />
     <MESSAGE value="- sendalogo" />
     <MESSAGE value="- styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="- styling" />
+    <MESSAGE value="- styling fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- styling fixes" />
   </component>
 </project>

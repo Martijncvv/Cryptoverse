@@ -13,7 +13,7 @@ export const CardContainer: React.FC<CardContainerProps> = ({
 }) => {
   const styles = StyleSheet.create({
     cardContainer: {
-      width: "100%",
+      flexShrink: 1,
       borderWidth: 0.5,
       borderColor: Colors.neutrals.black,
       borderRadius: Styles.borderRadius.lg,

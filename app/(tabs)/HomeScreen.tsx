@@ -4,11 +4,9 @@ import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 
 export default function HomeScreen() {
   return (
-    // <OnchainProviders>
     <ScreenWrapper>
       <HeroContainer />
       <FundCardsWrapper />
     </ScreenWrapper>
-    // </OnchainProviders>
   );
 }

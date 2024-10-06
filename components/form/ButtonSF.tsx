@@ -13,6 +13,7 @@ interface ButtonSFProps {
   disabled?: boolean;
   color?: ButtonColor;
   icon?: keyof typeof Ionicons.glyphMap;
+  iconPosition?: "pre" | "post";
   iconSize?: number;
   style?: ViewStyle;
   textStyle?: TextStyle;
@@ -45,44 +46,48 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
   disabled = false,
   color = "black",
   icon,
+  iconPosition = "pre",
   iconSize = 16,
   style,
   textStyle,
 }) => {
   const { bg, text: textColor, border } = colorSchemes[color];
 
-  const buttonStyle = [
-    styles.container,
-    { backgroundColor: bg, borderColor: border },
-    style,
-  ];
+  const buttonStyle = {
+    ...styles.container,
+    backgroundColor: bg,
+    borderColor: border,
+    ...style,
+  };
 
   const contentStyle = [styles.text, { color: textColor }, textStyle];
 
-  const renderContent = () => (
-    <>
-      {icon && (
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        buttonStyle,
+        { opacity: disabled || pressed ? 0.7 : 1 },
+      ]}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      {icon && iconPosition === "pre" ? (
         <Ionicons
           name={icon}
           size={iconSize}
           color={textColor}
           style={styles.icon}
         />
-      )}
+      ) : null}
       {text && <TextSF style={contentStyle}>{text}</TextSF>}
-    </>
-  );
-
-  return (
-    <Pressable
-      style={({ pressed }) => [
-        ...buttonStyle,
-        { opacity: disabled || pressed ? 0.7 : 1 },
-      ]}
-      onPress={onPress}
-      disabled={disabled}
-    >
-      {renderContent()}
+      {icon && iconPosition === "post" ? (
+        <Ionicons
+          name={icon}
+          size={iconSize}
+          color={textColor}
+          style={styles.icon}
+        />
+      ) : null}
     </Pressable>
   );
 };
@@ -92,16 +97,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    gap: Styles.spacing.sm,
     paddingHorizontal: Styles.spacing.xl,
     paddingVertical: Styles.spacing.md,
     borderRadius: Styles.borderRadius.md,
     borderWidth: 1,
   },
   text: {
-    textAlign: "center",
     fontWeight: Styles.typography.fontWeight.bold,
   },
-  icon: {
-    marginRight: Styles.spacing.xs,
-  },
+  icon: {},
 });

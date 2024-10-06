@@ -12,6 +12,7 @@ interface FundCardProps {
   tags: TabOptions[];
   minDonation: number;
   percentageRaised: number;
+  onPress?: () => void;
 }
 
 export const FundCard: React.FC<FundCardProps> = ({
@@ -20,6 +21,7 @@ export const FundCard: React.FC<FundCardProps> = ({
   tags,
   minDonation,
   percentageRaised,
+  onPress,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
 
@@ -69,7 +71,7 @@ export const FundCard: React.FC<FundCardProps> = ({
       backgroundColor: Colors.principal.default,
       borderRadius: Styles.borderRadius.md,
 
-      fontWeight: Styles.typography.fontWeight.bold,
+      fontWeight: Styles.typography.fontWeight.medium,
       color: Colors.neutrals.white,
     },
     footer: {
@@ -78,7 +80,6 @@ export const FundCard: React.FC<FundCardProps> = ({
       justifyContent: "space-between",
       alignItems: "center",
       gap: Styles.spacing.md,
-      // backgroundColor: "green",
     },
   });
 
@@ -98,7 +99,7 @@ export const FundCard: React.FC<FundCardProps> = ({
       </TextSF>
       <View style={styles.footer}>
         <ProgressBar progressPercentage={percentageRaised} />
-        <ButtonSF text="See Cause" onPress={() => console.log("Donate")} />
+        <ButtonSF text="See Cause" onPress={onPress} />
       </View>
     </View>
   );

@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
   },
   addressesField: {
     flexDirection: "row",
-    gap: Styles.spacing.xxxl,
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   acceptedTokensField: {
     flexDirection: "row",

@@ -18,23 +18,22 @@ export const LabeledInfo: React.FC<LabeledInfoProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      width: windowWidth < 724 ? "100%" : "48%",
+      flex: 1,
       flexDirection: "row",
       justifyContent: "space-between",
       gap: Styles.spacing.xs,
       paddingHorizontal: Styles.spacing.xl,
       paddingVertical: Styles.spacing.sm,
-
       borderRadius: Styles.borderRadius.md,
-
-      backgroundColor: backgroundColor, // todo
+      backgroundColor: backgroundColor,
+      // backgroundColor: "green",  // todo
     },
 
     label: {
       fontWeight: Styles.typography.fontWeight.extraBold,
       color: Colors.neutrals.dark,
     },
-    text: {},
+    text: { display: "flex", flexWrap: "nowrap" },
   });
 
   return (

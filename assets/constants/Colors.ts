@@ -22,7 +22,12 @@ export const Colors = {
 
   orange: {
     light: "#FADEBE",
-    medium: "#F2B744",
-    default: "#F29425",
+    default: "#F2B744",
+    dark: "#D97008",
+  },
+  red: {
+    light: "#F9D6D7",
+    default: "#F25A5A",
+    dark: "#D12E2E", // TODO
   },
 };

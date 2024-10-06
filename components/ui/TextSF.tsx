@@ -25,5 +25,7 @@ const styles = StyleSheet.create({
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.neutrals.black,
+    // only first letter of each word is capitalized
+    textTransform: "capitalize",
   },
 });

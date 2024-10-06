@@ -37,7 +37,7 @@ export const HeroContainer = () => {
           ? Styles.typography.fontSize.xxxl
           : Styles.typography.fontSize.xl,
       fontWeight: Styles.typography.fontWeight.medium,
-      color: Colors.principal.dark,
+      color: Colors.neutrals.dark,
     },
 
     heroImage: {

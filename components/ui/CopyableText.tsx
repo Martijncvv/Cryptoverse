@@ -18,7 +18,7 @@ export const CopyableText: React.FC<CopyableTextProps> = ({ text }) => {
     // wait 5s and reset isCopied
     setTimeout(() => {
       setIsCopied(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -28,10 +28,19 @@ export const CopyableText: React.FC<CopyableTextProps> = ({ text }) => {
         <Ionicons
           name={"copy-outline"}
           size={Styles.typography.fontSize.lg}
-          color={Colors.neutrals.default}
+          color={isCopied ? Colors.principal.default : Colors.neutrals.default}
         />
+        {isCopied ? (
+          <View style={styles.overlayContainer}>
+            <Ionicons
+              name={"checkmark-circle"}
+              size={Styles.typography.fontSize.xs}
+              color={Colors.green.dark}
+            />
+            <TextSF style={styles.copiedMessage}>Copied</TextSF>
+          </View>
+        ) : null}
       </Pressable>
-      {isCopied ? <TextSF style={styles.copiedMessage}>Copied!</TextSF> : null}
     </View>
   );
 };
@@ -44,8 +53,24 @@ const styles = StyleSheet.create({
   text: {
     marginRight: 8,
   },
+  overlayContainer: {
+    position: "absolute",
+    top: -10,
+    left: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: Styles.spacing.xs,
+    zIndex: 1000,
+    paddingVertical: Styles.spacing.xs,
+    paddingHorizontal: Styles.spacing.sm,
+    backgroundColor: Colors.neutrals.black,
+    borderRadius: Styles.borderRadius.xs,
+  },
   copiedMessage: {
     fontSize: Styles.typography.fontSize.xs,
+    fontWeight: Styles.typography.fontWeight.medium,
+    color: Colors.neutrals.white,
   },
   iconContainer: {
     padding: 4,
