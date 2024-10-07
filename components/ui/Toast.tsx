@@ -33,9 +33,9 @@ export const Toast: React.FC<ToastProps> = ({
       icon: "checkmark-circle",
     },
     error: {
-      background: Colors.red.default,
-      text: Colors.red.dark,
-      border: Colors.red.light,
+      background: Colors.pink.default,
+      text: Colors.pink.dark,
+      border: Colors.pink.light,
       icon: "close-circle",
     },
     pending: {

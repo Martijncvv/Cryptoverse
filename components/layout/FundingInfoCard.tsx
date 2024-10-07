@@ -53,12 +53,15 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
         <ButtonSF
           text="Donate now"
           onPress={() => router.push("DonateModal")}
+          icon={"wallet"}
+          iconPosition="post"
         />
         <ButtonSF
           text="Share"
           color={"whiteOutlined"}
           onPress={() => console.log("Donate")}
           icon={"share-social-outline"}
+          iconPosition={"post"}
         />
       </View>
     </View>
@@ -67,24 +70,25 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexShrink: 1,
     minWidth: MIN_WIDTH,
+    maxWidth: 600,
     padding: Styles.spacing.xl,
     flexWrap: "wrap",
 
     borderWidth: 1,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderRadius: Styles.borderRadius.lg,
     backgroundColor: Colors.neutrals.light,
   },
   imageContainer: {
-    // flex: 1,
+    flexShrink: 1,
     width: "100%",
     aspectRatio: 16 / 9,
     overflow: "hidden",
     borderRadius: Styles.borderRadius.xs,
     borderWidth: 1,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
 
     marginBottom: Styles.spacing.xxl,
   },
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   fundTitleText: {
-    fontSize: Styles.typography.fontSize.xxxl,
+    fontSize: Styles.typography.fontSize.xxl,
     fontWeight: Styles.typography.fontWeight.bold,
     marginBottom: Styles.spacing.xl,
   },

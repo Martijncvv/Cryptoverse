@@ -1,6 +1,12 @@
-import { Redirect } from "expo-router";
+import { HeroContainer } from "@/components/layout/HeroContainer";
+import { FundCardsWrapper } from "@/components/wrapper/FundCardsWrapper";
+import { ScreenWrapper } from "@/components/wrapper/ScreenWrapper";
 
-const StartPage = () => {
-  return <Redirect href={"/HomeScreen"} />;
-};
-export default StartPage;
+export default function Index() {
+  return (
+    <ScreenWrapper>
+      <HeroContainer />
+      <FundCardsWrapper />
+    </ScreenWrapper>
+  );
+}

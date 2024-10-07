@@ -18,11 +18,11 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
       backgroundColor: Colors.neutrals.light,
       borderRadius: Styles.borderRadius.lg,
       borderWidth: 1,
-      borderColor: Colors.neutrals.black,
+      borderColor: Colors.base.black,
     },
     title: {
       fontSize: Styles.typography.fontSize.xxl,
-      fontWeight: Styles.typography.fontWeight.bold,
+      fontWeight: Styles.typography.fontWeight.extraBold,
 
       marginBottom: Styles.spacing.xl,
     },
@@ -30,6 +30,7 @@ export const SpendingDetails: React.FC<SpendingDetailsProps> = () => {
       flexDirection: "row",
       justifyContent: "space-between",
       flexWrap: "wrap",
+      gap: Styles.spacing.xxxxl,
     },
 
     infoContainer: {

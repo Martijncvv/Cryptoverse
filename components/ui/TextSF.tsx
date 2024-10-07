@@ -13,7 +13,14 @@ export const TextSF: React.FC<TextSFProps> = ({
   ...props
 }) => {
   return (
-    <Text style={[styles.text, style]} {...props}>
+    <Text
+      style={[
+        styles.text,
+        style,
+        { lineHeight: Boolean(style?.fontSize) ? undefined : 22 },
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   );
@@ -24,8 +31,6 @@ const styles = StyleSheet.create({
     // text template
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
-    color: Colors.neutrals.black,
-    // only first letter of each word is capitalized
-    textTransform: "capitalize",
+    color: Colors.base.black,
   },
 });

@@ -36,6 +36,7 @@ const DECIMALS = 6;
 
 export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   const [selectedId, setSelectedId] = useState<TokenId | "">("");
+  const [hooveredId, setHooveredId] = useState<TokenId | "">("");
 
   const { address } = useAccount();
   const { data: ensName } = useEnsName({ address });
@@ -123,15 +124,21 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
             key={id}
             style={[
               styles.donationOptionBox,
+              hooveredId === id && {
+                ...styles.donationOptionBoxHoover,
+              },
               selectedId === id && {
                 ...styles.donationOptionBoxSelected,
               },
             ]}
             onPress={() => handleOptionPress(id)}
+            onHoverIn={() => setHooveredId(id)}
+            onHoverOut={() => setHooveredId("")}
           >
             <TextSF
               style={[
                 styles.donationOptionText,
+
                 selectedId === id && {
                   ...styles.donationOptionTextSelected,
                 },
@@ -144,10 +151,10 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
         ))}
       </View>
       <View style={styles.totalField}>
-        <TextSF style={styles.totalLabel}>Total cost</TextSF>
+        <TextSF style={styles.totalLabel}>Total value</TextSF>
         <TextSF
           style={styles.totalValue}
-        >{`${selectedId ? TOKEN_ID_COST[selectedId] / 10 ** DECIMALS : "?"} USDC`}</TextSF>
+        >{`${selectedId ? TOKEN_ID_COST[selectedId] / 10 ** DECIMALS : ""} USDC`}</TextSF>
       </View>
       <ButtonSF
         onPress={handleMintPress}
@@ -198,10 +205,19 @@ const styles = StyleSheet.create({
     borderRadius: Styles.borderRadius.lg,
     borderWidth: 1,
     borderColor: Colors.neutrals.default,
-    backgroundColor: Colors.neutrals.white,
+    backgroundColor: Colors.base.white,
   },
   donationOptionBoxSelected: {
     borderColor: Colors.principal.default,
+  },
+  donationOptionBoxHoover: {
+    borderColor: Colors.principal.default,
+    backgroundColor: Colors.principal.light,
+
+    // WEB
+    shadowColor: Colors.principal.medium,
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
   donationOptionTextSelected: {
     color: Colors.principal.default,
@@ -217,6 +233,7 @@ const styles = StyleSheet.create({
     paddingVertical: Styles.spacing.xxs,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   totalLabel: {
     fontSize: Styles.typography.fontSize.xs,

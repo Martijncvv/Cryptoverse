@@ -16,7 +16,7 @@ export const FooterMenu = () => {
     },
 
     linkText: {
-      color: Colors.neutrals.white,
+      color: Colors.base.white,
       fontWeight: Styles.typography.fontWeight.semiBold,
     },
   });

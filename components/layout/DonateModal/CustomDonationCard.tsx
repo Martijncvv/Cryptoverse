@@ -22,23 +22,30 @@ export const CustomDonationCard: React.FC<CustomDonationCardProps> = ({}) => {
       <View style={styles.addressesField}>
         <CopyableText
           text={formatAddress("0x8DD8cC8D942C40679D84A6C0476279DB0d12016a")}
+          copyText="0x8DD8cC8D942C40679D84A6C0476279DB0d12016a"
         />
         <CopyableText text="Sendafund.eth" />
       </View>
       <View style={styles.acceptedTokensField}>
         <TextSF style={styles.subTitle}>Please consider sending only</TextSF>
-        <Image
-          style={styles.tokenIcon}
-          source={require("@/assets/images/networks/ethereum-chain-logo.png")}
-        />
-        <Image
-          style={styles.tokenIcon}
-          source={require("@/assets/images/coins/usdc-coin-logo.png")}
-        />
-        <Image
-          style={styles.tokenIcon}
-          source={require("@/assets/images/coins/tether-coin-logo.png")}
-        />
+        <View style={styles.tokenContainer}>
+          <Image
+            style={styles.tokenIcon}
+            source={require("@/assets/images/networks/ethereum-chain-logo.png")}
+          />
+        </View>
+        <View style={styles.tokenContainer}>
+          <Image
+            style={styles.tokenIcon}
+            source={require("@/assets/images/coins/usdc-coin-logo.png")}
+          />
+        </View>
+        <View style={styles.tokenContainer}>
+          <Image
+            style={styles.tokenIcon}
+            source={require("@/assets/images/coins/tether-coin-logo.png")}
+          />
+        </View>
       </View>
     </CardContainer>
   );
@@ -47,7 +54,9 @@ export const CustomDonationCard: React.FC<CustomDonationCardProps> = ({}) => {
 const styles = StyleSheet.create({
   subTitle: {
     fontSize: Styles.typography.fontSize.xs,
+    fontWeight: Styles.typography.fontWeight.medium,
     color: Colors.neutrals.dark,
+    marginRight: Styles.spacing.xxs,
   },
   addressesField: {
     flexDirection: "row",
@@ -59,7 +68,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: Styles.spacing.sm,
   },
+  tokenContainer: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderColor: Colors.neutrals.default,
+    borderWidth: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   tokenIcon: {
-    height: 16,
+    height: 12,
+    resizeMode: "center",
   },
 });

@@ -8,14 +8,18 @@ import { useState } from "react";
 
 interface CopyableTextProps {
   text: string;
+  copyText?: string;
 }
 
-export const CopyableText: React.FC<CopyableTextProps> = ({ text }) => {
+export const CopyableText: React.FC<CopyableTextProps> = ({
+  text,
+  copyText,
+}) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopy = async () => {
-    await Clipboard.setStringAsync(text);
+    await Clipboard.setStringAsync(copyText || text);
     setIsCopied(true);
-    // wait 5s and reset isCopied
+    // wait 2s and reset isCopied
     setTimeout(() => {
       setIsCopied(false);
     }, 2000);
@@ -49,14 +53,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    position: "relative",
+    overflow: "visible",
   },
   text: {
     marginRight: 8,
   },
   overlayContainer: {
     position: "absolute",
-    top: -10,
-    left: "100%",
+    top: -24,
+    right: -8,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -64,13 +70,13 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     paddingVertical: Styles.spacing.xs,
     paddingHorizontal: Styles.spacing.sm,
-    backgroundColor: Colors.neutrals.black,
+    backgroundColor: Colors.base.black,
     borderRadius: Styles.borderRadius.xs,
   },
   copiedMessage: {
     fontSize: Styles.typography.fontSize.xs,
     fontWeight: Styles.typography.fontWeight.medium,
-    color: Colors.neutrals.white,
+    color: Colors.base.white,
   },
   iconContainer: {
     padding: 4,

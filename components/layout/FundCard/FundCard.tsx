@@ -12,7 +12,7 @@ interface FundCardProps {
   tags: TabOptions[];
   minDonation: number;
   percentageRaised: number;
-  onPress?: () => void;
+  onPress: () => void;
 }
 
 export const FundCard: React.FC<FundCardProps> = ({
@@ -39,7 +39,7 @@ export const FundCard: React.FC<FundCardProps> = ({
       flex: 1,
       padding: Styles.spacing.xxxl,
       borderWidth: 1,
-      borderColor: Colors.neutrals.black,
+      borderColor: Colors.base.black,
       borderRadius: Styles.borderRadius.md,
       backgroundColor: Colors.neutrals.light,
     },
@@ -53,13 +53,13 @@ export const FundCard: React.FC<FundCardProps> = ({
       marginTop: Styles.spacing.xxxl,
       fontSize: Styles.typography.fontSize.xs,
       fontWeight: Styles.typography.fontWeight.medium,
-      color: Colors.neutrals.black,
+      color: Colors.base.black,
     },
     fundTitleText: {
       marginTop: Styles.spacing.sm,
       fontWeight: Styles.typography.fontWeight.bold,
       fontSize: Styles.typography.fontSize.xxxl,
-      color: Colors.neutrals.black,
+      color: Colors.base.black,
       height: 100,
     },
 
@@ -72,7 +72,7 @@ export const FundCard: React.FC<FundCardProps> = ({
       borderRadius: Styles.borderRadius.md,
 
       fontWeight: Styles.typography.fontWeight.medium,
-      color: Colors.neutrals.white,
+      color: Colors.base.white,
     },
     footer: {
       marginTop: 40,

@@ -21,21 +21,20 @@ export const HeaderMenu = () => {
 
   const styles = StyleSheet.create({
     container: {
-      height: 70,
+      height: 50,
       paddingHorizontal: 40,
       flexDirection: "row",
       flexWrap: "wrap",
       alignItems: "center",
       gap: Styles.spacing.xxxxl,
 
-      borderBottomWidth: 1,
-      borderColor: Colors.neutrals.default,
-      backgroundColor: Colors.neutrals.white,
+      borderBottomWidth: 0.5,
+      borderColor: Colors.base.black,
+      backgroundColor: Colors.base.white,
     },
 
     sendaLogo: {
       flexBasis: windowWidth > 600 ? 50 : "100%",
-      // height: 50,
       resizeMode: "contain",
       marginRight: "auto",
     },
@@ -56,16 +55,12 @@ export const HeaderMenu = () => {
       alignItems: "center",
       justifyContent: "center",
       gap: Styles.spacing.sm,
-      // backgroundColor: "red",
     },
   });
 
   return (
     <View style={styles.container}>
-      <Pressable
-        onPress={() => router.push("HomeScreen")}
-        style={styles.sendaLogo}
-      >
+      <Pressable onPress={() => router.replace("")} style={styles.sendaLogo}>
         <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
 

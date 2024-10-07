@@ -12,6 +12,6 @@ export const MenuItem = ({ text, onPress }: { text: string; onPress: any }) => {
 const styles = StyleSheet.create({
   menuItem: {},
   menuText: {
-    fontSize: Styles.typography.fontSize.md,
+    fontWeight: Styles.typography.fontWeight.medium,
   },
 });

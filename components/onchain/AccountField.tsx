@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Connector,
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useSwitchChain,
-} from "wagmi";
+
 import {
   Image,
   Pressable,
@@ -16,21 +10,29 @@ import {
 import { TextSF } from "@/components/ui/TextSF";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { Styles } from "@/assets/constants/Styles";
-import { base, mainnet } from "viem/chains";
-import type {
-  Basename,
-  GetName,
-} from "@coinbase/onchainkit/src/identity/types";
-import { getChainPublicClient } from "@coinbase/onchainkit/src/network/getChainPublicClient";
-import { convertReverseNodeToBytes } from "@coinbase/onchainkit/src/identity/utils/convertReverseNodeToBytes";
-import L2ResolverAbi from "@coinbase/onchainkit/src/identity/abis/L2ResolverAbi";
-import { RESOLVER_ADDRESSES_BY_CHAIN_ID } from "@coinbase/onchainkit/src/identity/constants";
+import { base } from "viem/chains";
+// import type {
+//   Basename,
+//   GetName,
+// } from "@coinbase/onchainkit/src/identity/types";
+// import { getChainPublicClient } from "@coinbase/onchainkit/src/network/getChainPublicClient";
+// import { convertReverseNodeToBytes } from "@coinbase/onchainkit/src/identity/utils/convertReverseNodeToBytes";
+// import L2ResolverAbi from "@coinbase/onchainkit/src/identity/abis/L2ResolverAbi";
+// import { RESOLVER_ADDRESSES_BY_CHAIN_ID } from "@coinbase/onchainkit/src/identity/constants";
 import { addressFormatter } from "@/utils/addressFormatter";
 import { config } from "@/app/_layout";
 import { Colors } from "@/assets/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { getChainLogo } from "@/utils/getChainLogo";
 import { Toast } from "@/components/ui/Toast";
+import {
+  Connector,
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useSwitchChain,
+} from "wagmi";
+import { ConnectorOption } from "@/components/onchain/ConnectorOption";
 
 interface AccountFieldProps {}
 
@@ -49,12 +51,12 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
   const getBaseEns = async () => {
     if (!address) return null;
 
-    const ensName = await getName({ address, chain: base });
-    if (ensName) {
-      setBaseEnsName(ensName);
-    } else {
-      console.log("No Base ENS");
-    }
+    // const ensName = await getName({ address, chain: base });
+    // if (ensName) {
+    //   setBaseEnsName(ensName);
+    // } else {
+    //   console.log("No Base ENS");
+    // }
   };
 
   useEffect(() => {
@@ -122,10 +124,14 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
     return (
       <>
         <View>
-          <Pressable onPress={toggleExpand} style={styles.accountInfo}>
-            <TextSF style={styles.accountText}>Connect</TextSF>
-            <Ionicons name={"wallet"} size={18} color={Colors.neutrals.black} />
-          </Pressable>
+          <ButtonSF
+            onPress={toggleExpand}
+            text={"Connect"}
+            icon={"wallet"}
+            iconPosition={"post"}
+            iconSize={18}
+            color={"whiteOutlined"}
+          />
           {isExpanded ? (
             <View
               style={
@@ -140,18 +146,16 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
                 </TextSF>
               </View>
               {connectors.map((connector) => (
-                <Pressable
-                  key={connector.uid}
-                  style={styles.menuOption}
-                  onPress={() => handleConnectPress(connector)}
-                >
-                  <Image style={styles.tokenIcon} source={connector.icon} />
-                  <TextSF>
-                    {connector.id === "coinbaseWalletSDK"
+                <ConnectorOption
+                  key={connector.id}
+                  text={
+                    connector.id === "coinbaseWalletSDK"
                       ? "CB SmartWallet"
-                      : connector.name}
-                  </TextSF>
-                </Pressable>
+                      : connector.name
+                  }
+                  imageSource={connector.icon}
+                  onPress={() => handleConnectPress(connector)}
+                />
               ))}
             </View>
           ) : null}
@@ -180,7 +184,7 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
             <Ionicons
               name={"log-out-outline"}
               size={22}
-              color={Colors.neutrals.black}
+              color={Colors.neutrals.dark}
             />
           </Pressable>
           {isExpanded && (
@@ -191,14 +195,13 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
                   : styles.menuFieldContainer
               }
             >
-              <Pressable onPress={handleDisconnect} style={styles.menuOption}>
-                <TextSF>Disconnect</TextSF>
-                <Ionicons
-                  name={"log-out-outline"}
-                  size={22}
-                  color={Colors.neutrals.black}
-                />
-              </Pressable>
+              <ButtonSF
+                onPress={handleDisconnect}
+                text={"Disconnect"}
+                icon={"log-out-outline"}
+                iconPosition={"post"}
+                iconSize={22}
+              />
             </View>
           )}
           {chainId !== base?.id ? (
@@ -223,26 +226,26 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
   return null;
 };
 
-const getName = async ({ address, chain = mainnet }: GetName) => {
-  let client = getChainPublicClient(chain);
-
-  const addressReverseNode = convertReverseNodeToBytes(address, base.id);
-  try {
-    const basename = await client.readContract({
-      abi: L2ResolverAbi,
-      address: RESOLVER_ADDRESSES_BY_CHAIN_ID[chain.id],
-      functionName: "name",
-      args: [addressReverseNode],
-    });
-    if (basename) {
-      return basename as Basename;
-    }
-  } catch (error) {
-    console.error("Error getting ENS name");
-    console.error(error);
-    return null;
-  }
-};
+// const getName = async ({ address, chain = mainnet }: GetName) => {
+//   let client = getChainPublicClient(chain);
+//
+//   const addressReverseNode = convertReverseNodeToBytes(address, base.id);
+//   try {
+//     const basename = await client.readContract({
+//       abi: L2ResolverAbi,
+//       address: RESOLVER_ADDRESSES_BY_CHAIN_ID[chain.id],
+//       functionName: "name",
+//       args: [addressReverseNode],
+//     });
+//     if (basename) {
+//       return basename as Basename;
+//     }
+//   } catch (error) {
+//     console.error("Error getting ENS name");
+//     console.error(error);
+//     return null;
+//   }
+// };
 
 const styles = StyleSheet.create({
   container: {
@@ -273,23 +276,14 @@ const styles = StyleSheet.create({
     borderColor: Colors.neutrals.dark,
   },
 
-  menuOption: {
-    flexDirection: "row",
-    alignItems: "center",
-    minWidth: 200,
-
-    gap: Styles.spacing.sm,
-    paddingVertical: Styles.spacing.lg,
-    paddingLeft: Styles.spacing.xl,
-    backgroundColor: Colors.neutrals.light,
-  },
   menuOptionHeader: {
-    paddingVertical: Styles.spacing.sm,
+    paddingVertical: Styles.spacing.md,
     paddingLeft: Styles.spacing.xl,
-    backgroundColor: Colors.principal.light,
+    backgroundColor: Colors.principal.medium,
   },
   menuOptionHeaderText: {
     fontSize: Styles.typography.fontSize.xs,
+    fontWeight: Styles.typography.fontWeight.medium,
   },
 
   accountInfo: {
@@ -304,11 +298,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.neutrals.dark,
 
-    backgroundColor: Colors.neutrals.white,
+    backgroundColor: Colors.base.white,
   },
   accountText: {
     fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.neutrals.black,
+    color: Colors.base.black,
   },
   tokenIcon: {
     height: 20,

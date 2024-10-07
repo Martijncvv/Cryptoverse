@@ -25,6 +25,8 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
       height: "auto",
       aspectRatio: 1,
       borderRadius: Styles.borderRadius.md,
+      borderWidth: 1,
+      borderColor: Colors.base.black,
     },
     locationDetails: {
       width: windowWidth < 724 ? "100%" : "50%",
@@ -34,12 +36,12 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
       marginBottom: Styles.spacing.xs,
 
       fontSize: Styles.typography.fontSize.xxl,
-      fontWeight: Styles.typography.fontWeight.semiBold,
+      fontWeight: Styles.typography.fontWeight.extraBold,
     },
     cityName: {
       marginBottom: Styles.spacing.xl,
-
       color: Colors.principal.default,
+      fontWeight: Styles.typography.fontWeight.bold,
     },
     description: {
       flex: 1,

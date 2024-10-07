@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     gap: Styles.spacing.lg,
 
     borderWidth: 0.5,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderRadius: Styles.borderRadius.lg,
-    backgroundColor: Colors.neutrals.white,
+    backgroundColor: Colors.base.white,
   },
   image: {
     width: 100,

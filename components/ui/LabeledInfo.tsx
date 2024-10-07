@@ -1,4 +1,4 @@
-import { StyleSheet, useWindowDimensions, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { TextSF } from "@/components/ui/TextSF";
@@ -12,10 +12,8 @@ interface LabeledInfoProps {
 export const LabeledInfo: React.FC<LabeledInfoProps> = ({
   label,
   text,
-  backgroundColor = Colors.neutrals.light,
+  backgroundColor = Colors.principal.light,
 }) => {
-  const { width: windowWidth } = useWindowDimensions();
-
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -26,7 +24,6 @@ export const LabeledInfo: React.FC<LabeledInfoProps> = ({
       paddingVertical: Styles.spacing.sm,
       borderRadius: Styles.borderRadius.md,
       backgroundColor: backgroundColor,
-      // backgroundColor: "green",  // todo
     },
 
     label: {

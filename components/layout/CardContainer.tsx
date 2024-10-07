@@ -15,7 +15,7 @@ export const CardContainer: React.FC<CardContainerProps> = ({
     cardContainer: {
       flexShrink: 1,
       borderWidth: 0.5,
-      borderColor: Colors.neutrals.black,
+      borderColor: Colors.neutrals.default,
       borderRadius: Styles.borderRadius.lg,
       padding: Styles.spacing.xl,
       gap: gap,

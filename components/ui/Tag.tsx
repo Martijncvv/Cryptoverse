@@ -7,16 +7,16 @@ import { TextSF } from "@/components/ui/TextSF";
 interface TagProps {
   text: TabOptions;
   backgroundColor?: string;
-  icon?: string;
+  icon?: keyof typeof Ionicons.glyphMap;
   iconSize?: number;
 }
 
 export type TabOptions = "funding now" | "guatemala";
 
 const tabColorMap: Record<string, string> = {
-  "funding now": Colors.orange.default,
+  "funding now": Colors.orange.medium,
   guatemala: Colors.green.light,
-  default: Colors.neutrals.white,
+  default: Colors.base.white,
 };
 
 const tabIconMap: Record<string, string> = {
@@ -26,10 +26,10 @@ const tabIconMap: Record<string, string> = {
 
 export const Tag: React.FC<TagProps> = ({
   text,
-  backgroundColor = Colors.neutrals.white,
+  backgroundColor = Colors.base.white,
   iconSize = 12,
 }) => {
-  const hasIcon: boolean = tabIconMap[text] ? true : false;
+  const hasIcon: boolean = Boolean(tabIconMap[text]);
 
   return (
     <View
@@ -43,7 +43,7 @@ export const Tag: React.FC<TagProps> = ({
           // @ts-ignore
           name={tabIconMap[text] || ""}
           size={iconSize}
-          color={Colors.neutrals.black}
+          color={Colors.base.black}
         />
       ) : null}
       <TextSF style={styles.text}>{text}</TextSF>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     gap: Styles.spacing.xs,
 
     borderWidth: 0.5,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderRadius: Styles.borderRadius.xs,
   },
   text: {

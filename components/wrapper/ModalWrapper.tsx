@@ -28,13 +28,13 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
     overlay: {
       height: "100%",
       flex: 1,
+      padding: isMobileView ? 0 : "10%",
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 999,
     },
     container: {
-      flexShrink: 1,
       padding: isMobileView ? Styles.spacing.xl : 40,
 
       flexDirection: "column",

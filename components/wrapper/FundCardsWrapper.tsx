@@ -24,6 +24,7 @@ export const FundCardsWrapper = () => {
         tags={["funding now", "guatemala"]}
         minDonation={30}
         percentageRaised={80}
+        onPress={() => router.push("FundingDetailsScreen")}
       />
 
       <FundCardPlaceholder />

@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   table: {
     borderWidth: 0.5,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderRadius: Styles.borderRadius.lg,
   },
   header: {
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: Styles.spacing.sm,
 
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.neutrals.black,
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.base.black,
     borderTopLeftRadius: Styles.borderRadius.lg,
     borderTopRightRadius: Styles.borderRadius.lg,
 

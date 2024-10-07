@@ -10,7 +10,12 @@ import { TextSF } from "@/components/ui/TextSF";
 
 export default function ProjectDetailsModal() {
   const closeModal = () => {
-    router.back();
+    // check if back is available
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.push("/");
+    }
   };
 
   return (
@@ -24,8 +29,8 @@ export default function ProjectDetailsModal() {
 Supporting this cause will have a profound impact on the entire community. Education is a powerful tool for change, and by ensuring that every child has the resources they need to thrive, we can foster a more educated, empowered, and prosperous community. Your contribution will help to alleviate the financial burden on families, increase school attendance, and inspire a generation of learners to pursue their dreams and contribute positively to Panajachel’s development.`}
           </TextSF>
           <View style={styles.labelsContainer}>
-            <LabeledInfo label="Organizers" text="Andrea Milian" />
-            <LabeledInfo label="Created" text="May 23, 2024" />
+            <LabeledInfo label="Organizers:" text="Andrea Milian" />
+            <LabeledInfo label="Created:" text="May 23, 2024" />
           </View>
         </View>
         <View style={styles.column}>
@@ -39,7 +44,7 @@ Supporting this cause will have a profound impact on the entire community. Educa
 
 const styles = StyleSheet.create({
   modalTitle: {
-    fontSize: Styles.typography.fontSize.title,
+    fontSize: Styles.typography.fontSize.xxxl,
     fontWeight: Styles.typography.fontWeight.bold,
   },
   contentContainer: {
@@ -66,6 +71,5 @@ const styles = StyleSheet.create({
   projectDescription: {
     width: "100%",
     flexWrap: "wrap",
-    fontSize: Styles.typography.fontSize.xl,
   },
 });

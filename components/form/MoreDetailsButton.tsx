@@ -13,7 +13,7 @@ export const MoreDetailsButton: React.FC<MoreDetailsButtonProps> = ({
 }) => {
   return (
     <Pressable style={styles.moreDetailsButton} onPress={onPress}>
-      <TextSF style={styles.moreDetailsText}>More details</TextSF>
+      <TextSF style={styles.moreDetailsText}>More Details</TextSF>
       <Ionicons
         name="arrow-forward-circle-outline"
         size={16}
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     gap: Styles.spacing.xs,
-    marginBottom: Styles.spacing.xxxl,
+    marginBottom: Styles.spacing.xxl,
   },
   moreDetailsText: {
     fontWeight: Styles.typography.fontWeight.bold,

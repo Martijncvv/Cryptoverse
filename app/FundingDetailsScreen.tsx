@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   },
   rightColumn: {
     flex: 1,
-    width: "60%",
-    minWidth: MIN_WIDTH,
+    minWidth: "60%",
+    // minWidth: MIN_WIDTH,
     justifyContent: "flex-start",
     gap: Styles.spacing.xxxxl,
   },
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     gap: Styles.spacing.xxxl,
-    // flex: 1,
     flexWrap: "wrap",
     // backgroundColor: "green",
   },

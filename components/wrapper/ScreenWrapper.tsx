@@ -23,7 +23,7 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: Colors.neutrals.white,
+      backgroundColor: Colors.base.white,
     },
     scrollViewContent: {
       flexGrow: 1,

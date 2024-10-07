@@ -32,18 +32,20 @@ const styles = StyleSheet.create({
     position: "relative",
     paddingLeft: Styles.spacing.xl,
 
+    backgroundColor: Colors.base.white,
+
     borderWidth: 1,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderRadius: Styles.borderRadius.md,
   },
   progressFill: {
     height: "100%",
-    backgroundColor: Colors.principal.light,
+    backgroundColor: Colors.principal.medium,
     position: "absolute",
     top: 0,
     left: 0,
     zIndex: 1,
-    borderColor: Colors.neutrals.black,
+    borderColor: Colors.base.black,
     borderTopLeftRadius: Styles.borderRadius.md,
     borderBottomLeftRadius: Styles.borderRadius.md,
   },
@@ -51,5 +53,7 @@ const styles = StyleSheet.create({
   progressBarText: {
     zIndex: 2,
     position: "relative",
+    marginTop: 6,
+    fontWeight: Styles.typography.fontWeight.medium,
   },
 });

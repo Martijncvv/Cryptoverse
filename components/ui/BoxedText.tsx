@@ -10,13 +10,14 @@ interface BoxedTextProps {
 
 export const BoxedText: React.FC<BoxedTextProps> = ({
   text,
-  backgroundColor = Colors.principal.light,
+  backgroundColor = Colors.principal.medium,
 }) => {
   const styles = StyleSheet.create({
     container: {
       alignSelf: "flex-start",
+      height: 30,
+      justifyContent: "center",
       paddingHorizontal: Styles.spacing.xl,
-      paddingVertical: Styles.spacing.sm,
       borderRadius: Styles.borderRadius.sm,
       backgroundColor: backgroundColor,
     },
