@@ -4,47 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling upgrades&#10;- toast setup">
-      <change afterPath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup styling, hovering, selection etc.">
+      <change afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintOption.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/ToastProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/FundingDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/FundingDetailsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/HomeScreen.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/constants/Colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/BackButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/CrossButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/ButtonSF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/CardContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/CardContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/BoxedText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/BoxedText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/CopyableText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/CopyableText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Tag.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TextSF.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +218,9 @@
       <workItem from="1728222089055" duration="15356000" />
       <workItem from="1728241120401" duration="6378000" />
       <workItem from="1728280432414" duration="1223000" />
-      <workItem from="1728326228751" duration="8651000" />
+      <workItem from="1728326228751" duration="9543000" />
+      <workItem from="1728373496097" duration="434000" />
+      <workItem from="1728400251315" duration="7295000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -485,14 +462,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728237472290</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="- setup styling, hovering, selection etc.">
+      <option name="closed" value="true" />
+      <created>1728334947316</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1728334947316</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- progress FundingDetailsScreen" />
     <MESSAGE value="- FundingDetailsScreen&#10;- fix styling" />
     <MESSAGE value="- prettier and eslint" />
     <MESSAGE value="- setup donations page&#10;- setup react query" />
@@ -517,6 +501,7 @@
     <MESSAGE value="- styling" />
     <MESSAGE value="- styling fixes" />
     <MESSAGE value="- styling upgrades&#10;- toast setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="- styling upgrades&#10;- toast setup" />
+    <MESSAGE value="- setup styling, hovering, selection etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="- setup styling, hovering, selection etc." />
   </component>
 </project>

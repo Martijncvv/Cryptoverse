@@ -7,7 +7,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 interface ToastProps {
   text: any;
   type: ToastType;
-  style?: any;
 }
 
 type TypeScheme = {
@@ -17,14 +16,9 @@ type TypeScheme = {
   icon: any; // ionicons name
 };
 
-type ToastType = "success" | "error" | "pending";
+export type ToastType = "success" | "error" | "pending";
 
-export const Toast: React.FC<ToastProps> = ({
-  text,
-  type,
-  style,
-  ...props
-}) => {
+export const Toast: React.FC<ToastProps> = ({ text, type }) => {
   const typeMap: Record<ToastType, TypeScheme> = {
     success: {
       background: Colors.green.default,
@@ -48,7 +42,6 @@ export const Toast: React.FC<ToastProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      alignSelf: "flex-start",
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
@@ -74,9 +67,7 @@ export const Toast: React.FC<ToastProps> = ({
         size={Styles.typography.fontSize.xs}
         color={typeMap[type].text}
       />
-      <TextSF style={[styles.text, style]} {...props}>
-        {text}
-      </TextSF>
+      <TextSF style={[styles.text]}>{text}</TextSF>
     </View>
   );
 };

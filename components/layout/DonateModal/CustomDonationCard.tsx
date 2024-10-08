@@ -14,7 +14,7 @@ export const CustomDonationCard: React.FC<CustomDonationCardProps> = ({}) => {
   };
 
   return (
-    <CardContainer gap={Styles.spacing.xl}>
+    <CardContainer gap={Styles.spacing.md}>
       <View>
         <SubTitle text={"Direct deposit"} />
         <TextSF style={styles.subTitle}>Want to give your own amount?</TextSF>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     borderRadius: 10,
-    borderColor: Colors.neutrals.default,
+    borderColor: Colors.neutrals.medium,
     borderWidth: 1,
     display: "flex",
     justifyContent: "center",

@@ -20,32 +20,24 @@ import { base } from "viem/chains";
 // import L2ResolverAbi from "@coinbase/onchainkit/src/identity/abis/L2ResolverAbi";
 // import { RESOLVER_ADDRESSES_BY_CHAIN_ID } from "@coinbase/onchainkit/src/identity/constants";
 import { addressFormatter } from "@/utils/addressFormatter";
-import { config } from "@/app/_layout";
 import { Colors } from "@/assets/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { getChainLogo } from "@/utils/getChainLogo";
-import { Toast } from "@/components/ui/Toast";
-import {
-  Connector,
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useSwitchChain,
-} from "wagmi";
-import { ConnectorOption } from "@/components/onchain/ConnectorOption";
+import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
+import { useToast } from "@/hooks/ToastProvider";
+import { ConnectAccountField } from "@/components/onchain/ConnectAccountField";
 
 interface AccountFieldProps {}
 
 export const AccountField: React.FC<AccountFieldProps> = () => {
   const { switchChain } = useSwitchChain();
   const { address, chainId } = useAccount();
-  const { connectors, connect } = useConnect(config);
+  const { displayToast } = useToast();
   const { disconnect } = useDisconnect();
   const { width: windowWidth } = useWindowDimensions();
 
   const [baseEnsName, setBaseEnsName] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [toastText, setToastText] = useState<string | null>(null);
   const isBurgerMenu = windowWidth < 724;
 
   const getBaseEns = async () => {
@@ -64,112 +56,38 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
   }, [address]);
 
   const toggleExpand = () => {
+    displayToast("wallet connected");
     setIsExpanded((prev) => !prev);
-  };
-  console.log("connectors: ", connectors);
-
-  const handleConnectPress = (connector: Connector) => {
-    try {
-      connect({ connector });
-      setToastText("wallet connected");
-      setIsExpanded(false);
-    } catch (error: any) {
-      console.error("Error connecting wallet");
-      console.error(error);
-      setToastText(`error: ${error?.message}`);
-      setIsExpanded(false);
-    } finally {
-      setTimeout(() => {
-        setToastText(null);
-      }, 3000);
-    }
   };
 
   const handleDisconnect = () => {
     try {
       disconnect();
-      setToastText("wallet disconnected");
+      displayToast("wallet disconnected");
       setIsExpanded(false);
     } catch (error: any) {
       console.error("Error disconnecting wallet");
       console.error(error);
-      setToastText(`error: ${error?.message}`);
+      displayToast(`error: ${error?.message}`, "error");
       setIsExpanded(false);
-    } finally {
-      setTimeout(() => {
-        setToastText(null);
-      }, 3000);
     }
   };
 
   const handleSwitchChain = () => {
     try {
       switchChain({ chainId: base.id });
-      setToastText("You got Based");
+      displayToast("You got Based");
       setIsExpanded(false);
     } catch (error: any) {
       console.error("Error switching chain");
       console.error(error);
-      setToastText(`error: ${error?.message}`);
+      displayToast(`error: ${error?.message}`, "error");
       setIsExpanded(false);
-    } finally {
-      setTimeout(() => {
-        setToastText(null);
-      }, 3000);
     }
   };
 
-  console.log("connectors: ", connectors);
-  if (!address && connectors.length > 0) {
-    return (
-      <>
-        <View>
-          <ButtonSF
-            onPress={toggleExpand}
-            text={"Connect"}
-            icon={"wallet"}
-            iconPosition={"post"}
-            iconSize={18}
-            color={"whiteOutlined"}
-          />
-          {isExpanded ? (
-            <View
-              style={
-                isBurgerMenu
-                  ? styles.mobileMenuFieldContainer
-                  : styles.menuFieldContainer
-              }
-            >
-              <View style={styles.menuOptionHeader}>
-                <TextSF style={styles.menuOptionHeaderText}>
-                  Your wallets
-                </TextSF>
-              </View>
-              {connectors.map((connector) => (
-                <ConnectorOption
-                  key={connector.id}
-                  text={
-                    connector.id === "coinbaseWalletSDK"
-                      ? "CB SmartWallet"
-                      : connector.name
-                  }
-                  imageSource={connector.icon}
-                  onPress={() => handleConnectPress(connector)}
-                />
-              ))}
-            </View>
-          ) : null}
-        </View>
-        {toastText ? (
-          <View style={!isBurgerMenu ? styles.toastField : null}>
-            <Toast
-              text={toastText}
-              type={toastText?.includes("error") ? "error" : "success"}
-            />
-          </View>
-        ) : null}
-      </>
-    );
+  if (!address) {
+    return <ConnectAccountField />;
   }
 
   if (address && chainId) {
@@ -211,14 +129,6 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
             />
           ) : null}
         </View>
-        {toastText ? (
-          <View style={!isBurgerMenu ? styles.toastField : null}>
-            <Toast
-              text={toastText}
-              type={toastText?.includes("error") ? "error" : "success"}
-            />
-          </View>
-        ) : null}
       </>
     );
   }
@@ -251,6 +161,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     gap: Styles.spacing.md,
+    zIndex: -1,
   },
   menuFieldContainer: {
     position: "absolute",
@@ -258,7 +169,6 @@ const styles = StyleSheet.create({
     marginTop: Styles.spacing.xs,
     gap: Styles.spacing.xxs,
     right: 0,
-    zIndex: 10,
 
     backgroundColor: Colors.neutrals.medium,
     borderRadius: Styles.borderRadius.md,
@@ -274,16 +184,6 @@ const styles = StyleSheet.create({
     borderRadius: Styles.borderRadius.md,
     borderWidth: 1,
     borderColor: Colors.neutrals.dark,
-  },
-
-  menuOptionHeader: {
-    paddingVertical: Styles.spacing.md,
-    paddingLeft: Styles.spacing.xl,
-    backgroundColor: Colors.principal.medium,
-  },
-  menuOptionHeaderText: {
-    fontSize: Styles.typography.fontSize.xs,
-    fontWeight: Styles.typography.fontWeight.medium,
   },
 
   accountInfo: {
@@ -308,12 +208,5 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     resizeMode: "contain",
-  },
-
-  toastField: {
-    position: "absolute",
-    top: 75,
-    right: 40,
-    zIndex: -1,
   },
 });

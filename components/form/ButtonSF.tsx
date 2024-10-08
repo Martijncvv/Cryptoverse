@@ -142,17 +142,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: Styles.spacing.sm,
-    paddingHorizontal: Styles.spacing.xxl,
+    paddingHorizontal: Styles.spacing.lg,
     borderRadius: Styles.borderRadius.md,
     borderWidth: 1,
   },
-  // containerHovered: {
-  //   // WEB
-  //   borderColor: Colors.principal.light,
-  //   shadowColor: Colors.principal.medium,
-  //   shadowOpacity: 1,
-  //   shadowRadius: 5,
-  // },
   text: {
     fontWeight: Styles.typography.fontWeight.bold,
   },

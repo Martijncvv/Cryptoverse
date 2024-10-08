@@ -1,9 +1,8 @@
-import { Alert, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { CardContainer } from "@/components/layout/CardContainer";
 import { SubTitle } from "@/components/ui/SubTitle";
-import { TextSF } from "@/components/ui/TextSF";
 import {
   BaseError,
   useAccount,
@@ -22,6 +21,7 @@ import { useEffect, useState } from "react";
 import { baseSepolia } from "wagmi/chains";
 import { Toast } from "@/components/ui/Toast";
 import { ButtonSF } from "@/components/form/ButtonSF";
+import { MintOption } from "@/components/layout/DonateModal/MintOption";
 
 interface MintContainerProps {}
 
@@ -34,13 +34,37 @@ const TOKEN_ID_COST: Record<TokenId, number> = {
 };
 const DECIMALS = 6;
 
+const mintOptions = [
+  {
+    id: "1",
+    mintId: "0" as TokenId,
+    packages: "1",
+    usdc: "20",
+  },
+  {
+    id: "2",
+    mintId: "1" as TokenId,
+    packages: "5",
+    usdc: "100",
+  },
+  {
+    id: "3",
+    mintId: "1" as TokenId,
+    packages: "10",
+    usdc: "200",
+  },
+];
+
 export const MintContainer: React.FC<MintContainerProps> = ({}) => {
-  const [selectedId, setSelectedId] = useState<TokenId | "">("");
-  const [hooveredId, setHooveredId] = useState<TokenId | "">("");
+  const [selectedId, setSelectedId] = useState<TokenId | null>(null);
 
   const { address } = useAccount();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+
+  const getMintId = (id: string) => {
+    return mintOptions.find((option) => option.id === id)?.mintId;
+  };
 
   const {
     data: hashApprove,
@@ -65,9 +89,12 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   useEffect(() => {
     if (hashApprove && selectedId && approvalIsSuccess) {
       // wait 10 seconds
-      setTimeout(() => {
-        mint(selectedId);
-      }, 10000);
+      const mintId = getMintId(selectedId);
+      if (mintId) {
+        setTimeout(() => {
+          mint(mintId);
+        }, 10000);
+      }
     }
   }, [approvalIsSuccess]);
 
@@ -75,7 +102,10 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
 
   const handleMintPress = () => {
     if (selectedId) {
-      approve(selectedId);
+      const mintId = getMintId(selectedId);
+      if (mintId) {
+        approve(mintId);
+      }
     } else {
       Alert.alert("Please select a donation package");
     }
@@ -112,55 +142,28 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   };
 
   return (
-    <CardContainer gap={Styles.spacing.xl}>
+    <CardContainer gap={Styles.spacing.lg}>
       <View>
         {ensAvatar && <Image alt="ENS Avatar" source={ensAvatar} />}
         <SubTitle text={"Select amount of donation package"} />
         <Text style={styles.subTitle}>Total includes transaction fees</Text>
       </View>
       <View style={styles.donationOptionsField}>
-        {(["0", "1", "2"] as const).map((id) => (
-          <Pressable
-            key={id}
-            style={[
-              styles.donationOptionBox,
-              hooveredId === id && {
-                ...styles.donationOptionBoxHoover,
-              },
-              selectedId === id && {
-                ...styles.donationOptionBoxSelected,
-              },
-            ]}
-            onPress={() => handleOptionPress(id)}
-            onHoverIn={() => setHooveredId(id)}
-            onHoverOut={() => setHooveredId("")}
-          >
-            <TextSF
-              style={[
-                styles.donationOptionText,
-
-                selectedId === id && {
-                  ...styles.donationOptionTextSelected,
-                },
-              ]}
-            >
-              {" "}
-              {Number(id) + 1}
-            </TextSF>
-          </Pressable>
+        {mintOptions.map((option) => (
+          <MintOption
+            key={option.id}
+            option={option}
+            onPress={handleOptionPress}
+            selectedId={selectedId}
+          />
         ))}
       </View>
-      <View style={styles.totalField}>
-        <TextSF style={styles.totalLabel}>Total value</TextSF>
-        <TextSF
-          style={styles.totalValue}
-        >{`${selectedId ? TOKEN_ID_COST[selectedId] / 10 ** DECIMALS : ""} USDC`}</TextSF>
-      </View>
+
       <ButtonSF
         onPress={handleMintPress}
         text={"Mint"}
         icon={"wallet"}
-        iconPosition={"post"}
+        iconPosition={"pre"}
         disabled={!selectedId}
       />
       {isPendingApprove && (
@@ -195,53 +198,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     gap: Styles.spacing.sm,
-  },
-
-  donationOptionBox: {
-    flex: 1,
-    paddingVertical: Styles.spacing.md,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: Styles.borderRadius.lg,
-    borderWidth: 1,
-    borderColor: Colors.neutrals.default,
-    backgroundColor: Colors.base.white,
-  },
-  donationOptionBoxSelected: {
-    borderColor: Colors.principal.default,
-  },
-  donationOptionBoxHoover: {
-    borderColor: Colors.principal.default,
-    backgroundColor: Colors.principal.light,
-
-    // WEB
-    shadowColor: Colors.principal.medium,
-    shadowOpacity: 1,
-    shadowRadius: 5,
-  },
-  donationOptionTextSelected: {
-    color: Colors.principal.default,
-  },
-  donationOptionText: {
-    display: "flex",
-    fontSize: Styles.typography.fontSize.xl,
-    fontWeight: Styles.typography.fontWeight.bold,
-    textAlign: "center",
-  },
-
-  totalField: {
-    paddingVertical: Styles.spacing.xxs,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  totalLabel: {
-    fontSize: Styles.typography.fontSize.xs,
-    fontWeight: Styles.typography.fontWeight.medium,
-    color: Colors.neutrals.dark,
-  },
-  totalValue: {
-    fontWeight: Styles.typography.fontWeight.bold,
-    color: Colors.principal.default,
   },
 });

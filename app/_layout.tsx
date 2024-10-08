@@ -23,6 +23,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { TextSF } from "@/components/ui/TextSF";
+import { ToastProvider } from "@/hooks/ToastProvider";
 import { AccountField } from "@/components/onchain/AccountField";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -37,6 +38,7 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
   );
 }
 
+// TODO BE ABLE TO SEND NOTIFICATIONS TO THE NFT
 export const unstable_settings = {
   initialRouteName: "index",
 };
@@ -58,6 +60,8 @@ export const config = createConfig({
   },
 });
 
+// TODO: if on wrong network, header gets reakt
+
 export default function RootLayout() {
   const queryClient = new QueryClient();
   const { width: windowWidth } = useWindowDimensions();
@@ -78,96 +82,101 @@ export default function RootLayout() {
 
   if (windowWidth > 100 && windowWidth < 724) {
     return (
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer
-              drawerContent={() => <CustomDrawerContent />}
-              screenOptions={{
-                drawerType: "front",
-                drawerStyle: {
-                  maxWidth: 300,
-                },
-                drawerPosition: "right",
-                headerShown: true,
-                header: ({ navigation }) => {
-                  return (
-                    <View style={styles.header}>
-                      <View style={styles.headerLeft}>
-                        <Image
-                          source={require("@/assets/images/senda-logo.png")}
-                          style={styles.logo}
-                        />
-                      </View>
-                      <View style={styles.headerRight}>
-                        <Pressable onPress={() => navigation.toggleDrawer()}>
-                          <Ionicons
-                            name="menu"
-                            size={24}
-                            color={Colors.base.black}
+      <ToastProvider>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Drawer
+                drawerContent={() => <CustomDrawerContent />}
+                screenOptions={{
+                  drawerType: "front",
+                  drawerStyle: {
+                    maxWidth: 300,
+                  },
+                  drawerPosition: "right",
+                  headerShown: true,
+                  header: ({ navigation }) => {
+                    return (
+                      <View style={styles.header}>
+                        <View style={styles.headerLeft}>
+                          <Image
+                            source={require("@/assets/images/senda-logo.png")}
+                            style={styles.logo}
                           />
-                        </Pressable>
+                        </View>
+                        <AccountField />
+                        <View style={styles.headerRight}>
+                          <Pressable onPress={() => navigation.toggleDrawer()}>
+                            <Ionicons
+                              name="menu"
+                              size={24}
+                              color={Colors.base.black}
+                            />
+                          </Pressable>
+                        </View>
                       </View>
-                    </View>
-                  );
-                },
-              }}
-            >
-              <Drawer.Screen
-                name=""
-                options={{
-                  title: "Home",
+                    );
+                  },
                 }}
-              />
-              <Drawer.Screen
-                name="FundingDetailsScreen"
-                options={{
-                  title: "Funding Details",
-                }}
-              />
-            </Drawer>
-          </GestureHandlerRootView>
-        </QueryClientProvider>
-      </WagmiProvider>
+              >
+                <Drawer.Screen
+                  name="HomeScreen"
+                  options={{
+                    title: "Home",
+                  }}
+                />
+                <Drawer.Screen
+                  name="FundingDetailsScreen"
+                  options={{
+                    title: "Funding Details",
+                  }}
+                />
+              </Drawer>
+            </GestureHandlerRootView>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </ToastProvider>
     );
   }
 
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen
-            name="HomeScreen"
-            options={{
-              title: "HomeScreen",
+    <ToastProvider>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <Stack
+            screenOptions={{
+              headerShown: false,
             }}
-          />
-          <Stack.Screen
-            name="ProjectDetailsModal"
-            options={{
-              presentation: "transparentModal",
-            }}
-          />
-          <Stack.Screen
-            name="DonateModal"
-            options={{
-              presentation: "transparentModal",
-            }}
-          />
-          <Stack.Screen
-            name="FundingDetailsScreen"
-            options={{
-              title: "FundingDetailsScreen",
-            }}
-          />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </QueryClientProvider>
-    </WagmiProvider>
+          >
+            <Stack.Screen
+              name="HomeScreen"
+              options={{
+                title: "HomeScreen",
+              }}
+            />
+            <Stack.Screen
+              name="ProjectDetailsModal"
+              options={{
+                presentation: "transparentModal",
+              }}
+            />
+            <Stack.Screen
+              name="DonateModal"
+              options={{
+                presentation: "transparentModal",
+              }}
+            />
+            <Stack.Screen
+              name="FundingDetailsScreen"
+              options={{
+                title: "FundingDetailsScreen",
+              }}
+            />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </ToastProvider>
   );
 }
 
@@ -179,21 +188,27 @@ const CustomDrawerContent = () => {
         <TextSF style={styles.drawerTitle}>SendaFund</TextSF>
       </View>
       <View style={styles.drawerBody}>
-        {["HomeScreen", "FundingDetailsScreen"].map((screen, index) => (
-          <Pressable
-            key={index}
-            style={styles.drawerItem}
-            onPress={() => router.push(screen)}
-          >
-            <Ionicons
-              name={getIconName(screen)}
-              size={24}
-              color={Colors.principal.default}
-            />
-            <TextSF style={styles.drawerItemText}>{screen}</TextSF>
-          </Pressable>
-        ))}
-        <AccountField />
+        <Pressable style={styles.drawerItem} onPress={() => router.replace("")}>
+          <Ionicons
+            name={getIconName("HomeScreen")}
+            size={24}
+            color={Colors.principal.default}
+          />
+          <TextSF style={styles.drawerItemText}>{"HomeScreen"}</TextSF>
+        </Pressable>
+        <Pressable
+          style={styles.drawerItem}
+          onPress={() => router.push("FundingDetailsScreen")}
+        >
+          <Ionicons
+            name={getIconName("FundingDetailsScreen")}
+            size={24}
+            color={Colors.principal.default}
+          />
+          <TextSF style={styles.drawerItemText}>
+            {"FundingDetailsScreen"}
+          </TextSF>
+        </Pressable>
       </View>
     </View>
   );

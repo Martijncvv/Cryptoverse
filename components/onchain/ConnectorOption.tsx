@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     minWidth: 200,
-
     gap: Styles.spacing.sm,
     paddingVertical: Styles.spacing.lg,
     paddingLeft: Styles.spacing.xl,
