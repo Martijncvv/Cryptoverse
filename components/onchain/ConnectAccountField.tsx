@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, useWindowDimensions, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { TextSF } from "@/components/ui/TextSF";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { Styles } from "@/assets/constants/Styles";
@@ -14,11 +14,8 @@ interface ConnectAccountFieldProps {}
 export const ConnectAccountField: React.FC<ConnectAccountFieldProps> = () => {
   const { displayToast } = useToast();
   const { connectors, connect } = useConnect(config);
-  const { width: windowWidth } = useWindowDimensions();
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const isBurgerMenu = windowWidth < 724;
-
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev);
   };
@@ -26,8 +23,8 @@ export const ConnectAccountField: React.FC<ConnectAccountFieldProps> = () => {
   const handleConnectPress = (connector: Connector) => {
     try {
       connect({ connector });
-      displayToast("wallet connected");
       setIsExpanded(false);
+      displayToast("wallet connected");
     } catch (error: any) {
       console.error("Error connecting wallet");
       console.error(error);
@@ -47,12 +44,7 @@ export const ConnectAccountField: React.FC<ConnectAccountFieldProps> = () => {
         color={"whiteOutlined"}
       />
       {isExpanded && (
-        <View
-          style={[
-            styles.menuFieldContainer,
-            isBurgerMenu && styles.mobileMenuFieldContainer,
-          ]}
-        >
+        <View style={styles.menuFieldContainer}>
           <View style={styles.menuOptionHeader}>
             <TextSF style={styles.menuOptionHeaderText}>Your wallets</TextSF>
           </View>
@@ -96,13 +88,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
-  mobileMenuFieldContainer: {
-    position: "relative",
-    marginTop: Styles.spacing.md,
-    right: 0,
-    left: 0,
-    backgroundColor: Colors.neutrals.light,
-  },
+
   menuOptionHeader: {
     paddingVertical: Styles.spacing.md,
     paddingLeft: Styles.spacing.xl,

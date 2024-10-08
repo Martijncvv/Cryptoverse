@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup styling, hovering, selection etc.">
-      <change afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintOption.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/ToastProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup ToastProvider&#10;- styling fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/BackButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/CrossButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/ButtonSF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/ToastProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/ToastProvider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,10 +140,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.buildCommand" />
-        <item itemvalue="npm.build-web" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
+        <item itemvalue="npm.buildCommand" />
+        <item itemvalue="npm.build-web" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +216,8 @@
       <workItem from="1728280432414" duration="1223000" />
       <workItem from="1728326228751" duration="9543000" />
       <workItem from="1728373496097" duration="434000" />
-      <workItem from="1728400251315" duration="7295000" />
+      <workItem from="1728400251315" duration="7332000" />
+      <workItem from="1728417252221" duration="2766000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -470,14 +467,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728334947316</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="- setup ToastProvider&#10;- styling fixes">
+      <option name="closed" value="true" />
+      <created>1728407579186</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1728407579186</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- FundingDetailsScreen&#10;- fix styling" />
     <MESSAGE value="- prettier and eslint" />
     <MESSAGE value="- setup donations page&#10;- setup react query" />
     <MESSAGE value="- setup DonationHistory&#10;- setup api" />
@@ -502,6 +506,7 @@
     <MESSAGE value="- styling fixes" />
     <MESSAGE value="- styling upgrades&#10;- toast setup" />
     <MESSAGE value="- setup styling, hovering, selection etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="- setup styling, hovering, selection etc." />
+    <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- setup ToastProvider&#10;- styling fixes" />
   </component>
 </project>

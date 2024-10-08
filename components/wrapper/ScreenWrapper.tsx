@@ -19,6 +19,7 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   children: React.ReactNode;
 }) => {
   const { width: windowWidth } = useWindowDimensions();
+  const isMobileView = windowWidth < 724;
 
   const styles = StyleSheet.create({
     container: {
@@ -30,8 +31,10 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
     },
     contentContainer: {
       flex: 1,
-      paddingHorizontal: Styles.spacing.xxxxl,
-      paddingTop: windowWidth < 724 ? 0 : 40,
+      paddingHorizontal: isMobileView
+        ? Styles.spacing.xl
+        : Styles.spacing.xxxxl,
+      paddingTop: isMobileView ? 0 : 40,
       paddingBottom: Styles.spacing.md,
     },
   });

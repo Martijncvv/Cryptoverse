@@ -19,6 +19,7 @@ export const LabeledInfo: React.FC<LabeledInfoProps> = ({
       flex: 1,
       flexDirection: "row",
       justifyContent: "space-between",
+      flexWrap: "wrap",
       gap: Styles.spacing.xs,
       paddingHorizontal: Styles.spacing.xl,
       paddingVertical: Styles.spacing.sm,

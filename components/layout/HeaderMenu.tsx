@@ -21,7 +21,7 @@ export const HeaderMenu = () => {
 
   const styles = StyleSheet.create({
     container: {
-      height: 50,
+      height: 72,
       paddingHorizontal: 40,
       flexDirection: "row",
       flexWrap: "wrap",
@@ -60,7 +60,7 @@ export const HeaderMenu = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.replace("")} style={styles.sendaLogo}>
+      <Pressable onPress={() => router.push("")} style={styles.sendaLogo}>
         <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
 

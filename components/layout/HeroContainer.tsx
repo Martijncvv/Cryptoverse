@@ -5,37 +5,34 @@ import { TextSF } from "@/components/ui/TextSF";
 
 export const HeroContainer = () => {
   const { width: windowWidth } = useWindowDimensions();
-
+  const isMobileView = windowWidth < 724;
   const styles = StyleSheet.create({
     container: {
-      marginTop: 100,
-      marginBottom: 100,
+      marginTop: 85,
+      marginBottom: 85,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
     },
 
     headerText: {
-      width: "90%",
       textAlign: "center",
       marginBottom: Styles.typography.fontSize.xl,
 
-      fontSize:
-        windowWidth > 600
-          ? Styles.typography.fontSize.hero
-          : Styles.typography.fontSize.title,
+      fontSize: isMobileView
+        ? Styles.typography.fontSize.title
+        : Styles.typography.fontSize.hero,
       fontWeight: Styles.typography.fontWeight.extraBold,
       color: Colors.principal.dark,
     },
     subText: {
-      width: windowWidth > 600 ? "60%" : "90%",
+      width: isMobileView ? "90%" : "60%",
       marginTop: Styles.spacing.md,
 
       textAlign: "center",
-      fontSize:
-        windowWidth > 600
-          ? Styles.typography.fontSize.xxxl
-          : Styles.typography.fontSize.xl,
+      fontSize: isMobileView
+        ? Styles.typography.fontSize.xl
+        : Styles.typography.fontSize.xxxl,
       fontWeight: Styles.typography.fontWeight.medium,
       color: Colors.neutrals.dark,
     },

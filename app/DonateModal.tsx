@@ -5,6 +5,7 @@ import { ModalWrapper } from "@/components/wrapper/ModalWrapper";
 import { CustomDonationCard } from "@/components/layout/DonateModal/CustomDonationCard";
 import { MintContainer } from "@/components/layout/DonateModal/MintContainer";
 import { TextSF } from "@/components/ui/TextSF";
+import { AccountField } from "@/components/onchain/AccountField";
 
 export default function DonateModal() {
   const closeModal = () => {
@@ -15,7 +16,7 @@ export default function DonateModal() {
     <ModalWrapper onBackPress={closeModal}>
       <View style={styles.contentContainer}>
         <TextSF style={styles.modalTitle}>Choose your preferred method</TextSF>
-        {/*<AccountField />*/}
+        <AccountField />
         <MintContainer />
         <CustomDonationCard />
       </View>

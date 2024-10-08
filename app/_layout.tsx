@@ -64,8 +64,9 @@ export const config = createConfig({
 
 export default function RootLayout() {
   const queryClient = new QueryClient();
+  const router = useRouter();
   const { width: windowWidth } = useWindowDimensions();
-
+  const isBurgerMenu = windowWidth < 724;
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -80,7 +81,7 @@ export default function RootLayout() {
     return null;
   }
 
-  if (windowWidth > 100 && windowWidth < 724) {
+  if (isBurgerMenu) {
     return (
       <ToastProvider>
         <WagmiProvider config={config}>
@@ -90,20 +91,20 @@ export default function RootLayout() {
                 drawerContent={() => <CustomDrawerContent />}
                 screenOptions={{
                   drawerType: "front",
-                  drawerStyle: {
-                    maxWidth: 300,
-                  },
                   drawerPosition: "right",
                   headerShown: true,
                   header: ({ navigation }) => {
                     return (
                       <View style={styles.header}>
-                        <View style={styles.headerLeft}>
+                        <Pressable
+                          style={styles.headerLeft}
+                          onPress={() => router.push("")}
+                        >
                           <Image
                             source={require("@/assets/images/senda-logo.png")}
                             style={styles.logo}
                           />
-                        </View>
+                        </Pressable>
                         <AccountField />
                         <View style={styles.headerRight}>
                           <Pressable onPress={() => navigation.toggleDrawer()}>
@@ -155,6 +156,12 @@ export default function RootLayout() {
               }}
             />
             <Stack.Screen
+              name="FundingDetailsScreen"
+              options={{
+                title: "FundingDetailsScreen",
+              }}
+            />
+            <Stack.Screen
               name="ProjectDetailsModal"
               options={{
                 presentation: "transparentModal",
@@ -164,12 +171,6 @@ export default function RootLayout() {
               name="DonateModal"
               options={{
                 presentation: "transparentModal",
-              }}
-            />
-            <Stack.Screen
-              name="FundingDetailsScreen"
-              options={{
-                title: "FundingDetailsScreen",
               }}
             />
             <Stack.Screen name="+not-found" />
@@ -188,7 +189,7 @@ const CustomDrawerContent = () => {
         <TextSF style={styles.drawerTitle}>SendaFund</TextSF>
       </View>
       <View style={styles.drawerBody}>
-        <Pressable style={styles.drawerItem} onPress={() => router.replace("")}>
+        <Pressable style={styles.drawerItem} onPress={() => router.push("")}>
           <Ionicons
             name={getIconName("HomeScreen")}
             size={24}
@@ -227,7 +228,7 @@ const getIconName = (screenName: string) => {
 
 const styles = StyleSheet.create({
   drawerContent: {
-    flex: 1,
+    alignSelf: "flex-start",
     backgroundColor: Colors.base.white,
   },
   drawerHeader: {
@@ -242,21 +243,24 @@ const styles = StyleSheet.create({
     marginBottom: Styles.spacing.md,
   },
   drawerTitle: {
+    flexShrink: 1,
     fontSize: Styles.typography.fontSize.xl,
     fontWeight: Styles.typography.fontWeight.bold,
     color: Colors.principal.default,
   },
   drawerBody: {
-    flex: 1,
+    flexShrink: 1,
     gap: Styles.spacing.md,
     paddingTop: Styles.spacing.lg,
     paddingHorizontal: Styles.spacing.md,
   },
   drawerItem: {
+    flexShrink: 1,
     flexDirection: "row",
     alignItems: "center",
   },
   drawerItemText: {
+    flexShrink: 1,
     marginLeft: Styles.spacing.md,
   },
   header: {

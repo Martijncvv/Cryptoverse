@@ -51,10 +51,8 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
       <MoreDetailsButton onPress={handlePressDetails} />
       <View style={styles.footerButtons}>
         <ButtonSF
-          text="Donate now"
+          text="Donate Now"
           onPress={() => router.push("DonateModal")}
-          icon={"wallet"}
-          iconPosition="post"
         />
         <ButtonSF
           text="Share"

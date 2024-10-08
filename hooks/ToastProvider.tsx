@@ -5,7 +5,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { Toast, ToastType } from "@/components/ui/Toast";
 
 interface ToastItem {
@@ -26,6 +26,7 @@ interface ToastProviderProps {
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const { width: windowWidth } = useWindowDimensions();
 
   const displayToast = useCallback(
     (text: string, type: ToastType = "success") => {
@@ -40,13 +41,29 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   }, []);
 
+  const styles = StyleSheet.create({
+    toastWrapper: {
+      position: "absolute",
+      top: 60,
+      left: 0,
+      right: 0,
+      alignItems: "center",
+    },
+    toastContainer: {
+      maxWidth: windowWidth - 32,
+      alignItems: "center",
+    },
+  });
+
   return (
     <ToastContext.Provider value={{ displayToast }}>
       {children}
-      <View style={styles.toastContainer}>
-        {toasts.map((toast) => (
-          <Toast key={toast.id} text={toast.text} type={toast.type} />
-        ))}
+      <View style={styles.toastWrapper}>
+        <View style={styles.toastContainer}>
+          {toasts.map((toast) => (
+            <Toast key={toast.id} text={toast.text} type={toast.type} />
+          ))}
+        </View>
       </View>
     </ToastContext.Provider>
   );
@@ -59,12 +76,3 @@ export const useToast = (): ToastContextType => {
   }
   return context;
 };
-
-const styles = StyleSheet.create({
-  toastContainer: {
-    position: "absolute",
-    top: 40,
-    left: "40%",
-    right: "40%",
-  },
-});
