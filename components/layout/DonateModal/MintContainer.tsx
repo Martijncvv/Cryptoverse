@@ -22,6 +22,7 @@ import { baseSepolia } from "wagmi/chains";
 import { Toast } from "@/components/ui/Toast";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { MintOption } from "@/components/layout/DonateModal/MintOption";
+import { useModal } from "@/hooks/ModalProvider";
 
 interface MintContainerProps {}
 
@@ -56,9 +57,10 @@ const mintOptions = [
 ];
 
 export const MintContainer: React.FC<MintContainerProps> = ({}) => {
-  const [selectedId, setSelectedId] = useState<TokenId | null>(null);
-
+  const { openModal } = useModal();
   const { address } = useAccount();
+
+  const [selectedId, setSelectedId] = useState<TokenId | null>(null);
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
@@ -138,8 +140,14 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   console.log("ensAvatar", ensAvatar);
 
   const handleOptionPress = (id: TokenId) => {
+    openModal("confirmDonation"); //test
     setSelectedId(id);
   };
+
+  useEffect(() => {
+    if (approvalIsSuccess) {
+    } // todo
+  }, [approvalIsSuccess]);
 
   return (
     <CardContainer gap={Styles.spacing.lg}>
@@ -162,8 +170,6 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
       <ButtonSF
         onPress={handleMintPress}
         text={"Mint"}
-        icon={"wallet"}
-        iconPosition={"pre"}
         disabled={!selectedId}
       />
       {isPendingApprove && (

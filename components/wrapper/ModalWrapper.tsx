@@ -1,63 +1,93 @@
+import React from "react";
 import {
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
   useWindowDimensions,
   View,
+  ViewStyle,
 } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { CrossButton } from "@/components/form/CrossButton";
 
 interface ModalWrapperProps {
   children: React.ReactNode;
-  onBackPress: () => void;
-  style?: any;
+  modalVisible: boolean;
+  setModalVisible: (value: boolean) => void;
+  onClose: () => void;
+  style?: ViewStyle;
 }
 
 export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   children,
-  onBackPress,
+  modalVisible,
+  setModalVisible,
+  onClose,
   style,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
   const isMobileView = windowWidth < 724;
 
   const styles = StyleSheet.create({
-    overlay: {
-      height: "100%",
+    shadowOverlay: {
+      position: "absolute",
+      top: -1000,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      zIndex: -1,
+    },
+    modalContainer: {
       flex: 1,
-      padding: isMobileView ? 0 : "10%",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      zIndex: 100,
     },
     container: {
+      maxWidth: isMobileView ? "100%" : "80%",
+      maxHeight: "80%",
+      marginTop: isMobileView ? "auto" : undefined,
       padding: isMobileView ? Styles.spacing.xl : Styles.spacing.xxxl,
-      flexDirection: "column",
-      gap: Styles.spacing.xxl,
-      borderRadius: Styles.borderRadius.xxxl,
+      borderTopLeftRadius: isMobileView ? Styles.borderRadius.lg : undefined,
+      borderTopRightRadius: isMobileView ? Styles.borderRadius.lg : undefined,
+      borderRadius: isMobileView ? undefined : Styles.borderRadius.xxxl,
       backgroundColor: "#FFFFFF",
-      flexGrow: 0,
+    },
+    scrollView: {
+      flexGrow: 1,
     },
     closeButton: {
-      marginLeft: "auto",
+      alignSelf: "flex-end",
       marginBottom: Styles.spacing.xs,
+    },
+    content: {
+      flexGrow: 1,
     },
   });
 
   return (
-    <>
-      <Pressable style={styles.overlay}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={onClose}
+    >
+      <View style={styles.modalContainer}>
         <View style={[styles.container, style]}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.content}
+            showsVerticalScrollIndicator={false}
+          >
             <View style={styles.closeButton}>
-              <CrossButton onPress={onBackPress} />
+              <CrossButton onPress={onClose} />
             </View>
             {children}
           </ScrollView>
         </View>
-      </Pressable>
-    </>
+      </View>
+      <Pressable onPress={onClose} style={styles.shadowOverlay} />
+    </Modal>
   );
 };

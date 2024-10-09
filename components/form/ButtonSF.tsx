@@ -137,12 +137,12 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
+    height: 42,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: Styles.spacing.sm,
-    paddingHorizontal: Styles.spacing.lg,
+    paddingHorizontal: Styles.spacing.xl,
     borderRadius: Styles.borderRadius.md,
     borderWidth: 1,
   },

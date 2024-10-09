@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- setup ToastProvider&#10;- styling fixes">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling&#10;- hamburger menu">
+      <change afterPath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/ModalProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/DonateModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/DonateModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/ProjectDetailsModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/ButtonSF.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/ToastProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/ToastProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +80,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/modals" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/assets/images/coins" />
       <recent name="$PROJECT_DIR$/assets/images/networks" />
-      <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -217,7 +218,9 @@
       <workItem from="1728326228751" duration="9543000" />
       <workItem from="1728373496097" duration="434000" />
       <workItem from="1728400251315" duration="7332000" />
-      <workItem from="1728417252221" duration="2766000" />
+      <workItem from="1728417252221" duration="3653000" />
+      <workItem from="1728463507071" duration="15000" />
+      <workItem from="1728499951064" duration="9482000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -475,14 +478,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728407579186</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="- styling&#10;- hamburger menu">
+      <option name="closed" value="true" />
+      <created>1728420528828</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1728420528828</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- prettier and eslint" />
     <MESSAGE value="- setup donations page&#10;- setup react query" />
     <MESSAGE value="- setup DonationHistory&#10;- setup api" />
     <MESSAGE value="- setup modal, detailed info" />
@@ -507,6 +517,7 @@
     <MESSAGE value="- styling upgrades&#10;- toast setup" />
     <MESSAGE value="- setup styling, hovering, selection etc." />
     <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- setup ToastProvider&#10;- styling fixes" />
+    <MESSAGE value="- styling&#10;- hamburger menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="- styling&#10;- hamburger menu" />
   </component>
 </project>

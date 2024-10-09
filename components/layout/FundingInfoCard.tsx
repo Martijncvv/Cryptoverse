@@ -5,9 +5,9 @@ import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { TabOptions, Tag } from "@/components/ui/Tag";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
-import { router } from "expo-router";
 import { MoreDetailsButton } from "@/components/form/MoreDetailsButton";
 import { TextSF } from "@/components/ui/TextSF";
+import { useModal } from "@/hooks/ModalProvider";
 
 interface FundingInfoCardProps {
   title: string;
@@ -24,9 +24,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
   percentageRaised,
   description,
 }) => {
-  const handlePressDetails = () => {
-    router.push("ProjectDetailsModal");
-  };
+  const { openModal } = useModal();
 
   return (
     <View style={styles.container}>
@@ -48,18 +46,15 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
       </View>
       <TextSF style={styles.subtitle}>About the cause</TextSF>
       <TextSF style={styles.description}>{description}</TextSF>
-      <MoreDetailsButton onPress={handlePressDetails} />
+      <MoreDetailsButton onPress={() => openModal("projectDetails")} />
       <View style={styles.footerButtons}>
-        <ButtonSF
-          text="Donate Now"
-          onPress={() => router.push("DonateModal")}
-        />
+        <ButtonSF text="Donate Now" onPress={() => openModal("donateModal")} />
         <ButtonSF
           text="Share"
           color={"whiteOutlined"}
           onPress={() => console.log("Donate")}
           icon={"share-social-outline"}
-          iconPosition={"post"}
+          iconPosition={"pre"}
         />
       </View>
     </View>

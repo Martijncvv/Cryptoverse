@@ -21,9 +21,13 @@ import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
 import { useToast } from "@/hooks/ToastProvider";
 import { ConnectAccountField } from "@/components/onchain/ConnectAccountField";
 
-interface AccountFieldProps {}
+interface AccountFieldProps {
+  hasLogoutIcon?: boolean;
+}
 
-export const AccountField: React.FC<AccountFieldProps> = () => {
+export const AccountField: React.FC<AccountFieldProps> = ({
+  hasLogoutIcon = true,
+}) => {
   const { switchChain } = useSwitchChain();
   const { address, chainId } = useAccount();
   const { displayToast } = useToast();
@@ -80,11 +84,13 @@ export const AccountField: React.FC<AccountFieldProps> = () => {
             <TextSF style={styles.accountText}>
               {baseEnsName ? `${baseEnsName}` : addressFormatter(address)}
             </TextSF>
-            <Ionicons
-              name={"log-out-outline"}
-              size={22}
-              color={Colors.neutrals.dark}
-            />
+            {hasLogoutIcon ? (
+              <Ionicons
+                name={"log-out-outline"}
+                size={22}
+                color={Colors.neutrals.dark}
+              />
+            ) : null}
           </Pressable>
 
           {chainId !== base?.id ? (

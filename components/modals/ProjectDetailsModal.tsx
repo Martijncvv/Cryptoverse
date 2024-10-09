@@ -1,5 +1,4 @@
 import { StyleSheet, View } from "react-native";
-import { router } from "expo-router";
 import { Styles } from "@/assets/constants/Styles";
 import { LabeledInfo } from "@/components/ui/LabeledInfo";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
@@ -8,18 +7,23 @@ import { SpendingDetails } from "@/components/layout/SpendingDetails";
 import { ModalWrapper } from "@/components/wrapper/ModalWrapper";
 import { TextSF } from "@/components/ui/TextSF";
 
-export default function ProjectDetailsModal() {
-  const closeModal = () => {
-    // check if back is available
-    if (router.canGoBack()) {
-      router.back();
-    } else {
-      router.push("/");
-    }
-  };
+interface ModalProps {
+  modalVisible: boolean;
+  setModalVisible: (value: boolean) => void;
+  onClose: () => void;
+}
 
+export const ProjectDetailsModal: React.FC<ModalProps> = ({
+  modalVisible,
+  setModalVisible,
+  onClose,
+}) => {
   return (
-    <ModalWrapper onBackPress={closeModal}>
+    <ModalWrapper
+      setModalVisible={setModalVisible}
+      modalVisible={modalVisible}
+      onClose={onClose}
+    >
       <View style={styles.contentContainer}>
         <View style={styles.column}>
           <TextSF style={styles.modalTitle}>More about the project</TextSF>
@@ -40,7 +44,7 @@ Supporting this cause will have a profound impact on the entire community. Educa
       </View>
     </ModalWrapper>
   );
-}
+};
 
 const styles = StyleSheet.create({
   modalTitle: {
