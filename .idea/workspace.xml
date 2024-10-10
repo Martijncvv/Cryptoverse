@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- sharing functionality&#10;- moving clouds, styling fixes">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- add clouds.&#10;- fix minting feedback">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/constants/Constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Constants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/api/useAddressTxs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/api/useAddressTxs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getNetworkDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getNetworkDetails.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/timestampFormatter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/timestampFormatter.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +218,9 @@
       <workItem from="1728417252221" duration="3653000" />
       <workItem from="1728463507071" duration="15000" />
       <workItem from="1728499951064" duration="10269000" />
-      <workItem from="1728580184342" duration="7564000" />
+      <workItem from="1728580184342" duration="8302000" />
+      <workItem from="1728588524492" duration="51000" />
+      <workItem from="1728588658050" duration="2437000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -498,14 +502,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728585183873</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="- add clouds.&#10;- fix minting feedback">
+      <option name="closed" value="true" />
+      <created>1728587799530</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728587799530</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup modal, detailed info" />
     <MESSAGE value="- finish modal" />
     <MESSAGE value="- setup: onchain" />
     <MESSAGE value="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu" />
@@ -530,6 +541,7 @@
     <MESSAGE value="- styling&#10;- hamburger menu" />
     <MESSAGE value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
     <MESSAGE value="- sharing functionality&#10;- moving clouds, styling fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- sharing functionality&#10;- moving clouds, styling fixes" />
+    <MESSAGE value="- add clouds.&#10;- fix minting feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add clouds.&#10;- fix minting feedback" />
   </component>
 </project>

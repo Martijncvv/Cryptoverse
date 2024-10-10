@@ -1,5 +1,8 @@
 import axios from "axios";
-import { SHARED_API_KEY_ETHERSCAN } from "@/assets/constants/Constants";
+import {
+  NETWORKS,
+  TEST_1155_CONTRACT_ADDRESS,
+} from "@/assets/constants/Constants";
 import { useQuery } from "@tanstack/react-query";
 import { getNetworkDetails } from "@/utils/getNetworkDetails";
 
@@ -18,13 +21,15 @@ const fetchAddressTxs = async (
 
   const networkDetails = getNetworkDetails(networkId);
 
+  const networkConfig = NETWORKS["baseSepolia"];
+
   if (!networkDetails) {
     console.error("fetchAddressTxs-Network not found: ", networkId);
     throw new Error("fetchAddressTxs-Network not found");
   }
 
   const { data } = await axios.get(
-    `https://${networkDetails.domain}/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=${page}&offset=15&sort=desc&apikey=${SHARED_API_KEY_ETHERSCAN}`,
+    `https://${networkConfig.domain}/api?module=account&action=txlist&address=${TEST_1155_CONTRACT_ADDRESS}&page=1&offset=30&startblock=0&endblock=99999999&sort=desc&apikey=${networkConfig.apikey}`,
   );
   console.log("data123: ", data);
   return data;

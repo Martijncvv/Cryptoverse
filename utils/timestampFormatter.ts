@@ -4,5 +4,7 @@ export const timestampFormatter = (timestamp: number) => {
     // year: "2-digit",
     month: "short",
     day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   });
 };

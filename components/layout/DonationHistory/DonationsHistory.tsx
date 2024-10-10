@@ -12,11 +12,15 @@ interface DonationsHistoryProps {
   // TODO
 }
 
-const address = "0x8DD8cC8D942C40679D84A6C0476279DB0d12016a";
+const accountAddress = "0x30C7E39F0dCDCd7358714856Ae8BA24830cc6f10"; // testAddress
 const networkId = "ethereum";
 export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, error } = useAddressTxs(address, networkId, page);
+  const { data, isLoading, error } = useAddressTxs(
+    accountAddress,
+    networkId,
+    page,
+  );
 
   if (error) return <p>An error occurred: {error.message}</p>;
 
@@ -38,9 +42,9 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
         <View style={styles.header}>
           <TextSF style={styles.headerText}>Donor</TextSF>
           <TextSF style={styles.headerText}>Date</TextSF>
-          <TextSF style={styles.headerText}>Network</TextSF>
-          <TextSF style={styles.headerText}>Qty</TextSF>
-          <TextSF style={styles.headerText}>Total</TextSF>
+          <TextSF style={styles.headerText}>USDC</TextSF>
+          <TextSF style={styles.headerText}>Packages</TextSF>
+          {/*<TextSF style={styles.headerText}>Total</TextSF>*/}
         </View>
         {/*LIST*/}
         {data?.result?.map((tx: any) => (

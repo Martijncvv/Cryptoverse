@@ -5,6 +5,7 @@ import { formatTxExplorerLink } from "@/utils/formatTxExplorerLink";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { TextSF } from "@/components/ui/TextSF";
+import { MINT_OPTIONS } from "@/components/layout/DonateModal/MintContainer";
 
 interface TxInfoRowProps {
   tx: any;
@@ -24,6 +25,21 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
     return (parseFloat(wei) / 10 ** 18).toFixed(3);
   };
 
+  const formatToUsdc = (functionInput: string) => {
+    // find mindoption based on functionInput\
+    const mintOption = MINT_OPTIONS.find(
+      (option) => option.mintInput === functionInput,
+    );
+    return mintOption?.usdc;
+  };
+  const formatToPackages = (functionInput: string) => {
+    // find mindoption based on functionInput\
+    const mintOption = MINT_OPTIONS.find(
+      (option) => option.mintInput === functionInput,
+    );
+    return mintOption?.packages;
+  };
+
   return (
     <Pressable
       onPress={() => handleRowClick(tx.hash, networkId)}
@@ -32,9 +48,9 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
     >
       <TextSF style={styles.rowText}>{addressFormatter(tx.from)}</TextSF>
       <TextSF style={styles.rowText}>{timestampFormatter(tx.timeStamp)}</TextSF>
-      <TextSF style={styles.rowText}>Ethereum</TextSF>
-      <TextSF style={styles.rowText}>{formatWeiToEth(tx.value)}</TextSF>
-      <TextSF style={styles.rowText}>{tx.nonce}</TextSF>
+      <TextSF style={styles.rowText}>{formatToUsdc(tx.input)}</TextSF>
+      <TextSF style={styles.rowText}>{formatToPackages(tx.input)}</TextSF>
+      {/*<TextSF style={styles.rowText}>{tx.nonce}</TextSF>*/}
     </Pressable>
   );
 };

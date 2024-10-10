@@ -35,24 +35,30 @@ const TOKEN_ID_COST: Record<TokenId, number> = {
 };
 const DECIMALS = 6;
 
-const mintOptions = [
+export const MINT_OPTIONS = [
   {
     id: "1",
     mintId: "0" as TokenId,
     packages: "1",
-    usdc: "20",
+    usdc: "10",
+    mintInput:
+      "0x1b2ef1ca0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   },
   {
     id: "2",
     mintId: "1" as TokenId,
-    packages: "5",
-    usdc: "100",
+    packages: "2",
+    usdc: "20",
+    mintInput:
+      "0x1b2ef1ca00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001",
   },
   {
     id: "3",
-    mintId: "1" as TokenId,
-    packages: "10",
-    usdc: "200",
+    mintId: "2" as TokenId,
+    packages: "5",
+    usdc: "50",
+    mintInput:
+      "0x1b2ef1ca00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001",
   },
 ];
 
@@ -66,7 +72,7 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
   const getMintId = (id: string) => {
-    return mintOptions.find((option) => option.id === id)?.mintId;
+    return MINT_OPTIONS.find((option) => option.id === id)?.mintId;
   };
 
   const {
@@ -156,7 +162,6 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   };
 
   const handleOptionPress = (id: TokenId) => {
-    // openModal("confirmDonation"); //todo test
     setSelectedId(id);
   };
 
@@ -171,6 +176,9 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
           "An error occurred",
         type: "error",
       });
+      setTimeout(() => {
+        setToastAlert(null);
+      }, 5000);
     } else if (isSuccessMint) {
       setToastAlert({ text: "Mint confirmed", type: "success" });
       openModal("confirmDonation");
@@ -199,10 +207,6 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
         text: "Approval is pending",
         type: "pending",
       });
-    } else {
-      setTimeout(() => {
-        setToastAlert(null);
-      }, 2000);
     }
   }, [
     errorApprove,
@@ -223,7 +227,7 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
         <Text style={styles.subTitle}>Total includes transaction fees</Text>
       </View>
       <View style={styles.donationOptionsField}>
-        {mintOptions.map((option) => (
+        {MINT_OPTIONS.map((option) => (
           <MintOption
             key={option.id}
             option={option}

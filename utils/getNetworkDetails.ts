@@ -2,6 +2,8 @@ export const getNetworkDetails = (
   platformId: string,
 ): { domain: string; explorerUrl: string } | null => {
   let domain: string;
+  let usdcContractAddress: string
+  let apikey: string
   let explorerUrl: string;
 
   switch (platformId) {
@@ -16,6 +18,8 @@ export const getNetworkDetails = (
     case "base":
       domain = "api.basescan.org";
       explorerUrl = "basescan.org";
+            usdcContractAddress: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
+            apikey: "WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX";
       break;
     case "blast":
       domain = "api.blastscan.io";

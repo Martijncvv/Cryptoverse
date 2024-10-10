@@ -64,7 +64,7 @@ export const Toast: React.FC<ToastProps> = ({ text, type }) => {
     <View style={styles.container}>
       <Ionicons
         name={typeMap[type].icon}
-        size={Styles.typography.fontSize.xs}
+        size={Styles.typography.fontSize.md}
         color={typeMap[type].text}
       />
       <TextSF style={[styles.text]}>{text}</TextSF>
