@@ -8,8 +8,8 @@ export const HeroContainer = () => {
   const isMobileView = windowWidth < 724;
   const styles = StyleSheet.create({
     container: {
-      marginTop: 85,
-      marginBottom: 85,
+      marginTop: isMobileView ? 100 : 50,
+      marginBottom: isMobileView ? 100 : 50,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

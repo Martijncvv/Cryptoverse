@@ -23,7 +23,7 @@ export const ConfirmDonationModal: React.FC<ModalProps> = ({
       <View style={styles.contentContainer}>
         <Image
           style={styles.image}
-          source={require("@/assets/images/color_gears_gop.png")}
+          source={require("@/assets/images/color-gears-gop.png")}
         />
         <TextSF style={styles.modalTitle}>Thanks for your donation!</TextSF>
         <TextSF style={styles.description}>

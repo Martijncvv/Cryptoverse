@@ -20,7 +20,7 @@ export const FundCardPlaceholder = ({}) => {
 
       borderWidth: 1,
       borderStyle: "dashed",
-      borderColor: Colors.neutrals.black,
+      borderColor: Colors.base.black,
       borderRadius: Styles.borderRadius.md,
       backgroundColor: Colors.neutrals.light,
     },

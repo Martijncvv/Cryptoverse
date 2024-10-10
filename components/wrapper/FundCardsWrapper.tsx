@@ -1,12 +1,24 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import { FundCard } from "@/components/layout/FundCard/FundCard";
 import { Styles } from "@/assets/constants/Styles";
-import { FundCardPlaceholder } from "@/components/layout/FundCard/FundCardPlaceholder";
 import { useRouter } from "expo-router";
 
 export const FundCardsWrapper = () => {
   const router = useRouter();
+  const { width: windowWidth } = useWindowDimensions();
+  const isMobileView = windowWidth < 724;
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: "row",
+      flexWrap: "wrap",
+      paddingHorizontal: isMobileView ? 0 : 72,
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+      gap: Styles.spacing.xxxl,
+    },
+  });
   return (
     <View style={styles.container}>
       <FundCard
@@ -27,18 +39,7 @@ export const FundCardsWrapper = () => {
         onPress={() => router.push("FundingDetailsScreen")}
       />
 
-      <FundCardPlaceholder />
+      {/*<FundCardPlaceholder />*/}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    gap: Styles.spacing.xxxl,
-  },
-});

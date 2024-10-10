@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling&#10;- hamburger menu">
-      <change afterPath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/ModalProvider.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal">
+      <change afterPath="$PROJECT_DIR$/components/ui/Cloud.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/DonateModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProjectDetailsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/ProjectDetailsModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/ButtonSF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modals/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/DonateModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +223,8 @@
       <workItem from="1728400251315" duration="7332000" />
       <workItem from="1728417252221" duration="3653000" />
       <workItem from="1728463507071" duration="15000" />
-      <workItem from="1728499951064" duration="9482000" />
+      <workItem from="1728499951064" duration="10269000" />
+      <workItem from="1728580184342" duration="4875000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -486,14 +490,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728420528828</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal">
+      <option name="closed" value="true" />
+      <created>1728509529239</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1728509529239</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup donations page&#10;- setup react query" />
     <MESSAGE value="- setup DonationHistory&#10;- setup api" />
     <MESSAGE value="- setup modal, detailed info" />
     <MESSAGE value="- finish modal" />
@@ -518,6 +529,7 @@
     <MESSAGE value="- setup styling, hovering, selection etc." />
     <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
     <MESSAGE value="- styling&#10;- hamburger menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="- styling&#10;- hamburger menu" />
+    <MESSAGE value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
+    <option name="LAST_COMMIT_MESSAGE" value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
   </component>
 </project>

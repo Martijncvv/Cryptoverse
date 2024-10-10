@@ -13,7 +13,8 @@ import { Colors } from "@/assets/constants/Colors";
 
 export const HeaderMenu = () => {
   const { width: windowWidth } = useWindowDimensions();
-  if (windowWidth < 724) {
+  const isMobileView = windowWidth < 724;
+  if (isMobileView) {
     return null;
   }
 
@@ -34,9 +35,16 @@ export const HeaderMenu = () => {
     },
 
     sendaLogo: {
-      flexBasis: windowWidth > 600 ? 50 : "100%",
-      resizeMode: "contain",
+      flexDirection: "row",
       marginRight: "auto",
+      flexBasis: isMobileView ? "100%" : 50,
+      resizeMode: "contain",
+    },
+    donateNow: {
+      flexDirection: "row",
+      marginRight: "auto",
+      flexBasis: isMobileView ? "100%" : 50,
+      resizeMode: "contain",
     },
     walletField: {
       height: 50,
@@ -63,7 +71,9 @@ export const HeaderMenu = () => {
       <Pressable onPress={() => router.push("")} style={styles.sendaLogo}>
         <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
-
+      <View style={styles.donateNow}>
+        <Image source={require("@/assets/images/donate-now-label.png")} />
+      </View>
       <MenuItem
         text="Fundraisings Results"
         onPress={() => router.push("FundingDetailsScreen")}

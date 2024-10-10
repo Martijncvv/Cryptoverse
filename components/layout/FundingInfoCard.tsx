@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Platform, Share, StyleSheet, View } from "react-native";
 import { Colors } from "@/assets/constants/Colors";
 import { Styles } from "@/assets/constants/Styles";
 import { ProgressBar } from "@/components/layout/FundCard/ProgressBar";
@@ -26,6 +26,47 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
 }) => {
   const { openModal } = useModal();
 
+  const handleShare = async () => {
+    const shareData = {
+      title: `Share: ${title}`,
+      text: `Check out this onchain fundraising: ${title}\n\nDonate now to support this cause!`,
+      url: window.location.href,
+    };
+
+    if (Platform.OS === "web") {
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          console.log("Shared successfully");
+        } catch (error) {
+          console.error("Error sharing:", error);
+        }
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`;
+        window.open(shareUrl, "_blank");
+      }
+    } else {
+      try {
+        const result = await Share.share({
+          message: `Check out this fundraising cause: ${title}\n\nClose Date: ${closeDate}\n\n${description}\n\nDonate now to support this cause!`,
+          title: `Share: ${title}`,
+        });
+        if (result.action === Share.sharedAction) {
+          console.log(
+            result.activityType
+              ? `Shared with activity type: ${result.activityType}`
+              : "Shared successfully",
+          );
+        } else if (result.action === Share.dismissedAction) {
+          console.log("Share dismissed");
+        }
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -52,7 +93,7 @@ export const FundingInfoCard: React.FC<FundingInfoCardProps> = ({
         <ButtonSF
           text="Share"
           color={"whiteOutlined"}
-          onPress={() => console.log("Donate")}
+          onPress={handleShare}
           icon={"share-social-outline"}
           iconPosition={"pre"}
         />

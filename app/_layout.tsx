@@ -71,7 +71,7 @@ export default function RootLayout() {
   const queryClient = new QueryClient();
   const router = useRouter();
   const { width: windowWidth } = useWindowDimensions();
-  const isBurgerMenu = windowWidth < 724;
+  const isMobileView = windowWidth < 724;
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -111,7 +111,7 @@ export default function RootLayout() {
 
   const CustomHeader = ({ navigation }) => (
     <View style={styles.header}>
-      <Pressable style={styles.headerLeft} onPress={() => router.push("index")}>
+      <Pressable style={styles.headerLeft} onPress={() => router.push("")}>
         <Image
           source={require("@/assets/images/senda-logo.png")}
           style={styles.logo}
@@ -127,7 +127,7 @@ export default function RootLayout() {
     </View>
   );
 
-  if (isBurgerMenu) {
+  if (isMobileView) {
     return (
       <NavigationWrapper>
         <GestureHandlerRootView style={{ flex: 1 }}>
@@ -149,7 +149,7 @@ export default function RootLayout() {
                 drawerLabel: "Home",
                 drawerIcon: () => (
                   <Ionicons
-                    name={getIconName("HomeScreen")}
+                    name={"home-outline"}
                     size={24}
                     color={Colors.principal.default}
                   />
@@ -163,7 +163,7 @@ export default function RootLayout() {
                 drawerLabel: "Funding Details",
                 drawerIcon: () => (
                   <Ionicons
-                    name={getIconName("FundingDetailsScreen")}
+                    name={"cash-outline"}
                     size={24}
                     color={Colors.principal.default}
                   />
@@ -244,14 +244,3 @@ const styles = StyleSheet.create({
     color: Colors.principal.default,
   },
 });
-
-const getIconName = (screenName: string) => {
-  switch (screenName) {
-    case "HomeScreen":
-      return "home-outline";
-    case "FundingDetailsScreen":
-      return "cash-outline";
-    default:
-      return "document-outline";
-  }
-};

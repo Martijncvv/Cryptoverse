@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontWeight: Styles.typography.fontWeight.extraBold,
   },
   contentContainer: {
-    flexShrink: 1,
+    flex: 1,
     gap: Styles.spacing.lg,
   },
 });

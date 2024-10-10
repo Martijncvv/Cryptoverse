@@ -46,7 +46,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
     },
     container: {
       maxWidth: isMobileView ? "100%" : "80%",
-      maxHeight: "80%",
+      maxHeight: "90%",
       marginTop: isMobileView ? "auto" : undefined,
       padding: isMobileView ? Styles.spacing.xl : Styles.spacing.xxxl,
       borderTopLeftRadius: isMobileView ? Styles.borderRadius.lg : undefined,

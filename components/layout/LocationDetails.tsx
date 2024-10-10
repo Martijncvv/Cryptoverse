@@ -12,6 +12,7 @@ interface LocationDetailsProps {
 
 export const LocationDetails: React.FC<LocationDetailsProps> = () => {
   const { width: windowWidth } = useWindowDimensions();
+  const isMobileView = windowWidth < 724;
 
   const styles = StyleSheet.create({
     container: {
@@ -21,7 +22,7 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
       gap: Styles.spacing.xxxl,
     },
     map: {
-      width: windowWidth < 724 ? "100%" : "40%",
+      width: isMobileView ? "100%" : "40%",
       height: "auto",
       aspectRatio: 1,
       borderRadius: Styles.borderRadius.md,
@@ -29,7 +30,7 @@ export const LocationDetails: React.FC<LocationDetailsProps> = () => {
       borderColor: Colors.base.black,
     },
     locationDetails: {
-      width: windowWidth < 724 ? "100%" : "50%",
+      width: isMobileView ? "100%" : "50%",
       flexDirection: "column",
     },
     locationName: {

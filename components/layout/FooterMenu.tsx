@@ -6,7 +6,6 @@ import { TextSF } from "@/components/ui/TextSF";
 export const FooterMenu = () => {
   const styles = StyleSheet.create({
     container: {
-      marginTop: Styles.spacing.xxl,
       height: 70,
       width: "100%",
       display: "flex",
