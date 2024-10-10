@@ -4,8 +4,8 @@ import { Colors } from "@/assets/constants/Colors";
 import { TextSF } from "@/components/ui/TextSF";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-interface ToastProps {
-  text: any;
+export interface ToastProps {
+  text: string;
   type: ToastType;
 }
 

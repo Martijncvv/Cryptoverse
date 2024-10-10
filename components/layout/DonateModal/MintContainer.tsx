@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 import { CardContainer } from "@/components/layout/CardContainer";
@@ -19,7 +19,7 @@ import { ERC20ApprovalAbi } from "@/assets/contracts/erc20Abi";
 import { TestERC1155Abi } from "@/assets/contracts/erc1155Abi";
 import { useEffect, useState } from "react";
 import { baseSepolia } from "wagmi/chains";
-import { Toast } from "@/components/ui/Toast";
+import { Toast, ToastProps, ToastType } from "@/components/ui/Toast";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { MintOption } from "@/components/layout/DonateModal/MintOption";
 import { useModal } from "@/hooks/ModalProvider";
@@ -61,6 +61,7 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   const { address } = useAccount();
 
   const [selectedId, setSelectedId] = useState<TokenId | null>(null);
+  const [toastAlert, setToastAlert] = useState<ToastProps | null>(null);
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
@@ -82,25 +83,27 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
   } = useWriteContract();
 
   // https://github.com/wevm/wagmi/issues/3219
-  const { isLoading: approvalIsLoading, isSuccess: approvalIsSuccess } =
+  const { isLoading: isLoadingApproval, isSuccess: isSuccessApproval } =
     useWaitForTransactionReceipt({
       chainId: baseSepolia.id,
       hash: hashApprove,
     });
+  const { isLoading: isLoadingMint, isSuccess: isSuccessMint } =
+    useWaitForTransactionReceipt({
+      chainId: baseSepolia.id,
+      hash: hashMint,
+    });
 
   useEffect(() => {
-    if (hashApprove && selectedId && approvalIsSuccess) {
-      // wait 10 seconds
+    if (hashApprove && selectedId && isSuccessApproval) {
       const mintId = getMintId(selectedId);
       if (mintId) {
         setTimeout(() => {
           mint(mintId);
-        }, 10000);
+        }, 1000);
       }
     }
-  }, [approvalIsSuccess]);
-
-  console.log("hashApprove", hashApprove);
+  }, [isSuccessApproval]);
 
   const handleMintPress = () => {
     if (selectedId) {
@@ -109,8 +112,24 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
         approve(mintId);
       }
     } else {
-      Alert.alert("Please select a donation package");
+      handleToastAlert({
+        text: "Please select a donation package",
+        type: "error",
+      });
     }
+  };
+
+  const handleToastAlert = ({
+    text,
+    type,
+  }: {
+    text: string;
+    type: ToastType;
+  }) => {
+    setToastAlert({ text, type });
+    setTimeout(() => {
+      setToastAlert(null);
+    }, 2000);
   };
 
   const approve = async (id: TokenId) => {
@@ -136,18 +155,65 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
     });
   };
 
-  console.log("approvalIsSuccess", approvalIsSuccess);
-  console.log("ensAvatar", ensAvatar);
-
   const handleOptionPress = (id: TokenId) => {
-    openModal("confirmDonation"); //test
+    // openModal("confirmDonation"); //todo test
     setSelectedId(id);
   };
 
   useEffect(() => {
-    if (approvalIsSuccess) {
-    } // todo
-  }, [approvalIsSuccess]);
+    if (errorApprove || errorMint) {
+      setToastAlert({
+        text:
+          (errorApprove as BaseError)?.shortMessage ||
+          errorApprove?.message ||
+          (errorMint as BaseError)?.shortMessage ||
+          errorMint?.message ||
+          "An error occurred",
+        type: "error",
+      });
+    } else if (isSuccessMint) {
+      setToastAlert({ text: "Mint confirmed", type: "success" });
+      openModal("confirmDonation");
+    } else if (isLoadingMint) {
+      setToastAlert({
+        text: "Waiting for mint confirmation",
+        type: "pending",
+      });
+    } else if (isPendingMint) {
+      setToastAlert({
+        text: "Mint is pending",
+        type: "pending",
+      });
+    } else if (isSuccessApproval) {
+      setToastAlert({
+        text: "Approval confirmed",
+        type: "success",
+      });
+    } else if (isLoadingApproval) {
+      setToastAlert({
+        text: "Waiting for approval confirmation",
+        type: "pending",
+      });
+    } else if (isPendingApprove) {
+      setToastAlert({
+        text: "Approval is pending",
+        type: "pending",
+      });
+    } else {
+      setTimeout(() => {
+        setToastAlert(null);
+      }, 2000);
+    }
+  }, [
+    errorApprove,
+    errorMint,
+    isSuccessMint,
+    isLoadingMint,
+    isPendingMint,
+    isSuccessApproval,
+    isLoadingApproval,
+    isPendingApprove,
+  ]);
 
   return (
     <CardContainer gap={Styles.spacing.lg}>
@@ -167,26 +233,13 @@ export const MintContainer: React.FC<MintContainerProps> = ({}) => {
         ))}
       </View>
 
-      <ButtonSF
-        onPress={handleMintPress}
-        text={"Mint"}
-        disabled={!selectedId}
-      />
-      {isPendingApprove && (
-        <Toast text="Transaction is pending..." type="pending" />
-      )}
-      {approvalIsLoading && (
-        <Toast text={"Waiting for confirmation..."} type="pending" />
-      )}
-      {approvalIsSuccess && (
-        <Toast text={"Transaction confirmed."} type="success" />
-      )}
-      {errorApprove && (
-        <Toast
-          text={
-            (errorApprove as BaseError).shortMessage || errorApprove.message
-          }
-          type="error"
+      {toastAlert ? (
+        <Toast text={toastAlert.text} type={toastAlert.type} />
+      ) : (
+        <ButtonSF
+          onPress={handleMintPress}
+          text={"Mint"}
+          disabled={!selectedId}
         />
       )}
     </CardContainer>

@@ -20,6 +20,7 @@ import { getChainLogo } from "@/utils/getChainLogo";
 import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
 import { useToast } from "@/hooks/ToastProvider";
 import { ConnectAccountField } from "@/components/onchain/ConnectAccountField";
+import { baseSepolia } from "wagmi/chains";
 
 interface AccountFieldProps {
   hasLogoutIcon?: boolean;
@@ -93,7 +94,7 @@ export const AccountField: React.FC<AccountFieldProps> = ({
             ) : null}
           </Pressable>
 
-          {chainId !== base?.id ? (
+          {chainId !== baseSepolia?.id ? ( // todo set to BAASE
             <ButtonSF
               onPress={handleSwitchChain}
               text={"Wrong network, go Based"}

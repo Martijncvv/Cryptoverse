@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal">
-      <change afterPath="$PROJECT_DIR$/components/ui/Cloud.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- sharing functionality&#10;- moving clouds, styling fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modals/DonateModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/modals/DonateModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Toast.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +216,7 @@
       <workItem from="1728417252221" duration="3653000" />
       <workItem from="1728463507071" duration="15000" />
       <workItem from="1728499951064" duration="10269000" />
-      <workItem from="1728580184342" duration="4875000" />
+      <workItem from="1728580184342" duration="7564000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -498,14 +490,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728509529239</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="- sharing functionality&#10;- moving clouds, styling fixes">
+      <option name="closed" value="true" />
+      <created>1728585183873</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1728585183873</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup DonationHistory&#10;- setup api" />
     <MESSAGE value="- setup modal, detailed info" />
     <MESSAGE value="- finish modal" />
     <MESSAGE value="- setup: onchain" />
@@ -530,6 +529,7 @@
     <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
     <MESSAGE value="- styling&#10;- hamburger menu" />
     <MESSAGE value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
-    <option name="LAST_COMMIT_MESSAGE" value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
+    <MESSAGE value="- sharing functionality&#10;- moving clouds, styling fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- sharing functionality&#10;- moving clouds, styling fixes" />
   </component>
 </project>

@@ -86,7 +86,7 @@ export default function RootLayout() {
     return null;
   }
 
-  const NavigationWrapper = ({ children }) => (
+  const NavigationWrapper = ({ children }: { children: any }) => (
     <ToastProvider>
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
@@ -109,7 +109,7 @@ export default function RootLayout() {
     );
   };
 
-  const CustomHeader = ({ navigation }) => (
+  const CustomHeader = ({ navigation }: { navigation: any }) => (
     <View style={styles.header}>
       <Pressable style={styles.headerLeft} onPress={() => router.push("")}>
         <Image

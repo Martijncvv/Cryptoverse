@@ -40,12 +40,12 @@ export const HeaderMenu = () => {
       flexBasis: isMobileView ? "100%" : 50,
       resizeMode: "contain",
     },
-    donateNow: {
-      flexDirection: "row",
-      marginRight: "auto",
-      flexBasis: isMobileView ? "100%" : 50,
-      resizeMode: "contain",
-    },
+    // donateNow: {
+    //   flexDirection: "row",
+    //   marginRight: "auto",
+    //   flexBasis: isMobileView ? "100%" : 50,
+    //   resizeMode: "contain",
+    // },
     walletField: {
       height: 50,
       width: 50,
@@ -71,9 +71,9 @@ export const HeaderMenu = () => {
       <Pressable onPress={() => router.push("")} style={styles.sendaLogo}>
         <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
-      <View style={styles.donateNow}>
-        <Image source={require("@/assets/images/donate-now-label.png")} />
-      </View>
+      {/*<View style={styles.donateNow}>*/}
+      {/*  <Image source={require("@/assets/images/donate-now-label.png")} />*/}
+      {/*</View>*/}
       <MenuItem
         text="Fundraisings Results"
         onPress={() => router.push("FundingDetailsScreen")}
