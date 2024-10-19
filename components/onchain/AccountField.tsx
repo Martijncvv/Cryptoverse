@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { TextSF } from "@/components/ui/TextSF";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { Styles } from "@/assets/constants/Styles";
 import { base } from "viem/chains";
-// import type {
-//   Basename,
-//   GetName,
-// } from "@coinbase/onchainkit/src/identity/types";
-// import { getChainPublicClient } from "@coinbase/onchainkit/src/network/getChainPublicClient";
-// import { convertReverseNodeToBytes } from "@coinbase/onchainkit/src/identity/utils/convertReverseNodeToBytes";
-// import L2ResolverAbi from "@coinbase/onchainkit/src/identity/abis/L2ResolverAbi";
-// import { RESOLVER_ADDRESSES_BY_CHAIN_ID } from "@coinbase/onchainkit/src/identity/constants";
 import { addressFormatter } from "@/utils/addressFormatter";
 import { Colors } from "@/assets/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { getChainLogo } from "@/utils/getChainLogo";
-import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
+import {
+  useAccount,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+  useSwitchChain,
+} from "wagmi";
 import { useToast } from "@/hooks/ToastProvider";
 import { ConnectAccountField } from "@/components/onchain/ConnectAccountField";
-import { baseSepolia } from "wagmi/chains";
+import { Address } from "viem";
+import { getAccountName } from "@/utils/getAccountName";
 
 interface AccountFieldProps {
   hasLogoutIcon?: boolean;
@@ -29,26 +28,16 @@ interface AccountFieldProps {
 export const AccountField: React.FC<AccountFieldProps> = ({
   hasLogoutIcon = true,
 }) => {
+  const [basename, setBasename] = React.useState<string | null>(null);
   const { switchChain } = useSwitchChain();
   const { address, chainId } = useAccount();
   const { displayToast } = useToast();
   const { disconnect } = useDisconnect();
-  const [baseEnsName, setBaseEnsName] = useState<string | null>(null);
-
-  const getBaseEns = async () => {
-    if (!address) return null;
-
-    // const ensName = await getName({ address, chain: base });
-    // if (ensName) {
-    //   setBaseEnsName(ensName);
-    // } else {
-    //   console.log("No Base ENS");
-    // }
-  };
-
-  useEffect(() => {
-    getBaseEns();
-  }, [address]);
+  const { data: ensName } = useEnsName({ address, chainId: base.id });
+  const { data: ensAvatar } = useEnsAvatar({
+    name: ensName!,
+    chainId: base.id,
+  });
 
   const handleDisconnect = () => {
     try {
@@ -72,6 +61,17 @@ export const AccountField: React.FC<AccountFieldProps> = ({
     }
   };
 
+  const getBaseEnsName = async (address: Address) => {
+    const baseName = await getAccountName({ address, chain: base });
+    setBasename(baseName);
+  };
+
+  useEffect(() => {
+    if (address) {
+      getBaseEnsName(address);
+    }
+  }, [address]);
+
   if (!address) {
     return <ConnectAccountField />;
   }
@@ -81,9 +81,17 @@ export const AccountField: React.FC<AccountFieldProps> = ({
       <>
         <View style={styles.container}>
           <Pressable onPress={handleDisconnect} style={styles.accountInfo}>
-            <Image style={styles.tokenIcon} source={getChainLogo(chainId)} />
+            {ensAvatar ? (
+              <Image
+                style={styles.tokenIcon}
+                alt="ENS Avatar"
+                src={ensAvatar}
+              />
+            ) : (
+              <Image style={styles.tokenIcon} source={getChainLogo(chainId)} />
+            )}
             <TextSF style={styles.accountText}>
-              {baseEnsName ? `${baseEnsName}` : addressFormatter(address)}
+              {basename ? `${basename}` : addressFormatter(address)}
             </TextSF>
             {hasLogoutIcon ? (
               <Ionicons
@@ -94,11 +102,21 @@ export const AccountField: React.FC<AccountFieldProps> = ({
             ) : null}
           </Pressable>
 
-          {chainId !== baseSepolia?.id ? ( // todo set to BAASE
-            <ButtonSF
-              onPress={handleSwitchChain}
-              text={"Wrong network, go Based"}
-            />
+          {chainId !== base?.id ? ( // todo set to BAASE
+            <View
+              style={{
+                position: "absolute",
+                top: "120%",
+                left: 0,
+                right: 0,
+                zIndex: 1,
+              }}
+            >
+              <ButtonSF
+                onPress={handleSwitchChain}
+                text={"Switch To Base Network"}
+              />
+            </View>
           ) : null}
         </View>
       </>
@@ -107,27 +125,6 @@ export const AccountField: React.FC<AccountFieldProps> = ({
 
   return null;
 };
-
-// const getName = async ({ address, chain = mainnet }: GetName) => {
-//   let client = getChainPublicClient(chain);
-//
-//   const addressReverseNode = convertReverseNodeToBytes(address, base.id);
-//   try {
-//     const basename = await client.readContract({
-//       abi: L2ResolverAbi,
-//       address: RESOLVER_ADDRESSES_BY_CHAIN_ID[chain.id],
-//       functionName: "name",
-//       args: [addressReverseNode],
-//     });
-//     if (basename) {
-//       return basename as Basename;
-//     }
-//   } catch (error) {
-//     console.error("Error getting ENS name");
-//     console.error(error);
-//     return null;
-//   }
-// };
 
 const styles = StyleSheet.create({
   container: {

@@ -9,7 +9,7 @@ interface CrossButtonProps {
 
 export const CrossButton: React.FC<CrossButtonProps> = ({ onPress }) => {
   return (
-    <Pressable onPress={onPress} style={styles.closeButton}>
+    <Pressable onPress={onPress} style={styles.closeButton} hitSlop={20}>
       <Ionicons
         name={"close"}
         size={Styles.typography.fontSize.xl}

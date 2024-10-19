@@ -6,7 +6,7 @@ import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, http } from "@wagmi/core";
 import { baseSepolia } from "wagmi/chains";
-import { coinbaseWallet } from "wagmi/connectors";
+import { coinbaseWallet, walletConnect } from "wagmi/connectors";
 import { WagmiProvider } from "wagmi";
 import { base } from "viem/chains";
 import {
@@ -53,11 +53,13 @@ declare module "wagmi" {
     config: typeof config;
   }
 }
+const projectId = "ff8280abe8d88f732eb4946fe6349acc";
 
 export const config = createConfig({
   chains: [baseSepolia, base],
   connectors: [
     coinbaseWallet({ appName: "SendaFund", preference: "smartWalletOnly" }),
+    walletConnect({ projectId }),
   ],
   transports: {
     [baseSepolia.id]: http(),
@@ -111,7 +113,11 @@ export default function RootLayout() {
 
   const CustomHeader = ({ navigation }: { navigation: any }) => (
     <View style={styles.header}>
-      <Pressable style={styles.headerLeft} onPress={() => router.push("")}>
+      <Pressable
+        style={styles.headerLeft}
+        onPress={() => router.push("")}
+        hitSlop={20}
+      >
         <Image
           source={require("@/assets/images/senda-logo.png")}
           style={styles.logo}
@@ -216,7 +222,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: Styles.spacing.md,
     backgroundColor: Colors.base.white,
-    overflow: "hidden",
   },
   headerLeft: {
     flex: 1,

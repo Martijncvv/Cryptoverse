@@ -9,6 +9,7 @@ export default function Index() {
   const isMobileView = windowWidth < 724;
 
   const width = windowWidth * 0.2;
+  const cloudSize = windowWidth * (1080 / windowWidth);
   console.log("width", width);
   return (
     <ScreenWrapper
@@ -27,31 +28,38 @@ export default function Index() {
         <FundCardsWrapper />
 
         <Cloud
-          size={windowWidth * 0.2}
+          size={cloudSize * 0.2}
           speed={15}
           startPosition={0}
           topOffset={"0%"}
           direction="right"
         />
         <Cloud
-          size={windowWidth * 0.2}
-          speed={10}
-          startPosition={-200}
-          topOffset={"40%"}
-          direction="right"
-        />
-        <Cloud
-          size={windowWidth * 0.4}
+          size={cloudSize * 0.4}
           speed={15}
-          startPosition={windowWidth * 0.8}
-          topOffset={"20%"}
+          startPosition={cloudSize * 0.8}
+          topOffset={"5%"}
           direction="left"
         />
         <Cloud
-          size={windowWidth * 0.5}
+          size={cloudSize * 0.2}
+          speed={10}
+          startPosition={-200}
+          topOffset={"20%"}
+          direction="right"
+        />
+        <Cloud
+          size={cloudSize * 0.2}
+          speed={12}
+          startPosition={200}
+          topOffset={"45%"}
+          direction="right"
+        />
+        <Cloud
+          size={cloudSize * 0.5}
           speed={15}
-          startPosition={windowWidth * 0.3}
-          topOffset={"80%"}
+          startPosition={cloudSize * 0.3}
+          topOffset={"70%"}
           direction="left"
         />
       </View>

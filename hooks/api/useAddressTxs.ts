@@ -31,7 +31,7 @@ const fetchAddressTxs = async (
   const { data } = await axios.get(
     `https://${networkConfig.domain}/api?module=account&action=txlist&address=${TEST_1155_CONTRACT_ADDRESS}&page=1&offset=30&startblock=0&endblock=99999999&sort=desc&apikey=${networkConfig.apikey}`,
   );
-  console.log("data123: ", data);
+
   return data;
 };
 

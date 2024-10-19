@@ -12,7 +12,7 @@ export const MoreDetailsButton: React.FC<MoreDetailsButtonProps> = ({
   onPress,
 }) => {
   return (
-    <Pressable style={styles.moreDetailsButton} onPress={onPress}>
+    <Pressable style={styles.moreDetailsButton} onPress={onPress} hitSlop={20}>
       <TextSF style={styles.moreDetailsText}>More Details</TextSF>
       <Ionicons
         name="arrow-forward-circle-outline"

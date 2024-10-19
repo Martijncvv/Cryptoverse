@@ -15,8 +15,8 @@ import {
   BASE_SEPOLIA_USDC_CONTRACT_ADDRESS,
   TEST_1155_CONTRACT_ADDRESS,
 } from "@/assets/constants/Constants";
-import { ERC20ApprovalAbi } from "@/assets/contracts/erc20Abi";
-import { TestERC1155Abi } from "@/assets/contracts/erc1155Abi";
+import { ERC20ApprovalAbi } from "@/assets/abis/erc20Abi";
+import { TestERC1155Abi } from "@/assets/abis/erc1155Abi";
 import { useEffect, useState } from "react";
 import { baseSepolia } from "wagmi/chains";
 import { Toast, ToastProps, ToastType } from "@/components/ui/Toast";

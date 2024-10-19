@@ -1,4 +1,5 @@
 import {
+  Animated,
   Image,
   Pressable,
   StyleSheet,
@@ -10,13 +11,35 @@ import { Styles } from "@/assets/constants/Styles";
 import { useRouter } from "expo-router";
 import { AccountField } from "@/components/onchain/AccountField";
 import { Colors } from "@/assets/constants/Colors";
+import { useEffect, useRef } from "react";
 
 export const HeaderMenu = () => {
   const { width: windowWidth } = useWindowDimensions();
+  const flickerAnimation = useRef(new Animated.Value(1)).current;
+
   const isMobileView = windowWidth < 724;
   if (isMobileView) {
     return null;
   }
+
+  useEffect(() => {
+    const flickerSequence = Animated.sequence([
+      Animated.timing(flickerAnimation, {
+        toValue: 0.1,
+        duration: 1500,
+        useNativeDriver: true,
+      }),
+      Animated.timing(flickerAnimation, {
+        toValue: 1,
+        duration: 1500,
+        useNativeDriver: true,
+      }),
+    ]);
+
+    Animated.loop(flickerSequence).start();
+
+    return () => flickerAnimation.stopAnimation();
+  }, []);
 
   const router = useRouter();
 
@@ -36,16 +59,16 @@ export const HeaderMenu = () => {
 
     sendaLogo: {
       flexDirection: "row",
+      flexBasis: isMobileView ? "100%" : 50,
+      resizeMode: "contain",
+    },
+    donateNowField: {
+      flexDirection: "row",
+      marginLeft: Styles.spacing.xl,
       marginRight: "auto",
       flexBasis: isMobileView ? "100%" : 50,
       resizeMode: "contain",
     },
-    // donateNow: {
-    //   flexDirection: "row",
-    //   marginRight: "auto",
-    //   flexBasis: isMobileView ? "100%" : 50,
-    //   resizeMode: "contain",
-    // },
     walletField: {
       height: 50,
       width: 50,
@@ -57,13 +80,6 @@ export const HeaderMenu = () => {
       height: 20,
       borderRadius: 15,
     },
-
-    accountField: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: Styles.spacing.sm,
-    },
   });
 
   return (
@@ -71,9 +87,11 @@ export const HeaderMenu = () => {
       <Pressable onPress={() => router.push("")} style={styles.sendaLogo}>
         <Image source={require("@/assets/images/senda-logo.png")} />
       </Pressable>
-      {/*<View style={styles.donateNow}>*/}
-      {/*  <Image source={require("@/assets/images/donate-now-label.png")} />*/}
-      {/*</View>*/}
+      <Animated.View
+        style={[styles.donateNowField, { opacity: flickerAnimation }]}
+      >
+        <Image source={require("@/assets/images/donate-now-label.png")} />
+      </Animated.View>
       <MenuItem
         text="Fundraisings Results"
         onPress={() => router.push("FundingDetailsScreen")}

@@ -7,6 +7,7 @@ import { Pagination } from "@/components/layout/DonationHistory/Pagination";
 import { TxInfoRow } from "@/components/layout/DonationHistory/TxInfoRow";
 import { MIN_WIDTH } from "@/assets/constants/Constants";
 import { TextSF } from "@/components/ui/TextSF";
+import { MINT_OPTIONS } from "@/components/layout/DonateModal/MintContainer";
 
 interface DonationsHistoryProps {
   // TODO
@@ -29,7 +30,9 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
     setPage(newPage);
   };
 
-  console.log("data: ", data);
+  const formattedData = data?.result?.filter((tx: any) => {
+    return MINT_OPTIONS.some((option) => option.mintInput === tx.input);
+  });
 
   return (
     <View style={styles.container}>
@@ -47,11 +50,11 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
           {/*<TextSF style={styles.headerText}>Total</TextSF>*/}
         </View>
         {/*LIST*/}
-        {data?.result?.map((tx: any) => (
+        {formattedData?.map((tx: any) => (
           <TxInfoRow key={tx.hash} tx={tx} networkId={networkId} />
         ))}
         {/*PLACEHOLDER*/}
-        {data?.result?.length === 0 ? (
+        {formattedData?.length === 0 ? (
           <TextSF style={styles.headerText}>No donations found</TextSF>
         ) : null}
       </View>

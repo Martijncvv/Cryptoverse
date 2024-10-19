@@ -1,3 +1,6 @@
+import { baseSepolia } from "wagmi/chains";
+import { base } from "viem/chains";
+
 export const SHARED_API_KEY_ETHERSCAN = "9Z1G1NN35M1URWAANE5CBZ2WJRJMABDCC8";
 
 export const MIN_WIDTH = 300;
@@ -11,6 +14,10 @@ export const TEST_1155_CONTRACT_ADDRESS =
 
 // const MARTY_CFLY_WALLET =
 //   "0x6c49C9975dF28670D86cdab96A560Da289814A43" as `0x${string}`;
+export const RESOLVER_ADDRESSES_BY_CHAIN_ID: any = {
+  [baseSepolia.id]: "0x6533C94869D28fAA8dF77cc63f9e2b2D6Cf77eBA",
+  [base.id]: "0xC6d566A56A1aFf6508b41f6c90ff131615583BCD",
+};
 
 export const NETWORKS = {
   base: {

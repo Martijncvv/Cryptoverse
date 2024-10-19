@@ -25,17 +25,17 @@ export const TxInfoRow: React.FC<TxInfoRowProps> = ({ tx, networkId }) => {
     return (parseFloat(wei) / 10 ** 18).toFixed(3);
   };
 
-  const formatToUsdc = (functionInput: string) => {
+  const formatToUsdc = (txFunctionInput: string) => {
     // find mindoption based on functionInput\
     const mintOption = MINT_OPTIONS.find(
-      (option) => option.mintInput === functionInput,
+      (option) => option.mintInput === txFunctionInput,
     );
     return mintOption?.usdc;
   };
-  const formatToPackages = (functionInput: string) => {
+  const formatToPackages = (txFunctionInput: string) => {
     // find mindoption based on functionInput\
     const mintOption = MINT_OPTIONS.find(
-      (option) => option.mintInput === functionInput,
+      (option) => option.mintInput === txFunctionInput,
     );
     return mintOption?.packages;
   };
