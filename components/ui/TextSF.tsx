@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from "react-native";
+import { Platform, StyleSheet, Text } from "react-native";
 import { Styles } from "@/assets/constants/Styles";
 import { Colors } from "@/assets/constants/Colors";
 
@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.base.black,
-    fontFamily: "Manrope",
+    fontFamily: Platform.select({
+      android: "Manrope_400Regular",
+      web: "Manrope_400Regular",
+      ios: "Manrope-Regular",
+    }),
   },
 });
