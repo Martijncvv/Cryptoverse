@@ -1,4 +1,3 @@
-import { useFonts } from "expo-font";
 import { ErrorBoundaryProps, Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
@@ -9,6 +8,7 @@ import { baseSepolia } from "wagmi/chains";
 import { coinbaseWallet, walletConnect } from "wagmi/connectors";
 import { WagmiProvider } from "wagmi";
 import { base } from "viem/chains";
+import { Manrope_400Regular, useFonts } from "@expo-google-fonts/manrope";
 import {
   Image,
   Pressable,
@@ -67,24 +67,22 @@ export const config = createConfig({
   },
 });
 
-// TODO: if on wrong network, header gets reakt
-
 export default function RootLayout() {
   const queryClient = new QueryClient();
   const router = useRouter();
   const { width: windowWidth } = useWindowDimensions();
   const isMobileView = windowWidth < 724;
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+  const [fontsLoaded] = useFonts({
+    Manrope_400Regular,
   });
 
   useEffect(() => {
-    if (loaded) {
+    if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [fontsLoaded]);
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 

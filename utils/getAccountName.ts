@@ -40,7 +40,7 @@ export const getAccountName = async ({
     // This is a best effort attempt, so we don't need to do anything here.
   }
 
-  return address;
+  return null;
 };
 
 /**
@@ -53,10 +53,9 @@ const convertReverseNodeToBytes = (address: Address, chainId: number) => {
   const baseReverseNode = namehash(
     `${chainCoinType.toLocaleUpperCase()}.reverse`,
   );
-  const addressReverseNode = keccak256(
+  return keccak256(
     encodePacked(["bytes32", "bytes32"], [baseReverseNode, addressNode]),
   );
-  return addressReverseNode;
 };
 
 /**

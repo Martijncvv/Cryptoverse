@@ -28,9 +28,9 @@ export const TextSF: React.FC<TextSFProps> = ({
 
 const styles = StyleSheet.create({
   text: {
-    // text template
     fontSize: Styles.typography.fontSize.md,
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.base.black,
+    fontFamily: "Manrope",
   },
 });
