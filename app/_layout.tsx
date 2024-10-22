@@ -48,11 +48,6 @@ export const unstable_settings = {
   initialRouteName: "index",
 };
 
-declare module "wagmi" {
-  interface Register {
-    config: typeof config;
-  }
-}
 const projectId = "ff8280abe8d88f732eb4946fe6349acc";
 
 export const config = createConfig({

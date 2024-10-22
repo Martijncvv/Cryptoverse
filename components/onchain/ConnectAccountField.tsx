@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { TextSF } from "@/components/ui/TextSF";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { Styles } from "@/assets/constants/Styles";
-import { config } from "@/app/_layout";
+
 import { Colors } from "@/assets/constants/Colors";
 import { Connector, useConnect } from "wagmi";
 import { ConnectorOption } from "@/components/onchain/ConnectorOption";
@@ -13,7 +13,7 @@ interface ConnectAccountFieldProps {}
 
 export const ConnectAccountField: React.FC<ConnectAccountFieldProps> = () => {
   const { displayToast } = useToast();
-  const { connectors, connect } = useConnect(config);
+  const { connectors, connect } = useConnect();
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const toggleExpand = () => {
