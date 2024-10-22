@@ -30,9 +30,11 @@ export const DonationsHistory: React.FC<DonationsHistoryProps> = () => {
     setPage(newPage);
   };
 
-  const formattedData = data?.result?.filter((tx: any) => {
-    return MINT_OPTIONS.some((option) => option.mintInput === tx.input);
-  });
+  const formattedData = data?.result
+    ? data?.result?.filter((tx: any) => {
+        return MINT_OPTIONS.some((option) => option.mintInput === tx.input);
+      })
+    : [];
 
   return (
     <View style={styles.container}>

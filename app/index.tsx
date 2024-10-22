@@ -8,9 +8,8 @@ export default function Index() {
   const { width: windowWidth } = useWindowDimensions();
   const isMobileView = windowWidth < 724;
 
-  const width = windowWidth * 0.2;
   const cloudSize = windowWidth * (1080 / windowWidth);
-  console.log("width", width);
+
   return (
     <ScreenWrapper
       customStyles={{

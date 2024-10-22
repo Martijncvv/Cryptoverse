@@ -14,7 +14,7 @@ export const FundCardsWrapper = () => {
       flexDirection: "row",
       flexWrap: "wrap",
       paddingHorizontal: isMobileView ? 0 : "12%",
-      justifyContent: "flex-start",
+      justifyContent: isMobileView ? "center" : "flex-start",
       alignItems: "flex-start",
       gap: Styles.spacing.xxxl,
     },
