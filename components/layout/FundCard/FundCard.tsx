@@ -60,7 +60,6 @@ export const FundCard: React.FC<FundCardProps> = ({
       fontWeight: Styles.typography.fontWeight.bold,
       fontSize: Styles.typography.fontSize.xxxl,
       color: Colors.base.black,
-      height: 100,
     },
 
     minDonationText: {
