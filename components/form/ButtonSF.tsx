@@ -5,7 +5,7 @@ import { Colors } from "@/assets/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { TextSF } from "@/components/ui/TextSF";
 
-type ButtonColor = "white" | "black" | "whiteOutlined";
+type ButtonColor = "white" | "black" | "whiteOutlined" | "blackDisabled";
 
 interface ButtonSFProps {
   text?: string;
@@ -49,6 +49,15 @@ const colorSchemes: Record<
     hoverBorder: Colors.principal.light,
     hoverShadow: Colors.principal.medium,
   },
+  blackDisabled: {
+    bg: Colors.neutrals.dark,
+    text: Colors.base.white,
+    border: Colors.neutrals.dark,
+    hoverBg: Colors.neutrals.dark,
+    hoverText: Colors.base.white,
+    hoverBorder: Colors.principal.light,
+    hoverShadow: Colors.principal.medium,
+  },
   whiteOutlined: {
     bg: Colors.base.white,
     text: Colors.base.black,
@@ -72,6 +81,8 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
   textStyle,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const scheme = disabled ? "blackDisabled" : color;
   const {
     bg,
     text: textColor,
@@ -80,7 +91,7 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
     hoverText,
     hoverBorder,
     hoverShadow,
-  } = colorSchemes[color];
+  } = colorSchemes[scheme];
 
   const buttonStyle = {
     ...styles.container,
@@ -106,7 +117,7 @@ export const ButtonSF: React.FC<ButtonSFProps> = ({
     <Pressable
       style={({ pressed }) => [
         buttonStyle,
-        { opacity: disabled || pressed ? 0.7 : 1 },
+        { opacity: pressed ? 0.7 : 1 },
         isHovered && hoverStyle,
       ]}
       onPress={onPress}
