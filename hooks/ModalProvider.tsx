@@ -38,7 +38,12 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
-      {renderModal(modalState.modalType, modalState.modalProps, closeModal)}
+      {renderModal(
+        modalState.modalType,
+        modalState.modalProps,
+        closeModal,
+        openModal,
+      )}
     </ModalContext.Provider>
   );
 };
@@ -47,6 +52,7 @@ const renderModal = (
   modalType: string | null,
   modalProps: any,
   closeModal: () => void,
+  openModal: (modalType: string, modalProps?: any) => void,
 ) => {
   switch (modalType) {
     case "projectDetails":
@@ -54,7 +60,13 @@ const renderModal = (
     case "confirmDonation":
       return <ConfirmDonationModal {...modalProps} onClose={closeModal} />;
     case "donateModal":
-      return <DonateModal {...modalProps} onClose={closeModal} />;
+      return (
+        <DonateModal
+          {...modalProps}
+          onClose={closeModal}
+          openModal={openModal}
+        />
+      );
     default:
       return null;
   }

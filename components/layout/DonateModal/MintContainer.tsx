@@ -22,9 +22,10 @@ import { baseSepolia } from "wagmi/chains";
 import { Toast, ToastProps, ToastType } from "@/components/ui/Toast";
 import { ButtonSF } from "@/components/form/ButtonSF";
 import { MintOption } from "@/components/layout/DonateModal/MintOption";
-import { useModal } from "@/hooks/ModalProvider";
 
-interface MintContainerProps {}
+interface MintContainerProps {
+  openModal: any;
+}
 
 type TokenId = "0" | "1" | "2";
 
@@ -62,8 +63,7 @@ export const MINT_OPTIONS = [
   },
 ];
 
-export const MintContainer: React.FC<MintContainerProps> = ({}) => {
-  const { openModal } = useModal();
+export const MintContainer: React.FC<MintContainerProps> = ({ openModal }) => {
   const { address } = useAccount();
 
   const [selectedId, setSelectedId] = useState<TokenId | null>(null);

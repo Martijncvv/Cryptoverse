@@ -10,12 +10,14 @@ interface ModalProps {
   modalVisible: boolean;
   setModalVisible: (value: boolean) => void;
   onClose: () => void;
+  openModal: any;
 }
 
 export const DonateModal: React.FC<ModalProps> = ({
   modalVisible,
   setModalVisible,
   onClose,
+  openModal,
 }) => {
   return (
     <ModalWrapper
@@ -26,7 +28,7 @@ export const DonateModal: React.FC<ModalProps> = ({
       <View style={styles.contentContainer}>
         <TextSF style={styles.modalTitle}>Choose your preferred method</TextSF>
         <AccountField hasLogoutIcon={false} />
-        <MintContainer />
+        <MintContainer openModal={openModal} />
         <CustomDonationCard />
       </View>
     </ModalWrapper>
