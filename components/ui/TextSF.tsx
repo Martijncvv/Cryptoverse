@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     fontWeight: Styles.typography.fontWeight.normal,
     color: Colors.base.black,
     fontFamily: Platform.select({
-      android: "Manrope_400Regular",
+      android: "",
+      // android: "Manrope_400Regular",
       web: "Manrope_400Regular",
       ios: "Manrope-Regular",
     }),

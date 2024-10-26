@@ -30,6 +30,10 @@ import {
 import { TextSF } from "@/components/ui/TextSF";
 import { ToastProvider } from "@/hooks/ToastProvider";
 import { ModalProvider } from "@/hooks/ModalProvider";
+import * as THREE from "three";
+
+// Ensure THREE is available globally to handle side-effects
+global.THREE = global.THREE || THREE;
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -125,6 +129,7 @@ export default function RootLayout() {
       </Pressable>
     </View>
   );
+  console.log("isMobileView: ", isMobileView);
 
   if (isMobileView) {
     return (
@@ -169,6 +174,20 @@ export default function RootLayout() {
                 ),
               }}
             />
+            <Drawer.Screen
+              name="TestScreen"
+              options={{
+                title: "Testing",
+                drawerLabel: "Testing",
+                drawerIcon: () => (
+                  <Ionicons
+                    name={"book-outline"}
+                    size={24}
+                    color={Colors.principal.default}
+                  />
+                ),
+              }}
+            />
           </Drawer>
         </GestureHandlerRootView>
       </NavigationWrapper>
@@ -192,6 +211,12 @@ export default function RootLayout() {
           name="FundingDetailsScreen"
           options={{
             title: "Fundings",
+          }}
+        />
+        <Stack.Screen
+          name="TestScreen"
+          options={{
+            title: "Testing",
           }}
         />
         <Stack.Screen name="+not-found" />

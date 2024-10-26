@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix donationsTable">
-      <change afterPath="$PROJECT_DIR$/assets/abis/L2ResolverAbi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/getAccountName.ts" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix import loop">
+      <change afterPath="$PROJECT_DIR$/app/TestScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/constants/geoCoordinates.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/TestComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/constants/Constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/constants/Constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/contracts/erc1155Abi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/abis/erc1155Abi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/contracts/erc20Abi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/abis/erc20Abi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/CrossButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/CrossButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/onchain/AccountField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/api/useAddressTxs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/api/useAddressTxs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TextSF.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -33,6 +24,11 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -64,7 +60,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;animationsbranch&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,7 +75,7 @@
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
     &quot;npm.web.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -157,7 +153,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.22855.79" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -236,7 +232,19 @@
       <workItem from="1729282822837" duration="4176000" />
       <workItem from="1729330697655" duration="158000" />
       <workItem from="1729333224859" duration="1643000" />
-      <workItem from="1729336421134" duration="7232000" />
+      <workItem from="1729336421134" duration="8170000" />
+      <workItem from="1729352303521" duration="1473000" />
+      <workItem from="1729353824957" duration="1123000" />
+      <workItem from="1729368709930" duration="1130000" />
+      <workItem from="1729411622642" duration="9626000" />
+      <workItem from="1729501047770" duration="313000" />
+      <workItem from="1729615204102" duration="8261000" />
+      <workItem from="1729673938836" duration="42000" />
+      <workItem from="1729710054817" duration="6598000" />
+      <workItem from="1729796791475" duration="2047000" />
+      <workItem from="1729845266731" duration="22000" />
+      <workItem from="1729884253276" duration="4988000" />
+      <workItem from="1729934962820" duration="12283000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -534,19 +542,77 @@
       <option name="project" value="LOCAL" />
       <updated>1728591126991</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="- added baseENS names&#10;- fixed switch network tab&#10;- added clouds&#10;- fix &quot;donate now&quot; label">
+      <option name="closed" value="true" />
+      <created>1729347912938</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1729347912938</updated>
+    </task>
+    <task id="LOCAL-00039" summary="- setup manrope font">
+      <option name="closed" value="true" />
+      <created>1729423034210</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1729423034210</updated>
+    </task>
+    <task id="LOCAL-00040" summary="- setup manrope font">
+      <option name="closed" value="true" />
+      <created>1729428950200</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1729428950200</updated>
+    </task>
+    <task id="LOCAL-00041" summary="- fix styling">
+      <option name="closed" value="true" />
+      <created>1729617108303</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1729617108303</updated>
+    </task>
+    <task id="LOCAL-00042" summary="- fix styling">
+      <option name="closed" value="true" />
+      <created>1729622045151</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622045151</updated>
+    </task>
+    <task id="LOCAL-00043" summary="- fix mobileview card styling">
+      <option name="closed" value="true" />
+      <created>1729622820663</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622820663</updated>
+    </task>
+    <task id="LOCAL-00044" summary="- disabled button styling">
+      <option name="closed" value="true" />
+      <created>1729711000243</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1729711000243</updated>
+    </task>
+    <task id="LOCAL-00045" summary="- fix import loop">
+      <option name="closed" value="true" />
+      <created>1729712551815</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1729712551815</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup: onchain" />
-    <MESSAGE value="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu" />
-    <MESSAGE value="- setup: donateModal" />
-    <MESSAGE value="- setup: TextSF" />
-    <MESSAGE value="- setup: modal fixes&#10;- set startup page&#10;- setup walletconnect in header" />
-    <MESSAGE value="- solidity contract setup" />
     <MESSAGE value="- allow ERC20 payments" />
     <MESSAGE value="- allow ERC20 minting" />
     <MESSAGE value="- setup erc20 approval&#10;- setup erc1155 mint" />
@@ -566,6 +632,12 @@
     <MESSAGE value="- sharing functionality&#10;- moving clouds, styling fixes" />
     <MESSAGE value="- add clouds.&#10;- fix minting feedback" />
     <MESSAGE value="- fix donationsTable" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix donationsTable" />
+    <MESSAGE value="- added baseENS names&#10;- fixed switch network tab&#10;- added clouds&#10;- fix &quot;donate now&quot; label" />
+    <MESSAGE value="- setup manrope font" />
+    <MESSAGE value="- fix styling" />
+    <MESSAGE value="- fix mobileview card styling" />
+    <MESSAGE value="- disabled button styling" />
+    <MESSAGE value="- fix import loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix import loop" />
   </component>
 </project>

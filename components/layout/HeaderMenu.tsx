@@ -100,6 +100,7 @@ export const HeaderMenu = () => {
         text="About Us"
         onPress={() => router.push("FundingDetailsScreen")}
       />
+      <MenuItem text="Test" onPress={() => router.push("TestScreen")} />
 
       <AccountField />
     </View>
