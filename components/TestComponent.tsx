@@ -1,26 +1,32 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
-import { WORLD_GEO_COORDINATES } from "@/assets/constants/geoCoordinates";
-
-const geoWorld = require("../assets/constants/geoWorld.json");
 
 global.THREE = global.THREE || THREE;
 
-const SPHERE_RADIUS = 3;
-const NR_START_BY_COUNTRY = 10;
-const DARK_BLUE = "#181d3a";
-const BASE_BLUE = "#6f87ff";
-const GLOBE_COLOR = "#104d81";
+const SPHERE_RADIUS = 2;
+const CAMERA_DISTANCE = 9;
+const MAX_ITEM_DISTANCE_FACTOR = 0.7;
 const STAR_COLOR = "#ffffff";
-const BACKGROUND_COLOR = "#000000";
+
 const starCoordinates = []; // Store x, y, z coordinates
 const starPositions = []; // Store positions of stars for line creation
+
+const DECIMALS = 6;
 
 type FadeInViewProps = PropsWithChildren<{}>;
 
 export const FadeInView: React.FC<FadeInViewProps> = () => {
-  console.log("geoWorld: ", geoWorld);
+  const [txs, setTxs] = useState([]);
+
+  const sceneRef = useRef<THREE.Scene>();
+  const rendererRef = useRef<Renderer>();
+
+  // This ref will help ensure that the scene is ready before adding stars
+  const sceneReadyRef = useRef(false);
+
+  const accountStarMap = {};
+  const createdStar = new Set();
 
   const fetchTokenTxs = async () => {
     const res = await fetch(
@@ -31,129 +37,144 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
       throw new Error(
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
+      const GaiaSky = require("../assets/images/Gaia_EDR3_darkened.png");
+
+      const geoWorld = require("../assets/constants/geoWorld.json");
     }
     let response = await res.json();
+    console.log("response: ", response);
+    setTxs((prev) => [...prev, ...response.result]);
   };
 
-  const addStar = (scene) => {
-    const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-    const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    const star = new THREE.Mesh(geometry, material);
+  useEffect(() => {
+    fetchTokenTxs();
+  }, []);
 
-    const [x, y, z] = Array.from({ length: 3 }, () =>
-      THREE.MathUtils.randFloatSpread(30),
-    );
-    // console.log(`addStar, x: ${x} y: ${y} z: ${z}`);
-    star.position.set(x, y, z);
-    scene.add(star);
-    starCoordinates.push({ x, y, z });
-    starPositions.push(star.position);
-  };
+  useEffect(() => {
+    if (sceneReadyRef.current && txs.length > 0) {
+      createTxsStars();
+    }
+  }, [txs]);
 
-  const addGlobeCore = (scene, radius: number) => {
-    const globeGeometry = new THREE.SphereGeometry(radius - 0.01, 45, 45);
-    const globeMaterial = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(GLOBE_COLOR),
-      transparent: true,
-      opacity: 0.9,
-      // blending: THREE.AdditiveBlending,
-      depthWrite: false,
+  const createTxsStars = () => {
+    const scene = sceneRef.current;
+    if (!scene) return;
+
+    txs.forEach((tx: any, index) => {
+      if (!(parseInt(tx.value) > 0)) {
+        return;
+      }
+      const txValue = Math.floor(parseInt(tx.value) / 10 ** DECIMALS);
+      const color = getColorByTxValue(txValue);
+
+      const generateRandomCoordinate = (min, max, excludeMin, excludeMax) => {
+        let value;
+        do {
+          value = Math.random() * (max - min) + min; // Generate a random value between min and max
+        } while (value > -excludeMax && value < excludeMax); // Regenerate if within the excluded range
+        return value;
+      };
+
+      const x = generateRandomCoordinate(
+        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        -SPHERE_RADIUS,
+        SPHERE_RADIUS,
+      );
+      const y = generateRandomCoordinate(
+        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        -SPHERE_RADIUS,
+        SPHERE_RADIUS,
+      );
+      const z = generateRandomCoordinate(
+        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+        -SPHERE_RADIUS,
+        SPHERE_RADIUS,
+      );
+
+      const coordinates = { x, y, z };
+      addStar(scene, coordinates, color);
     });
-    const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-
-    scene.add(globe);
   };
 
-  const createGlobeDots = (scene) => {
-    const starGeometry = new THREE.SphereGeometry(0.02, 8, 8);
+  const addStar = (scene, coordinates, color = STAR_COLOR) => {
+    const startGeometry = new THREE.SphereGeometry(0.2, 15, 15);
     const starMaterial = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(STAR_COLOR),
-      transparent: true,
+      color: new THREE.Color(color),
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
-
-    WORLD_GEO_COORDINATES.forEach((coordinates, index) => {
-      if (index % 2 === 0) {
-        if (coordinates.x && coordinates.y && coordinates.z) {
-          const star = new THREE.Mesh(starGeometry, starMaterial);
-          star.position.set(coordinates.x, coordinates.y, coordinates.z);
-          scene.add(star);
-        }
-      }
+    const texture = new THREE.TextureLoader().load(
+      "../assets/images/coins/usdc-coin-logo.png",
+    );
+    let globeMaterial = new THREE.MeshBasicMaterial({
+      map: texture,
     });
+    const star = new THREE.Mesh(startGeometry, globeMaterial);
+    star.position.set(coordinates.x, coordinates.y, coordinates.z);
+
+    scene.add(star);
   };
 
-  const createLinesBetweenStars = (scene) => {
-    const geometry = new THREE.BufferGeometry();
-    const material = new THREE.LineBasicMaterial({
-      color: 0x888888,
-      transparent: true,
-      opacity: 0.5,
-    });
+  const addGlobeCore = (scene, radius: number) => {
+    const globeGeometry = new THREE.SphereGeometry(radius, 24, 24);
 
-    const positions = [];
-    // Create lines between each pair of stars
-    for (let i = 0; i < starPositions.length; i++) {
-      for (let j = i + 1; j < starPositions.length; j++) {
-        // Only draw lines between stars that are close to each other
-        const distance = starPositions[i].distanceTo(starPositions[j]);
-        if (distance < 2) {
-          // Adjust distance threshold as needed
-          positions.push(
-            starPositions[i].x,
-            starPositions[i].y,
-            starPositions[i].z,
-            starPositions[j].x,
-            starPositions[j].y,
-            starPositions[j].z,
-          );
-        }
-      }
-    }
-
-    geometry.setAttribute(
-      "position",
-      new THREE.Float32BufferAttribute(positions, 3),
+    const texture = new THREE.TextureLoader().load(
+      "../assets/images/earth_lights_lrg.jpg",
     );
-
-    const lineMesh = new THREE.LineSegments(geometry, material);
-    scene.add(lineMesh);
+    let globeMaterial = new THREE.MeshBasicMaterial({
+      map: texture,
+    });
+    const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+    globe.rotation.x = 0.25;
+    scene.add(globe);
   };
 
   const onContextCreate = async (gl) => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
 
     const scene = new THREE.Scene();
+    // scene.rotation.z = -1;
+    scene.rotation.x = 0.3;
+    sceneRef.current = scene; // Store the scene in the ref
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.z = 7;
+    camera.position.z = CAMERA_DISTANCE;
 
     const renderer = new Renderer({ gl });
     renderer.setSize(width, height);
-    renderer.setClearColor(BACKGROUND_COLOR, 1);
+    // renderer.setClearColor(BACKGROUND_COLOR, 1);
+    rendererRef.current = renderer; // Store the renderer in the ref
 
-    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    // directionalLight.position.set(0, 0, 7); // Position the light at an angle
-    // scene.add(directionalLight);
-    // const axesHelper = new THREE.AxesHelper(5); // The parameter is the size of the axes
-    // scene.add(axesHelper);
+    const texture = new THREE.TextureLoader().load(
+      "../assets/images/Gaia_EDR3_darkened.png",
+    );
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
 
-    // Add Ambient Light with lower intensity
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(ambientLight);
+    scene.background = texture;
 
-    createGlobeDots(scene);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.z = 15;
+    scene.add(directionalLight);
+
+    sceneReadyRef.current = true;
+
     addGlobeCore(scene, SPHERE_RADIUS);
+
+    if (txs.length > 0) {
+      createTxsStars();
+    }
 
     // Animation function to render the scene
     const animate = () => {
       requestAnimationFrame(animate);
-      // camera.rotation.y += 0.01;
-      scene.rotation.y += 0.003;
-      scene.rotation.x += 0.003;
-      // scene.rotation.x += 0.003;
-      // scene.rotation.x = 5;
+
+      // scene.rotation.z += 0.01;
+      scene.rotation.y += 0.01;
+      // scene.rotation.x += 0.01;
 
       renderer.render(scene, camera);
 
@@ -172,38 +193,65 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
   );
 };
 
-const calculateSphereStar = (scene, radius) => {
-  const degreesToRadians = (degrees) => (degrees * Math.PI) / 180;
-  const NR_START_BY_COUNTRY = 10;
-  const geometry = new THREE.SphereGeometry(0.03, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: "white" });
+const getColorByTxValue = (txValue) => {
+  // Base color components (e.g., light blue)
+  const baseColor = { r: 255, g: 255, b: 255 };
+  const maxColor = { r: 85, g: 114, b: 244 };
 
-  geoWorld.features.forEach((feature) => {
-    const nrOfCoordinates = feature.geometry.coordinates[0].length;
+  // Set the range of txValue to map colors
+  const maxValue = 1_00_000; // Maximum txValue to consider
+  const minValue = 1_00; // Minimum txValue to consider
 
-    const step = Math.ceil(nrOfCoordinates / NR_START_BY_COUNTRY);
-    feature.geometry.coordinates[0].forEach((coordinates, index) => {
-      if (index % step === 0) {
-        const star = new THREE.Mesh(geometry, material);
+  // Clamp txValue between minValue and maxValue
+  txValue = Math.max(minValue, Math.min(txValue, maxValue));
 
-        // Extract longitude and latitude from coordinates
-        const longitude = coordinates[0]; // Assuming coordinates[0] is longitude
-        const latitude = coordinates[1]; // Assuming coordinates[1] is latitude
+  // Calculate the interpolation factor (0 to 1)
+  const factor = (txValue - minValue) / (maxValue - minValue);
 
-        // Convert degrees to radians
-        const phi = degreesToRadians(latitude);
-        const theta = degreesToRadians(longitude);
+  // Interpolate between baseColor and maxColor
+  const interpolateColor = (start, end, factor) =>
+    Math.round(start + (end - start) * factor);
 
-        // Convert spherical coordinates to Cartesian coordinates
-        const x = radius * Math.cos(phi) * Math.cos(theta);
-        const y = radius * Math.cos(phi) * Math.sin(theta);
-        const z = radius * Math.sin(phi);
+  const r = interpolateColor(baseColor.r, maxColor.r, factor);
+  const g = interpolateColor(baseColor.g, maxColor.g, factor);
+  const b = interpolateColor(baseColor.b, maxColor.b, factor);
 
-        star.position.set(x, y, z);
-        scene.add(star);
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+};
 
-        starPositions.push({ x, y, z });
-      }
-    });
+const createLinesBetweenStars = (scene) => {
+  const geometry = new THREE.BufferGeometry();
+  const material = new THREE.LineBasicMaterial({
+    color: 0x888888,
+    transparent: true,
+    opacity: 0.5,
   });
+
+  const positions = [];
+  // Create lines between each pair of stars
+  for (let i = 0; i < starPositions.length; i++) {
+    for (let j = i + 1; j < starPositions.length; j++) {
+      // Only draw lines between stars that are close to each other
+      const distance = starPositions[i].distanceTo(starPositions[j]);
+      if (distance < 2) {
+        // Adjust distance threshold as needed
+        positions.push(
+          starPositions[i].x,
+          starPositions[i].y,
+          starPositions[i].z,
+          starPositions[j].x,
+          starPositions[j].y,
+          starPositions[j].z,
+        );
+      }
+    }
+  }
+
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(positions, 3),
+  );
+
+  const lineMesh = new THREE.LineSegments(geometry, material);
+  scene.add(lineMesh);
 };
