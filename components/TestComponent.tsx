@@ -1,12 +1,15 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
+import { Linking, PanResponder, Platform } from "react-native";
 
 global.THREE = global.THREE || THREE;
 
-const SPHERE_RADIUS = 2;
-const CAMERA_DISTANCE = 9;
-const MAX_ITEM_DISTANCE_FACTOR = 0.7;
+const SPHERE_RADIUS = 150;
+const MIN_STAR_START_DISTANCE = 1000;
+const STAR_RADIUS = 10;
+const CAMERA_DISTANCE = 1000;
+
 const STAR_COLOR = "#ffffff";
 
 const starCoordinates = []; // Store x, y, z coordinates
@@ -18,28 +21,40 @@ type FadeInViewProps = PropsWithChildren<{}>;
 
 export const FadeInView: React.FC<FadeInViewProps> = () => {
   const [txs, setTxs] = useState([]);
+  const [lastHoveredItem, setLastHoveredItem] = useState();
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
 
+  const starsRef = useRef([]);
   const sceneRef = useRef<THREE.Scene>();
   const rendererRef = useRef<Renderer>();
+  const cameraRef = useRef<THREE.PerspectiveCamera>();
 
   // This ref will help ensure that the scene is ready before adding stars
   const sceneReadyRef = useRef(false);
+  const spherical = useRef(
+    new THREE.Spherical(CAMERA_DISTANCE, Math.PI / 2, 0),
+  );
+
+  // Variables to track mouse state
+  const isDragging = useRef(false);
+  const previousMousePosition = useRef({ x: 0, y: 0 });
 
   const accountStarMap = {};
   const createdStar = new Set();
 
   const fetchTokenTxs = async () => {
+    if (txs.length > 0) {
+      return null;
+    }
     const res = await fetch(
-      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&page=1&offset=30&startblock=0&endblock=99999999&sort=desc&apikey=WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX`,
+      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&page=1&offset=200&startblock=0&endblock=99999999&sort=desc&apikey=WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX`,
     );
 
     if (!res.ok) {
       throw new Error(
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
-      const GaiaSky = require("../assets/images/Gaia_EDR3_darkened.png");
-
-      const geoWorld = require("../assets/constants/geoWorld.json");
     }
     let response = await res.json();
     console.log("response: ", response);
@@ -56,51 +71,70 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
     }
   }, [txs]);
 
+  const generateRandomCoordinate = (min, max) => {
+    return Math.random() * (max - min) + min; // Generate a random value between min and max
+  };
+
   const createTxsStars = () => {
     const scene = sceneRef.current;
     if (!scene) return;
 
+    const newStars = [];
     txs.forEach((tx: any, index) => {
       if (!(parseInt(tx.value) > 0)) {
         return;
       }
-      const txValue = Math.floor(parseInt(tx.value) / 10 ** DECIMALS);
-      const color = getColorByTxValue(txValue);
 
-      const generateRandomCoordinate = (min, max, excludeMin, excludeMax) => {
-        let value;
-        do {
-          value = Math.random() * (max - min) + min; // Generate a random value between min and max
-        } while (value > -excludeMax && value < excludeMax); // Regenerate if within the excluded range
-        return value;
-      };
+      let x = generateRandomCoordinate(-1000, 1000);
+      let y = generateRandomCoordinate(-1000, 1000);
+      let z = generateRandomCoordinate(-1000, 1000);
 
-      const x = generateRandomCoordinate(
-        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        -SPHERE_RADIUS,
-        SPHERE_RADIUS,
-      );
-      const y = generateRandomCoordinate(
-        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        -SPHERE_RADIUS,
-        SPHERE_RADIUS,
-      );
-      const z = generateRandomCoordinate(
-        -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
-        -SPHERE_RADIUS,
-        SPHERE_RADIUS,
-      );
+      // Check if all values are within the restricted range
+      if (
+        Math.abs(x) <= MIN_STAR_START_DISTANCE &&
+        Math.abs(y) <= MIN_STAR_START_DISTANCE &&
+        Math.abs(z) <= MIN_STAR_START_DISTANCE
+      ) {
+        // Force one of the values to be outside the range
+        const axisToChange = Math.floor(Math.random() * 3); // Randomly pick one of x, y, z
+        switch (axisToChange) {
+          case 0: // Modify x
+            x =
+              x < 0
+                ? -MIN_STAR_START_DISTANCE - 1
+                : MIN_STAR_START_DISTANCE + 1;
+            break;
+          case 1: // Modify y
+            y =
+              y < 0
+                ? -MIN_STAR_START_DISTANCE - 1
+                : MIN_STAR_START_DISTANCE + 1;
+            break;
+          case 2: // Modify z
+            z =
+              z < 0
+                ? -MIN_STAR_START_DISTANCE - 1
+                : MIN_STAR_START_DISTANCE + 1;
+            break;
+          default:
+            break;
+        }
+      }
 
       const coordinates = { x, y, z };
-      addStar(scene, coordinates, color);
+      const newStar = addStar(scene, coordinates, tx);
+      // console.log("newStar: ", newStar);
+      newStars.push(newStar);
     });
+    // console.log("newStars: ", newStars);
+    starsRef.current = newStars;
   };
 
-  const addStar = (scene, coordinates, color = STAR_COLOR) => {
-    const startGeometry = new THREE.SphereGeometry(0.2, 15, 15);
+  const addStar = (scene, coordinates, tx) => {
+    const txValue = Math.floor(parseInt(tx.value) / 10 ** DECIMALS);
+    const color = getColorByTxValue(txValue);
+
+    const startGeometry = new THREE.SphereGeometry(STAR_RADIUS, 15, 15);
     const starMaterial = new THREE.MeshBasicMaterial({
       color: new THREE.Color(color),
       blending: THREE.AdditiveBlending,
@@ -109,13 +143,14 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
     const texture = new THREE.TextureLoader().load(
       "../assets/images/coins/usdc-coin-logo.png",
     );
-    let globeMaterial = new THREE.MeshBasicMaterial({
-      map: texture,
-    });
-    const star = new THREE.Mesh(startGeometry, globeMaterial);
+
+    const star = new THREE.Mesh(startGeometry, starMaterial);
+    star.userData = { ...tx };
+    star.userData.txValue = txValue;
     star.position.set(coordinates.x, coordinates.y, coordinates.z);
 
     scene.add(star);
+    return star;
   };
 
   const addGlobeCore = (scene, radius: number) => {
@@ -129,19 +164,20 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
     });
     const globe = new THREE.Mesh(globeGeometry, globeMaterial);
     globe.rotation.x = 0.25;
+    globe.name = "globe";
     scene.add(globe);
+    return globe;
   };
 
   const onContextCreate = async (gl) => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
 
     const scene = new THREE.Scene();
-    // scene.rotation.z = -1;
-    scene.rotation.x = 0.3;
     sceneRef.current = scene; // Store the scene in the ref
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 2001);
     camera.position.z = CAMERA_DISTANCE;
+    cameraRef.current = camera;
 
     const renderer = new Renderer({ gl });
     renderer.setSize(width, height);
@@ -162,7 +198,7 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
 
     sceneReadyRef.current = true;
 
-    addGlobeCore(scene, SPHERE_RADIUS);
+    const globe = addGlobeCore(scene, SPHERE_RADIUS);
 
     if (txs.length > 0) {
       createTxsStars();
@@ -171,10 +207,13 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
     // Animation function to render the scene
     const animate = () => {
       requestAnimationFrame(animate);
+      globe.rotation.y += 0.003;
+      cameraRef.current = camera;
 
-      // scene.rotation.z += 0.01;
-      scene.rotation.y += 0.01;
-      // scene.rotation.x += 0.01;
+      // Update raycaster with pointer and camera positions
+      raycaster.setFromCamera(pointer, camera);
+
+      moveStars();
 
       renderer.render(scene, camera);
 
@@ -185,10 +224,194 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
     animate();
   };
 
+  const moveStars = () => {
+    starsRef.current.forEach((star) => {
+      // Calculate distance to Earth (origin)
+      const distance = Math.sqrt(
+        star.position.x ** 2 + star.position.y ** 2 + star.position.z ** 2,
+      );
+
+      const STAR_SPEED = 0.003;
+
+      const minStarDistance = SPHERE_RADIUS * 4;
+
+      if (distance > SPHERE_RADIUS) {
+        // Phase 1: Move towards Earth
+        star.position.x -= star.position.x * STAR_SPEED;
+        star.position.y -= star.position.y * STAR_SPEED;
+        star.position.z -= star.position.z * STAR_SPEED;
+      } else {
+        // Convert Cartesian coordinates to polar coordinates for orbit
+        const radius = Math.sqrt(star.position.x ** 2 + star.position.y ** 2);
+        const angle = Math.atan2(star.position.y, star.position.x);
+
+        const orbitSpeed = STAR_SPEED * 2;
+
+        // UpdatSTAR_SPEEDe the angle for a half-orbit
+        const newAngle = angle + STAR_SPEED;
+
+        // Convert back to Cartesian coordinates
+        star.position.x = radius * Math.cos(newAngle);
+        star.position.y = radius * Math.sin(newAngle);
+
+        // Move in z-axis to achieve half-orbit effect
+        star.position.z += orbitSpeed * 20;
+
+        // Phase 3: Make the star disappear after half the orbit
+        if (newAngle > Math.PI) {
+          sceneRef.current.remove(star);
+          starsRef.current = starsRef.current.filter((s) => s !== star);
+        }
+      }
+    });
+  };
+
+  const handlePress = (x, y, width, height) => {
+    console.log("GM");
+    pointer.x = (x / width) * 2 - 1;
+    pointer.y = -(y / height) * 2 + 1;
+    raycaster.setFromCamera(pointer, cameraRef.current);
+
+    const intersects = raycaster.intersectObjects(sceneRef.current.children);
+
+    if (intersects.length > 0) {
+      if (sceneRef.current && cameraRef.current) {
+        const clickedItem = intersects[0]?.object || null;
+
+        const txHash = clickedItem?.userData?.hash;
+        if (txHash) {
+          const url = `https://basescan.org/tx/${txHash}`;
+          if (Platform.OS === "web") {
+            // Open in a new tab on web without navigating away
+            window.open(url, "_blank", "noreferrer");
+          } else {
+            // Use Linking for mobile (note: may bring the user to the browser)
+            Linking.openURL(url).catch((err) =>
+              console.error("Failed to open URL:", err),
+            );
+          }
+        }
+
+        clickedItem?.material?.color.set(0xff0000);
+      }
+    }
+  };
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: (event, gestureState) => {
+        handlePanMove(gestureState);
+      },
+      onPanResponderRelease: (event, gestureState) => {
+        handlePress(
+          gestureState.moveX,
+          gestureState.moveY,
+          gestureState.width,
+          gestureState.height,
+        );
+      },
+    }),
+  ).current;
+
+  const handlePanMove = (gestureState) => {
+    if (!cameraRef.current) return;
+
+    const rotationSpeed = 0.005;
+
+    // Update spherical coordinates for rotation
+    spherical.current.theta -= gestureState.dx * rotationSpeed;
+    spherical.current.phi -= gestureState.dy * rotationSpeed;
+
+    // Clamp phi to prevent the camera from flipping over the poles
+    spherical.current.phi = Math.max(
+      0.1,
+      Math.min(Math.PI - 0.1, spherical.current.phi),
+    );
+
+    // Update camera position based on spherical coordinates
+    const { radius, theta, phi } = spherical.current;
+    cameraRef.current.position.setFromSphericalCoords(radius, phi, theta);
+
+    // Keep the camera focused on the center of the scene
+    cameraRef.current.lookAt(0, 0, 0);
+  };
+
+  const handleMouseDown = (event) => {
+    isDragging.current = true;
+    previousMousePosition.current = {
+      x: event.clientX,
+      y: event.clientY,
+    };
+  };
+
+  const handleMouseMove = (event) => {
+    if (!isDragging.current || !cameraRef.current) return;
+
+    const rotationSpeed = 0.005;
+
+    // Calculate mouse movement delta
+    const deltaX = event.clientX - previousMousePosition.current.x;
+    const deltaY = event.clientY - previousMousePosition.current.y;
+
+    // Update spherical coordinates for rotation
+    spherical.current.theta -= deltaX * rotationSpeed;
+    spherical.current.phi -= deltaY * rotationSpeed;
+
+    // Clamp phi to prevent the camera from flipping over the poles
+    spherical.current.phi = Math.max(
+      0.1,
+      Math.min(Math.PI - 0.1, spherical.current.phi),
+    );
+
+    // Update camera position based on spherical coordinates
+    const { radius, theta, phi } = spherical.current;
+    cameraRef.current.position.setFromSphericalCoords(radius, phi, theta);
+
+    // Keep the camera focused on the center of the scene
+    cameraRef.current.lookAt(0, 0, 0);
+
+    // Update previous mouse position
+    previousMousePosition.current = {
+      x: event.clientX,
+      y: event.clientY,
+    };
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
   return (
     <GLView
       style={{ width: "100%", height: "100%" }}
       onContextCreate={onContextCreate}
+      onMouseDown={(e) => {
+        if (Platform.OS === "web") {
+          handleMouseDown(e.nativeEvent);
+        }
+      }}
+      onMouseMove={(e) => {
+        if (Platform.OS === "web") {
+          handleMouseMove(e.nativeEvent);
+        }
+      }}
+      onMouseUp={(e) => {
+        if (Platform.OS === "web") {
+          handleMouseUp();
+        }
+      }}
+      onClick={(e) => {
+        if (Platform.OS === "web") {
+          handlePress(
+            e.nativeEvent.offsetX,
+            e.nativeEvent.offsetY,
+            e.target.clientWidth,
+            e.target.clientHeight,
+          );
+        }
+      }}
+      {...(Platform.OS !== "web" ? panResponder.panHandlers : {})}
     />
   );
 };
@@ -255,3 +478,73 @@ const createLinesBetweenStars = (scene) => {
   const lineMesh = new THREE.LineSegments(geometry, material);
   scene.add(lineMesh);
 };
+
+// const createTxsStars = () => {
+//   const scene = sceneRef.current;
+//   if (!scene) return;
+//
+//   txs.forEach((tx: any, index) => {
+//     if (!(parseInt(tx.value) > 0)) {
+//       return;
+//     }
+//     const txValue = Math.floor(parseInt(tx.value) / 10 ** DECIMALS);
+//     const color = getColorByTxValue(txValue);
+//
+//     const generateRandomCoordinate = (min, max, excludeMin, excludeMax) => {
+//       let value;
+//       do {
+//         value = Math.random() * (max - min) + min; // Generate a random value between min and max
+//       } while (value > -excludeMax && value < excludeMax); // Regenerate if within the excluded range
+//       return value;
+//     };
+//
+//     const x = generateRandomCoordinate(
+//       -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       -SPHERE_RADIUS,
+//       SPHERE_RADIUS,
+//     );
+//     const y = generateRandomCoordinate(
+//       -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       -SPHERE_RADIUS,
+//       SPHERE_RADIUS,
+//     );
+//     const z = generateRandomCoordinate(
+//       -CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       CAMERA_DISTANCE * MAX_ITEM_DISTANCE_FACTOR,
+//       -SPHERE_RADIUS,
+//       SPHERE_RADIUS,
+//     );
+//
+//     const coordinates = { x, y, z };
+//     addStar(scene, coordinates, color, tx);
+//   });
+// };
+
+// Handle hover based on the platform (web or mobile)
+// const handlePointerMove = (x, y, width, height) => {
+// pointer.x = (x / width) * 2 - 1;
+// pointer.y = -(y / height) * 2 + 1;
+// // console.log("pointer: ", pointer);
+// // console.log("sceneRef.current.children: ", sceneRef.current.children);
+// raycaster.setFromCamera(pointer, cameraRef.current);
+//
+// const intersects = raycaster.intersectObjects(sceneRef.current.children);
+//
+// if (intersects.length > 0) {
+//   // console.log("cameraRef: ", cameraRef.current);
+//   if (sceneRef.current && cameraRef.current) {
+//     raycaster.setFromCamera(pointer, cameraRef.current);
+//     const hoveredItem = intersects[0]?.object || null;
+//     console.log(" intersects[0]: ", intersects[0]);
+//
+//     hoveredItem?.material?.color.set(0xff0000);
+//     setLastHoveredItem(hoveredItem);
+//   }
+// } else {
+//   if (lastHoveredItem) {
+//     lastHoveredItem?.material?.color.set(STAR_COLOR);
+//   }
+// }
+// };
