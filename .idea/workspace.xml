@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix import loop">
-      <change afterPath="$PROJECT_DIR$/app/TestScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/constants/geoCoordinates.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/TestComponent.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- orbitting satelites">
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/FakeGlowMaterial.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addStar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/generateRandomCoordinate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getStarSpeedByTxValue.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/moveStars.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TextSF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TestComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/addressFormatter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/addressFormatter.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,11 +88,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/animationFunctions" />
       <recent name="$PROJECT_DIR$/components/modals" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/assets/images/coins" />
-      <recent name="$PROJECT_DIR$/assets/images/networks" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -244,7 +250,8 @@
       <workItem from="1729796791475" duration="2047000" />
       <workItem from="1729845266731" duration="22000" />
       <workItem from="1729884253276" duration="4988000" />
-      <workItem from="1729934962820" duration="12283000" />
+      <workItem from="1729934962820" duration="20937000" />
+      <workItem from="1729966939943" duration="35138000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -606,16 +613,37 @@
       <option name="project" value="LOCAL" />
       <updated>1729712551815</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="- antimationsss">
+      <option name="closed" value="true" />
+      <created>1729951213646</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1729951213646</updated>
+    </task>
+    <task id="LOCAL-00047" summary="- earth">
+      <option name="closed" value="true" />
+      <created>1730022614796</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1730022614796</updated>
+    </task>
+    <task id="LOCAL-00048" summary="- orbitting satelites">
+      <option name="closed" value="true" />
+      <created>1730042937349</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1730042937349</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- allow ERC20 payments" />
-    <MESSAGE value="- allow ERC20 minting" />
-    <MESSAGE value="- setup erc20 approval&#10;- setup erc1155 mint" />
     <MESSAGE value="- onchainkit styling" />
     <MESSAGE value="- WAGMI setup" />
     <MESSAGE value="- setup baseENS" />
@@ -638,6 +666,9 @@
     <MESSAGE value="- fix mobileview card styling" />
     <MESSAGE value="- disabled button styling" />
     <MESSAGE value="- fix import loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix import loop" />
+    <MESSAGE value="- antimationsss" />
+    <MESSAGE value="- earth" />
+    <MESSAGE value="- orbitting satelites" />
+    <option name="LAST_COMMIT_MESSAGE" value="- orbitting satelites" />
   </component>
 </project>
