@@ -42,6 +42,10 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const [clickedStar, setClickedStar] = useState();
   const [bottomText, setBottomText] = useState("");
   const [token, setToken] = useState("USDC");
+  const [page, setPage] = useState(1);
+  const [txs, setTxs] = useState([]);
+  const [isCreatingTxs, setIsCreatingTxs] = useState(false);
+  const [startBlock, setStartBlock] = useState(0);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
 
@@ -61,10 +65,6 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const isDragging = useRef(false);
   const previousMousePosition = useRef({ x: 0, y: 0 });
 
-  const [page, setPage] = useState(1);
-  const [txs, setTxs] = useState([]);
-  const [isCreatingTxs, setIsCreatingTxs] = useState(false);
-  const [startBlock, setStartBlock] = useState(0);
   const createdTxs = new Set();
 
   const getRandomDelay = (min, max) =>
@@ -73,8 +73,12 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const fetchTokenTxs = async () => {
     if (pausedRef.current) return;
     setBottomText("Looking for stars");
+    const contractAddress =
+      token === "USDC"
+        ? BASE_USDC_CONTRACT_ADDRESS
+        : BASE_HIGHER_CONTRACT_ADDRESS;
     const res = await fetch(
-      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
+      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${contractAddress}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
     );
     if (!res.ok) {
       throw new Error(
@@ -104,34 +108,6 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       setTxs(response.result);
     } else {
       setBottomText("No stars found");
-      const delayInMs = getRandomDelay(7_500, 30_000);
-      await delay(delayInMs);
-      console.log("NO TXS FOUND");
-      const res = await fetch(
-        `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
-      );
-      if (!res.ok) {
-        throw new Error(
-          `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
-        );
-      }
-
-      let response = await res.json();
-      if (response?.status === "0") {
-        const delayInMs = getRandomDelay(7_500, 30_000);
-        setBottomText(
-          `Star searcher is busy, wait ${Math.floor(delayInMs / 1000)} secs`,
-        );
-        await delay(delayInMs);
-        setBottomText("Retrying");
-        const res = await fetch(
-          `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
-        );
-        response = await res.json();
-        if (response?.status === "0") {
-          setBottomText("Star searcher is still overworked, try again later");
-        }
-      }
     }
   };
 
@@ -382,6 +358,11 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const handleMouseUp = () => {
     isDragging.current = false;
   };
+  const handleTokenSwitchPress = () => {
+    setStartBlock(0);
+    setPage(1);
+    setToken((prev) => (prev === "USDC" ? "HIGHER" : "USDC"));
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -390,6 +371,14 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
           {pausedRef.current ? "Resume" : "Pause"}
         </Text>
       </Pressable>
+      {/*<Pressable*/}
+      {/*  onPress={handleTokenSwitchPress}*/}
+      {/*  style={styles.switchButtonContainer}*/}
+      {/*>*/}
+      {/*  <Text style={{ color: "#656363" }}>*/}
+      {/*    {token === "USDC" ? "HIGHER" : "USDC"}*/}
+      {/*  </Text>*/}
+      {/*</Pressable>*/}
       <GLView
         style={{ width: "100%", height: "100%" }}
         onContextCreate={onContextCreate}
@@ -423,7 +412,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
       <TxInfoOverlay clickedStar={clickedStar} />
       <ColorLegend colorRanges={COLOR_RANGES} />
-      <BottomCenterInfo text={bottomText} />
+      <BottomCenterInfo text={bottomText} token={token} />
     </View>
   );
 };
@@ -432,6 +421,18 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     left: "50%",
+    transform: [{ translateX: -50 }],
+    zIndex: 1,
+    backgroundColor: "rgba(129,128,128,0.2)", // Semi-transparent background
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  switchButtonContainer: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
     transform: [{ translateX: -50 }],
     zIndex: 1,
     backgroundColor: "rgba(129,128,128,0.2)", // Semi-transparent background

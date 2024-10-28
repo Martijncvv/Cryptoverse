@@ -1,7 +1,7 @@
 import React from "react";
 import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 
-export const BottomCenterInfo = ({ text }) => {
+export const BottomCenterInfo = ({ text, token }) => {
   const handleOpenURL = (url) => {
     Linking.openURL(url).catch((err) =>
       console.error("Failed to open URL:", err),
@@ -10,7 +10,9 @@ export const BottomCenterInfo = ({ text }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.nameText}>{text ? text : "USDC Txs Explorer"}</Text>
+      <Text style={styles.nameText}>
+        {text ? text : `${token} Txs Explorer`}
+      </Text>
       <View style={styles.socials}>
         <Pressable
           onPress={() => handleOpenURL("https://twitter.com/Marty_cfly")}
