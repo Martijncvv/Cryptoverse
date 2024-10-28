@@ -16,13 +16,17 @@ global.THREE = global.THREE || THREE;
 const SPHERE_RADIUS = 150;
 const MIN_STAR_START_DISTANCE = 1000;
 const CAMERA_DISTANCE = 1000;
-
 const DECIMALS = 6;
+
+const OFFSET = 1000;
+const TXS_CALL_DELAY = 7000;
+let steps_in_ms = 4000;
 
 type FadeInViewProps = PropsWithChildren<{}>;
 
 export const FadeInView: React.FC<FadeInViewProps> = () => {
   const [clickedStar, setClickedStar] = useState();
+  const [bottomText, setBottomText] = useState("");
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
 
@@ -48,23 +52,27 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
   const createdTxs = new Set();
 
   const fetchTokenTxs = async () => {
-    if (txs.length > 0) {
-      return null;
-    }
-    const OFFSET = 1000;
+    setBottomText("Looking for stars");
     const res = await fetch(
       `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX`,
     );
 
     if (!res.ok) {
+      setBottomText("Error: Looking for stars");
       throw new Error(
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
     }
+    setBottomText("");
     let response = await res.json();
     console.log("response: ", response);
-    setStartBlock(response.result[0].blockNumber);
-    setTxs((prev) => [...prev, ...response.result]);
+
+    if (response.result.length > 0) {
+      setStartBlock(response.result[0].blockNumber);
+      setTxs(response.result);
+    } else {
+      console.log("NO TXS FOUND");
+    }
   };
 
   useEffect(() => {
@@ -73,34 +81,44 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
 
   useEffect(() => {
     if (!isCreatingTxs && sceneReadyRef.current && txs.length > 0) {
-      console.log("CALLED CALLED");
-      setIsCreatingTxs(true);
-      createTxsStars();
+      createTxsStars(txs);
     }
   }, [txs]);
 
-  const createTxsStars = () => {
+  const createTxsStars = (txsToCreate) => {
     const scene = sceneRef.current;
     if (!scene) return;
     setIsCreatingTxs(true);
+
+    // smaller batches if less txs available
+    if (txsToCreate.length < 50) {
+      steps_in_ms = 3000;
+    }
+    if (txsToCreate.length < 20) {
+      steps_in_ms = 2000;
+    }
 
     let index = 0; // Start with the first transaction in txs
 
     // const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
     const oldestTxTimestamp = parseInt(txs[txs.length - 1].timeStamp) * 1000;
-    console.log("oldestTxTimestamp: ", oldestTxTimestamp);
     // Set up an interval to add stars one by one with a delay
-    let txsToCreate = txs;
     const interval = setInterval(() => {
       // Stop the interval when all transactions are processed
-      if (index >= txs.length) {
+      if (index >= txs.length || txsToCreate.length === 0) {
+        setIsCreatingTxs(false);
+        setPage((prev) => prev++);
+
+        setTimeout(() => {
+          fetchTokenTxs();
+          console.log("CALLED");
+        }, TXS_CALL_DELAY);
         clearInterval(interval);
         return;
       }
-      const STEPS_IN_MS = 5000;
-      const minTimestamp = oldestTxTimestamp + STEPS_IN_MS * index;
+
+      const minTimestamp = oldestTxTimestamp + steps_in_ms * index;
       index++;
-      console.log("txsToCreate: ", txsToCreate.length);
 
       txsToCreate.forEach((tx) => {
         if (parseInt(tx.timeStamp) * 1000 < minTimestamp) {
@@ -126,17 +144,14 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
             const newStar = addStar(scene, coordinates, tx);
             createdTxs.add(tx.hash);
 
-            // Filter out the processed transaction from txsToCreate
-            txsToCreate = txsToCreate.filter((item) => item.hash !== tx.hash);
-
             // Add the new star to starsRef
-            console.log("CREATE NEW STAR");
             starsRef.current.push(newStar);
-          } else if (createdTxs.has(tx.hash)) {
-            console.log("exists already");
           }
+          // Filter out the processed transaction from txsToCreate
+          txsToCreate = txsToCreate.filter((item) => item.hash !== tx.hash);
         }
       });
+      console.log("txsToCreate: ", txsToCreate.length);
     }, 1000); // 1-second interval
   };
 
@@ -177,10 +192,6 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
 
     const globe = addGlobeCore(scene, SPHERE_RADIUS);
 
-    if (txs.length > 0) {
-      createTxsStars();
-    }
-
     // Animation function to render the scene
     const animate = () => {
       requestAnimationFrame(animate);
@@ -216,7 +227,7 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
       if (sceneRef.current && cameraRef.current) {
         const clickedItem = intersects[0]?.object || null;
         setClickedStar(clickedItem);
-        console.log("clickedItem: ", clickedItem);
+        // console.log("clickedItem: ", clickedItem);
       }
     }
   };
@@ -341,7 +352,7 @@ export const FadeInView: React.FC<FadeInViewProps> = () => {
 
       <TxInfoOverlay clickedStar={clickedStar} />
       <ColorLegend colorRanges={COLOR_RANGES} />
-      <BottomCenterInfo text={""} />
+      <BottomCenterInfo text={bottomText} />
     </View>
   );
 };

@@ -12,15 +12,21 @@ import {
 import { addressFormatter } from "@/utils/addressFormatter";
 
 const TxInfoOverlay = ({ clickedStar }) => {
+  console.log("clickedStar: ", clickedStar);
   if (!clickedStar?.userData?.txValue)
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Click on star for more info</Text>
+        <Text style={styles.text}>Click on star for details</Text>
       </View>
     );
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>
+        {new Date(
+          parseInt(clickedStar.userData.timeStamp) * 1000,
+        ).toLocaleString()}
+      </Text>
       <Text style={styles.text}>
         From: {addressFormatter(clickedStar.userData.from)}
       </Text>

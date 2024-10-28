@@ -13,12 +13,11 @@ export const getMinStarDistanceByTxValue = (txValue, SPHERE_RADIUS) => {
       ({ range: [min, max] }) => txValue >= min && txValue < max,
     ) || DISTANCE_RANGES[0]; // Default to first range if no match
 
-  console.log("minDistanceFactor: ", minDistanceFactor);
   // Randomize distance if minDistanceFactor is 1, otherwise use calculated factor
   const factor =
     minDistanceFactor === 1
       ? Math.random() * (5.5 - 1.5) + 1.5
       : minDistanceFactor;
-  console.log("factor: ", factor);
+
   return SPHERE_RADIUS * factor;
 };

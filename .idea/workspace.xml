@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- orbitting satelites">
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/FakeGlowMaterial.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addStar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/generateRandomCoordinate.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/getStarSpeedByTxValue.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/moveStars.ts" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- gradually creating the stars">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/TestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TestComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/addressFormatter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/addressFormatter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +241,8 @@
       <workItem from="1729845266731" duration="22000" />
       <workItem from="1729884253276" duration="4988000" />
       <workItem from="1729934962820" duration="20937000" />
-      <workItem from="1729966939943" duration="35138000" />
+      <workItem from="1729966939943" duration="36434000" />
+      <workItem from="1730104966750" duration="2701000" />
     </task>
     <task id="LOCAL-00001" summary="SendaFund setup">
       <option name="closed" value="true" />
@@ -637,14 +628,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730042937349</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="- gradually creating the stars">
+      <option name="closed" value="true" />
+      <created>1730063208373</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1730063208373</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- onchainkit styling" />
     <MESSAGE value="- WAGMI setup" />
     <MESSAGE value="- setup baseENS" />
     <MESSAGE value="- setup menu" />
@@ -669,6 +667,7 @@
     <MESSAGE value="- antimationsss" />
     <MESSAGE value="- earth" />
     <MESSAGE value="- orbitting satelites" />
-    <option name="LAST_COMMIT_MESSAGE" value="- orbitting satelites" />
+    <MESSAGE value="- gradually creating the stars" />
+    <option name="LAST_COMMIT_MESSAGE" value="- gradually creating the stars" />
   </component>
 </project>
