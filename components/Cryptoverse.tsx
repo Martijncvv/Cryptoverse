@@ -379,6 +379,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       {/*    {token === "USDC" ? "HIGHER" : "USDC"}*/}
       {/*  </Text>*/}
       {/*</Pressable>*/}
+
       <GLView
         style={{ width: "100%", height: "100%" }}
         onContextCreate={onContextCreate}
