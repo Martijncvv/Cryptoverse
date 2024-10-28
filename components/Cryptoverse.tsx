@@ -81,7 +81,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
     }
-    setBottomText("");
+
     let response = await res.json();
     if (response?.status === "0") {
       const delayInMs = getRandomDelay(7_500, 30_000);
@@ -98,12 +98,40 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         setBottomText("Star searcher is still overworked, try again later");
       }
     }
-
+    setBottomText("");
     if (response.result.length > 0) {
       setStartBlock(response.result[0].blockNumber);
       setTxs(response.result);
     } else {
+      setBottomText("No stars found");
+      const delayInMs = getRandomDelay(7_500, 30_000);
+      await delay(delayInMs);
       console.log("NO TXS FOUND");
+      const res = await fetch(
+        `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
+      );
+      if (!res.ok) {
+        throw new Error(
+          `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
+        );
+      }
+
+      let response = await res.json();
+      if (response?.status === "0") {
+        const delayInMs = getRandomDelay(7_500, 30_000);
+        setBottomText(
+          `Star searcher is busy, wait ${Math.floor(delayInMs / 1000)} secs`,
+        );
+        await delay(delayInMs);
+        setBottomText("Retrying");
+        const res = await fetch(
+          `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
+        );
+        response = await res.json();
+        if (response?.status === "0") {
+          setBottomText("Star searcher is still overworked, try again later");
+        }
+      }
     }
   };
 
