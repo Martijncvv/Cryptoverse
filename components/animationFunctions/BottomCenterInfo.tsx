@@ -28,6 +28,27 @@ export const BottomCenterInfo = ({ text }) => {
           <Text style={styles.tagText}>Ξ Martijn.Base.ETH</Text>
         </Pressable>
       </View>
+      <View style={styles.extensions}>
+        <Text style={styles.tagText}>Check out my crypto extensions:</Text>
+        <Pressable
+          onPress={() =>
+            handleOpenURL(
+              "https://chromewebstore.google.com/detail/crypto-portfolio-blockcha/pkaheoacmbdgnemgmcdbekniooabcnmc?hl=en&authuser=0",
+            )
+          }
+        >
+          <Text style={styles.tagText}>Crypto Explorer Chrome Extension,</Text>
+        </Pressable>
+        <Pressable
+          onPress={() =>
+            handleOpenURL(
+              "https://chromewebstore.google.com/detail/crypto-eth-networks-gas-a/kfjlhggepmmogkekamknhcnkpphafklp?hl=en&authuser=0",
+            )
+          }
+        >
+          <Text style={styles.tagText}>Network Gas Fee Tracker</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -45,7 +66,11 @@ const styles = StyleSheet.create({
   },
   socials: {
     flexDirection: "row",
-    gap: 12,
+    gap: 14,
+  },
+  extensions: {
+    flexDirection: "row",
+    gap: 14,
   },
   nameText: {
     color: "#656363",

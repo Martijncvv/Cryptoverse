@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "SendaFund",
-    "slug": "SendaFund",
+    "name": "CryptoverseMartycfly",
+    "slug": "CryptoverseMartycfly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "sendafund",
+    "scheme": "CryptoverseMartycfly",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",

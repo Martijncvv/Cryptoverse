@@ -22,9 +22,9 @@ const OFFSET = 1000;
 const TXS_CALL_DELAY = 7000;
 let steps_in_ms = 4000;
 
-type FadeInViewProps = PropsWithChildren<{}>;
+type CryptoverseProps = PropsWithChildren<{}>;
 
-export const FadeInView: React.FC<FadeInViewProps> = () => {
+export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const [clickedStar, setClickedStar] = useState();
   const [bottomText, setBottomText] = useState("");
   const raycaster = new THREE.Raycaster();

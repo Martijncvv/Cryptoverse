@@ -4,12 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- gradually creating the stars">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- reorg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TestComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/TestScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/constants/geoCoordinates.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/CrossButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/CardContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintOption.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/Pagination.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modals/DonateModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modals/ProjectDetailsModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +62,12 @@
     &quot;assignee&quot;: &quot;Martijncvv&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Martijncvv/SendaFund.git&quot;,
-    &quot;accountId&quot;: &quot;5b130a65-a78b-4c78-9368-6b15a6c5d851&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Martijncvv/Cryptoverse.git",
+    "accountId": "5b130a65-a78b-4c78-9368-6b15a6c5d851"
   }
-}</component>
+}]]></component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -53,29 +82,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;animationsbranch&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build-web.executor&quot;: &quot;Run&quot;,
-    &quot;npm.buildCommand.executor&quot;: &quot;Run&quot;,
-    &quot;npm.format.executor&quot;: &quot;Run&quot;,
-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;npm.web.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/martijn/WebstormProjects/SendaFund/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/martijn/WebstormProjects/Cryptoverse",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build-web.executor": "Run",
+    "npm.buildCommand.executor": "Run",
+    "npm.format.executor": "Run",
+    "npm.lint.executor": "Run",
+    "npm.start.executor": "Run",
+    "npm.web.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/SendaFund/node_modules/prettier",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/animationFunctions" />
@@ -242,31 +272,8 @@
       <workItem from="1729884253276" duration="4988000" />
       <workItem from="1729934962820" duration="20937000" />
       <workItem from="1729966939943" duration="36434000" />
-      <workItem from="1730104966750" duration="2701000" />
-    </task>
-    <task id="LOCAL-00001" summary="SendaFund setup">
-      <option name="closed" value="true" />
-      <created>1721159218979</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1721159218979</updated>
-    </task>
-    <task id="LOCAL-00002" summary="- homepage setup">
-      <option name="closed" value="true" />
-      <created>1725999807157</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1725999807157</updated>
-    </task>
-    <task id="LOCAL-00003" summary="- setup FundingDetailsScreen">
-      <option name="closed" value="true" />
-      <created>1726085259670</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726085259670</updated>
+      <workItem from="1730104966750" duration="2918000" />
+      <workItem from="1730144666770" duration="1104000" />
     </task>
     <task id="LOCAL-00004" summary="- progress FundingDetailsScreen">
       <option name="closed" value="true" />
@@ -636,15 +643,48 @@
       <option name="project" value="LOCAL" />
       <updated>1730063208373</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="- fixed, auto fetching&#10;- fixed socials links">
+      <option name="closed" value="true" />
+      <created>1730107978211</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1730107978211</updated>
+    </task>
+    <task id="LOCAL-00051" summary="- reorg">
+      <option name="closed" value="true" />
+      <created>1730145114153</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1730145114154</updated>
+    </task>
+    <task id="LOCAL-00052" summary="- reorg">
+      <option name="closed" value="true" />
+      <created>1730145258904</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1730145258906</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- WAGMI setup" />
-    <MESSAGE value="- setup baseENS" />
     <MESSAGE value="- setup menu" />
     <MESSAGE value="- mobile login layout" />
     <MESSAGE value="- sendalogo" />
@@ -668,6 +708,8 @@
     <MESSAGE value="- earth" />
     <MESSAGE value="- orbitting satelites" />
     <MESSAGE value="- gradually creating the stars" />
-    <option name="LAST_COMMIT_MESSAGE" value="- gradually creating the stars" />
+    <MESSAGE value="- fixed, auto fetching&#10;- fixed socials links" />
+    <MESSAGE value="- reorg" />
+    <option name="LAST_COMMIT_MESSAGE" value="- reorg" />
   </component>
 </project>

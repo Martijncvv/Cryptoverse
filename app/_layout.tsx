@@ -2,11 +2,7 @@ import { ErrorBoundaryProps, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React from "react";
 import "react-native-reanimated";
-import { createConfig, http } from "@wagmi/core";
-import { baseSepolia } from "wagmi/chains";
-import { coinbaseWallet, walletConnect } from "wagmi/connectors";
-import { base } from "viem/chains";
-import { Text, useWindowDimensions, View } from "react-native";
+import { Text, View } from "react-native";
 import * as THREE from "three";
 
 // Ensure THREE is available globally to handle side-effects
@@ -24,28 +20,11 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
   );
 }
 
-// TODO BE ABLE TO SEND NOTIFICATIONS TO THE NFT
 export const unstable_settings = {
   initialRouteName: "index",
 };
 
-const projectId = "ff8280abe8d88f732eb4946fe6349acc";
-
-export const config = createConfig({
-  chains: [baseSepolia, base],
-  connectors: [
-    coinbaseWallet({ appName: "SendaFund", preference: "smartWalletOnly" }),
-    walletConnect({ projectId }),
-  ],
-  transports: {
-    [baseSepolia.id]: http(),
-    [base.id]: http(),
-  },
-});
-
 export default function RootLayout() {
-  const { width: windowWidth } = useWindowDimensions();
-
   return (
     <Stack
       screenOptions={{
