@@ -12,7 +12,6 @@ import {
 import { addressFormatter } from "@/utils/addressFormatter";
 
 const TxInfoOverlay = ({ clickedStar }) => {
-  console.log("clickedStar: ", clickedStar);
   if (!clickedStar?.userData?.txValue)
     return (
       <View style={styles.container}>

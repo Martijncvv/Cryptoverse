@@ -4,41 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- reorg">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- reorg and reformat">
+      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addArrow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TestScreen.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/constants/geoCoordinates.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Cryptoverse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/ButtonSF.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/CrossButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/form/MoreDetailsButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/CardContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/CustomDonationCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonateModal/MintOption.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/DonationsHistory.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/Pagination.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/DonationHistory/TxInfoRow.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FooterMenu.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/FundCardPlaceholder.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundCard/ProgressBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/FundingInfoCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeaderMenu/MenuItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/HeroContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/InfoContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/LocationDetails.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/SpendingDetails.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modals/ConfirmDonationModal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modals/DonateModal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modals/ProjectDetailsModal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/FundCardsWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +74,7 @@
     "npm.lint.executor": "Run",
     "npm.start.executor": "Run",
     "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/SendaFund/node_modules/prettier",
+    "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier",
     "settings.editor.selected.configurable": "preferences.keymap",
     "ts.external.directory.path": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -273,15 +247,7 @@
       <workItem from="1729934962820" duration="20937000" />
       <workItem from="1729966939943" duration="36434000" />
       <workItem from="1730104966750" duration="2918000" />
-      <workItem from="1730144666770" duration="1104000" />
-    </task>
-    <task id="LOCAL-00004" summary="- progress FundingDetailsScreen">
-      <option name="closed" value="true" />
-      <created>1726176241368</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1726176241369</updated>
+      <workItem from="1730144666770" duration="4139000" />
     </task>
     <task id="LOCAL-00005" summary="- FundingDetailsScreen&#10;- fix styling">
       <option name="closed" value="true" />
@@ -667,7 +633,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730145258906</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="- reorg and reformat">
+      <option name="closed" value="true" />
+      <created>1730145783627</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1730145783627</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,7 +659,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup menu" />
     <MESSAGE value="- mobile login layout" />
     <MESSAGE value="- sendalogo" />
     <MESSAGE value="- styling" />
@@ -710,6 +683,7 @@
     <MESSAGE value="- gradually creating the stars" />
     <MESSAGE value="- fixed, auto fetching&#10;- fixed socials links" />
     <MESSAGE value="- reorg" />
-    <option name="LAST_COMMIT_MESSAGE" value="- reorg" />
+    <MESSAGE value="- reorg and reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="- reorg and reformat" />
   </component>
 </project>

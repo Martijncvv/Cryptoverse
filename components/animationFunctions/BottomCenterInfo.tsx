@@ -10,7 +10,7 @@ export const BottomCenterInfo = ({ text }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.nameText}>{text ? text : "Built by"}</Text>
+      <Text style={styles.nameText}>{text ? text : "USDC Txs Explorer"}</Text>
       <View style={styles.socials}>
         <Pressable
           onPress={() => handleOpenURL("https://twitter.com/Marty_cfly")}
@@ -18,9 +18,9 @@ export const BottomCenterInfo = ({ text }) => {
           <Text style={styles.tagText}>X: @Marty_cfly</Text>
         </Pressable>
         <Pressable
-          onPress={() => handleOpenURL("https://twitter.com/Martycfly")}
+          onPress={() => handleOpenURL("https://warpcast.com/martycfly")}
         >
-          <Text style={styles.tagText}>F: @Martycfly</Text>
+          <Text style={styles.tagText}>W: @Martycfly</Text>
         </Pressable>
         <Pressable
           onPress={() => handleOpenURL("https://www.base.org/name/martijn")}
@@ -49,6 +49,9 @@ export const BottomCenterInfo = ({ text }) => {
           <Text style={styles.tagText}>Network Gas Fee Tracker</Text>
         </Pressable>
       </View>
+      <Text style={styles.tagText}>
+        Big thanks to Etherscan for the free API
+      </Text>
     </View>
   );
 };

@@ -39,9 +39,14 @@ export const moveStars = ({ starsRef, sceneRef, SPHERE_RADIUS }) => {
       star.position.z += orbitSpeed * 20;
 
       // Phase 3: Make the star disappear after half the orbit
-      if (newAngle > Math.PI) {
-        sceneRef.current.remove(star);
-        starsRef.current = starsRef.current.filter((s) => s !== star);
+      if (newAngle > Math.PI * 0.8) {
+        star.material.opacity -= 0.01; // Gradually reduce opacity
+
+        // Remove star when fully transparent
+        if (star.material.opacity <= 0) {
+          sceneRef.current.remove(star);
+          starsRef.current = starsRef.current.filter((s) => s !== star);
+        }
       }
     }
   });

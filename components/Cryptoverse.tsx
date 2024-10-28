@@ -1,15 +1,29 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
-import { PanResponder, Platform, View } from "react-native";
+import {
+  PanResponder,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { COLOR_RANGES } from "@/components/animationFunctions/getColorByTxValue";
 import TxInfoOverlay from "@/components/animationFunctions/TxInfoOverlay";
 import ColorLegend from "@/components/animationFunctions/ColorLegend";
 import { moveStars } from "@/components/animationFunctions/moveStars";
-import { addGlobeCore } from "@/components/animationFunctions/addGlobeCore";
 import { addStar } from "@/components/animationFunctions/addStar";
 import { generateRandomCoordinate } from "@/components/animationFunctions/generateRandomCoordinate";
 import BottomCenterInfo from "@/components/animationFunctions/BottomCenterInfo";
+import { addGlobeCore } from "@/components/animationFunctions/addGlobeCore";
+import { delay } from "@/utils/delay";
+
+const SHARED_API_KEY_BASE = "WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX";
+export const BASE_USDC_CONTRACT_ADDRESS =
+  "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" as `0x${string}`;
+export const BASE_HIGHER_CONTRACT_ADDRESS =
+  "0x0578d8a44db98b23bf096a382e016e29a5ce0ffe" as `0x${string}`;
 
 global.THREE = global.THREE || THREE;
 
@@ -27,10 +41,12 @@ type CryptoverseProps = PropsWithChildren<{}>;
 export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const [clickedStar, setClickedStar] = useState();
   const [bottomText, setBottomText] = useState("");
+  const [token, setToken] = useState("USDC");
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
 
   const starsRef = useRef([]);
+  const pausedRef = useRef(false);
   const sceneRef = useRef<THREE.Scene>();
   const rendererRef = useRef<Renderer>();
   const cameraRef = useRef<THREE.PerspectiveCamera>();
@@ -51,21 +67,37 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const [startBlock, setStartBlock] = useState(0);
   const createdTxs = new Set();
 
+  const getRandomDelay = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+
   const fetchTokenTxs = async () => {
+    if (pausedRef.current) return;
     setBottomText("Looking for stars");
     const res = await fetch(
-      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX`,
+      `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
     );
-
     if (!res.ok) {
-      setBottomText("Error: Looking for stars");
       throw new Error(
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
     }
     setBottomText("");
     let response = await res.json();
-    console.log("response: ", response);
+    if (response?.status === "0") {
+      const delayInMs = getRandomDelay(7_500, 30_000);
+      setBottomText(
+        `Star searcher is busy, wait ${Math.floor(delayInMs / 1000)} secs`,
+      );
+      await delay(delayInMs);
+      setBottomText("Retrying");
+      const res = await fetch(
+        `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${BASE_USDC_CONTRACT_ADDRESS}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
+      );
+      response = await res.json();
+      if (response?.status === "0") {
+        setBottomText("Star searcher is still overworked, try again later");
+      }
+    }
 
     if (response.result.length > 0) {
       setStartBlock(response.result[0].blockNumber);
@@ -86,6 +118,8 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   }, [txs]);
 
   const createTxsStars = (txsToCreate) => {
+    if (pausedRef.current) return;
+
     const scene = sceneRef.current;
     if (!scene) return;
     setIsCreatingTxs(true);
@@ -95,7 +129,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       steps_in_ms = 3000;
     }
     if (txsToCreate.length < 20) {
-      steps_in_ms = 2000;
+      steps_in_ms = 1000;
     }
 
     let index = 0; // Start with the first transaction in txs
@@ -104,6 +138,8 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     const oldestTxTimestamp = parseInt(txs[txs.length - 1].timeStamp) * 1000;
     // Set up an interval to add stars one by one with a delay
     const interval = setInterval(() => {
+      if (pausedRef.current) return;
+
       // Stop the interval when all transactions are processed
       if (index >= txs.length || txsToCreate.length === 0) {
         setIsCreatingTxs(false);
@@ -113,6 +149,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
           fetchTokenTxs();
           console.log("CALLED");
         }, TXS_CALL_DELAY);
+
         clearInterval(interval);
         return;
       }
@@ -195,21 +232,18 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     // Animation function to render the scene
     const animate = () => {
       requestAnimationFrame(animate);
-      globe.rotation.y += 0.003;
       cameraRef.current = camera;
-
-      // Update raycaster with pointer and camera positions
       raycaster.setFromCamera(pointer, camera);
+      if (!pausedRef.current) {
+        globe.rotation.y += 0.003;
 
-      moveStars({
-        starsRef,
-        sceneRef,
-        SPHERE_RADIUS,
-      });
-
+        moveStars({
+          starsRef,
+          sceneRef,
+          SPHERE_RADIUS,
+        });
+      }
       renderer.render(scene, camera);
-
-      // Notify the GLView that it needs to update
       gl.endFrameEXP();
     };
 
@@ -230,6 +264,10 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         // console.log("clickedItem: ", clickedItem);
       }
     }
+  };
+
+  const togglePause = () => {
+    pausedRef.current = !pausedRef.current;
   };
 
   const panResponder = useRef(
@@ -319,6 +357,11 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
   return (
     <View style={{ flex: 1 }}>
+      <Pressable onPress={togglePause} style={styles.pauseButtonContainer}>
+        <Text style={{ color: "#656363" }}>
+          {pausedRef.current ? "Resume" : "Pause"}
+        </Text>
+      </Pressable>
       <GLView
         style={{ width: "100%", height: "100%" }}
         onContextCreate={onContextCreate}
@@ -356,3 +399,17 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+  pauseButtonContainer: {
+    position: "absolute",
+    top: 20,
+    left: "50%",
+    transform: [{ translateX: -50 }],
+    zIndex: 1,
+    backgroundColor: "rgba(129,128,128,0.2)", // Semi-transparent background
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+});
