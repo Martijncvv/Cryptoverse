@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- add images">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix image importing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/Gaia_EDR3_flux_cartesian_625.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/guatemala-happy-kids.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/partial-react-logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Cryptoverse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +72,7 @@
     "npm.lint.executor": "Run",
     "npm.start.executor": "Run",
     "npm.web-build.executor": "Run",
+    "npm.web-server.executor": "Run",
     "npm.web.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier",
     "settings.editor.selected.configurable": "preferences.keymap",
@@ -90,17 +89,7 @@
       <recent name="$PROJECT_DIR$/assets/images/coins" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web-build">
-    <configuration name="buildCommand" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="buildCommand" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.web-server">
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -141,13 +130,23 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="web-server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="web-server" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.web-server" />
         <item itemvalue="npm.web-build" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
-        <item itemvalue="npm.buildCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -251,15 +250,7 @@
       <workItem from="1730144666770" duration="8630000" />
       <workItem from="1730190143962" duration="185000" />
       <workItem from="1730194008481" duration="281000" />
-      <workItem from="1730233006972" duration="1073000" />
-    </task>
-    <task id="LOCAL-00010" summary="- finish modal">
-      <option name="closed" value="true" />
-      <created>1726517433236</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726517433236</updated>
+      <workItem from="1730233006972" duration="5720000" />
     </task>
     <task id="LOCAL-00011" summary="- setup: onchain">
       <option name="closed" value="true" />
@@ -645,7 +636,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730153042169</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="- fix image importing">
+      <option name="closed" value="true" />
+      <created>1730235538208</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1730235538209</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +662,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- styling fixes" />
     <MESSAGE value="- styling upgrades&#10;- toast setup" />
     <MESSAGE value="- setup styling, hovering, selection etc." />
     <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
@@ -688,6 +686,7 @@
     <MESSAGE value="- cleanup&#10;- pause button&#10;- refetching feedback etc." />
     <MESSAGE value="- cleanup" />
     <MESSAGE value="- add images" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add images" />
+    <MESSAGE value="- fix image importing" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix image importing" />
   </component>
 </project>

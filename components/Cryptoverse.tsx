@@ -9,7 +9,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { COLOR_RANGES } from "@/components/animationFunctions/getColorByTxValue";
 import TxInfoOverlay from "@/components/animationFunctions/TxInfoOverlay";
 import ColorLegend from "@/components/animationFunctions/ColorLegend";
 import { moveStars } from "@/components/animationFunctions/moveStars";
@@ -33,9 +32,9 @@ const MIN_STAR_START_DISTANCE = 1000;
 const CAMERA_DISTANCE = 1000;
 const DECIMALS = 6;
 
-const OFFSET = 1000;
+const OFFSET = 10_000;
 const TXS_CALL_DELAY = 7000;
-let steps_in_ms = 4000;
+let steps_in_ms = 3000;
 
 type CryptoverseProps = PropsWithChildren<{}>;
 
@@ -82,6 +81,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       `https://api.basescan.org/api?module=account&action=tokentx&contractaddress=${contractAddress}&page=${page}&offset=${OFFSET}&startblock=${startBlock}&endblock=99999999&sort=desc&apikey=${SHARED_API_KEY_BASE}`,
     );
     if (!res.ok) {
+      setBottomText("Something went wrong, contact me pls");
       throw new Error(
         `Fetch error, token txs, domain: info: ${res.status} ${res.statusText}`,
       );
@@ -103,10 +103,10 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         setBottomText("Star searcher is still overworked, try again later");
       }
     }
-    setBottomText("");
     if (response.result.length > 0) {
       setStartBlock(response.result[0].blockNumber);
       setTxs(response.result);
+      setBottomText("");
     } else {
       setBottomText("No stars found");
     }
@@ -123,28 +123,25 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   }, [txs]);
 
   const createTxsStars = (txsToCreate) => {
-    if (pausedRef.current) return;
+    if (isCreatingTxs || pausedRef.current) return;
 
     const scene = sceneRef.current;
     if (!scene) return;
     setIsCreatingTxs(true);
 
     // smaller batches if less txs available
-    if (txsToCreate.length < 50) {
-      steps_in_ms = 3000;
+    if (txsToCreate.length < 200) {
+      steps_in_ms = 2000;
     }
-    if (txsToCreate.length < 20) {
+    if (txsToCreate.length < 50) {
       steps_in_ms = 1000;
     }
 
     let index = 0; // Start with the first transaction in txs
-
-    // const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
     const oldestTxTimestamp = parseInt(txs[txs.length - 1].timeStamp) * 1000;
     // Set up an interval to add stars one by one with a delay
     const interval = setInterval(() => {
       if (pausedRef.current) return;
-
       // Stop the interval when all transactions are processed
       if (index >= txs.length || txsToCreate.length === 0) {
         setIsCreatingTxs(false);
@@ -194,13 +191,11 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         }
       });
       console.log("txsToCreate: ", txsToCreate.length);
-    }, 1000); // 1-second interval
+    }, 1000);
   };
 
   const onContextCreate = async (gl) => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
-    console.log("width: ", width);
-    console.log("height: ", height);
     const scene = new THREE.Scene();
     sceneRef.current = scene; // Store the scene in the ref
 
@@ -272,7 +267,6 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       if (sceneRef.current && cameraRef.current) {
         const clickedItem = intersects[0]?.object || null;
         setClickedStar(clickedItem);
-        // console.log("clickedItem: ", clickedItem);
       }
     }
   };
@@ -301,7 +295,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const handlePanMove = (gestureState) => {
     if (!cameraRef.current) return;
 
-    const rotationSpeed = 0.005;
+    const rotationSpeed = 0.001;
 
     // Update spherical coordinates for rotation
     spherical.current.theta -= gestureState.dx * rotationSpeed;
@@ -419,7 +413,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       />
 
       <TxInfoOverlay clickedStar={clickedStar} />
-      <ColorLegend colorRanges={COLOR_RANGES} />
+      <ColorLegend />
       <BottomCenterInfo text={bottomText} token={token} />
     </View>
   );

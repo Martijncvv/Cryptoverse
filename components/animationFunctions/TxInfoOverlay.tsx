@@ -7,11 +7,37 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from "react-native";
 import { addressFormatter } from "@/utils/addressFormatter";
 
 const TxInfoOverlay = ({ clickedStar }) => {
+  const { width: windowWidth } = useWindowDimensions();
+  const isMobileView = windowWidth < 724;
+
+  const styles = StyleSheet.create({
+    container: {
+      position: "absolute",
+      top: isMobileView ? 4 : 10,
+      right: isMobileView ? 4 : 10,
+      backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+      padding: 10,
+      borderRadius: 8,
+    },
+    text: {
+      color: "#ffffff",
+      fontSize: isMobileView ? 12 : 16,
+      textAlign: "right",
+    },
+    linkText: {
+      color: "#ffffff", // Dodger blue for link color
+      fontSize: isMobileView ? 12 : 16,
+      textDecorationLine: "underline",
+      marginTop: 5,
+    },
+  });
+
   if (!clickedStar?.userData?.txValue)
     return (
       <View style={styles.container}>
@@ -22,9 +48,13 @@ const TxInfoOverlay = ({ clickedStar }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        {new Date(
-          parseInt(clickedStar.userData.timeStamp) * 1000,
-        ).toLocaleString()}
+        {new Date(parseInt(clickedStar.userData.timeStamp) * 1000)
+          .toLocaleString("en-US", {
+            weekday: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+          })
+          .replace(",", "")}
       </Text>
       <Text style={styles.text}>
         From: {addressFormatter(clickedStar.userData.from)}
@@ -50,31 +80,10 @@ const TxInfoOverlay = ({ clickedStar }) => {
           }
         }}
       >
-        <Text style={styles.linkText}>Open Explorer</Text>
+        <Text style={styles.linkText}>Open BaseScan</Text>
       </Pressable>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: "absolute",
-    top: 10,
-    right: 10,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
-    padding: 10,
-    borderRadius: 8,
-  },
-  text: {
-    color: "#ffffff",
-    fontSize: 16,
-  },
-  linkText: {
-    color: "#ffffff", // Dodger blue for link color
-    fontSize: 16,
-    textDecorationLine: "underline",
-    marginTop: 5,
-  },
-});
 
 export default TxInfoOverlay;
