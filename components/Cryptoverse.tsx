@@ -422,8 +422,10 @@ const styles = StyleSheet.create({
   pauseButtonContainer: {
     position: "absolute",
     top: 20,
-    left: "50%",
-    transform: [{ translateX: -50 }],
+    left: 0,
+    right: 0,
+    width: 60,
+    marginHorizontal: "auto",
     zIndex: 1,
     backgroundColor: "rgba(129,128,128,0.2)", // Semi-transparent background
     paddingVertical: 8,

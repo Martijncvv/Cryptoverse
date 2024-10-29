@@ -45,6 +45,7 @@ export const BottomCenterInfo = ({ text, token }) => {
       flexDirection: "column",
       flexWrap: "wrap",
       justifyContent: "center",
+      alignItems: "center",
       gap: 4,
     },
     nameText: {

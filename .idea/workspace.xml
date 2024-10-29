@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix image importing">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix double star creation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Cryptoverse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/ColorLegend.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,15 +247,7 @@
       <workItem from="1730144666770" duration="8630000" />
       <workItem from="1730190143962" duration="185000" />
       <workItem from="1730194008481" duration="281000" />
-      <workItem from="1730233006972" duration="5720000" />
-    </task>
-    <task id="LOCAL-00011" summary="- setup: onchain">
-      <option name="closed" value="true" />
-      <created>1726916854141</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726916854141</updated>
+      <workItem from="1730233006972" duration="6408000" />
     </task>
     <task id="LOCAL-00012" summary="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu">
       <option name="closed" value="true" />
@@ -644,7 +633,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730235538209</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="- fix double star creation">
+      <option name="closed" value="true" />
+      <created>1730238918494</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1730238918495</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +659,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- styling upgrades&#10;- toast setup" />
     <MESSAGE value="- setup styling, hovering, selection etc." />
     <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
     <MESSAGE value="- styling&#10;- hamburger menu" />
@@ -687,6 +683,7 @@
     <MESSAGE value="- cleanup" />
     <MESSAGE value="- add images" />
     <MESSAGE value="- fix image importing" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix image importing" />
+    <MESSAGE value="- fix double star creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix double star creation" />
   </component>
 </project>
