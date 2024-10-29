@@ -19,8 +19,8 @@ const ColorLegend = ({ colorRanges }) => {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 20,
-    left: 20,
+    top: 10,
+    left: 10,
     backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
     padding: 10,
     borderRadius: 8,

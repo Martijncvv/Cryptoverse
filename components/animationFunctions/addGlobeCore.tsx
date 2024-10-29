@@ -1,11 +1,13 @@
 import { THREE } from "expo-three";
+import { Asset } from "expo-asset";
 
 export const addGlobeCore = (scene, radius: number) => {
   const globeGeometry = new THREE.SphereGeometry(radius, 24, 24);
 
   const texture = new THREE.TextureLoader().load(
-    "../assets/images/earth_lights_lrg.jpg",
+    Asset.fromModule(require("../../assets/images/earth_lights_lrg.jpg")).uri,
   );
+
   let globeMaterial = new THREE.MeshBasicMaterial({
     map: texture,
     depthTest: true,

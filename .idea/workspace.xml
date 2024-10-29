@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- reorg and reformat">
-      <change afterPath="$PROJECT_DIR$/components/animationFunctions/addArrow.tsx" afterDir="false" />
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- add images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Gaia_EDR3_flux_cartesian_625.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/guatemala-happy-kids.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/partial-react-logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Cryptoverse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/TxInfoOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getColorByTxValue.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getMinStarDistanceByTxValue.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/getStarRadiusByTxValue.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/addGlobeCore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +36,12 @@
     &quot;assignee&quot;: &quot;Martijncvv&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Martijncvv/Cryptoverse.git",
-    "accountId": "5b130a65-a78b-4c78-9368-6b15a6c5d851"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Martijncvv/Cryptoverse.git&quot;,
+    &quot;accountId&quot;: &quot;5b130a65-a78b-4c78-9368-6b15a6c5d851&quot;
   }
-}]]></component>
+}</component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -73,6 +73,7 @@
     "npm.format.executor": "Run",
     "npm.lint.executor": "Run",
     "npm.start.executor": "Run",
+    "npm.web-build.executor": "Run",
     "npm.web.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier",
     "settings.editor.selected.configurable": "preferences.keymap",
@@ -89,17 +90,7 @@
       <recent name="$PROJECT_DIR$/assets/images/coins" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration name="build-web" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build-web" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.web-build">
     <configuration name="buildCommand" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -140,13 +131,23 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="web-build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="web-build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.web-build" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.buildCommand" />
-        <item itemvalue="npm.build-web" />
       </list>
     </recent_temporary>
   </component>
@@ -247,47 +248,10 @@
       <workItem from="1729934962820" duration="20937000" />
       <workItem from="1729966939943" duration="36434000" />
       <workItem from="1730104966750" duration="2918000" />
-      <workItem from="1730144666770" duration="4139000" />
-    </task>
-    <task id="LOCAL-00005" summary="- FundingDetailsScreen&#10;- fix styling">
-      <option name="closed" value="true" />
-      <created>1726248934440</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726248934440</updated>
-    </task>
-    <task id="LOCAL-00006" summary="- prettier and eslint">
-      <option name="closed" value="true" />
-      <created>1726249568045</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726249568045</updated>
-    </task>
-    <task id="LOCAL-00007" summary="- setup donations page&#10;- setup react query">
-      <option name="closed" value="true" />
-      <created>1726249731020</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726249731020</updated>
-    </task>
-    <task id="LOCAL-00008" summary="- setup DonationHistory&#10;- setup api">
-      <option name="closed" value="true" />
-      <created>1726345011966</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726345011966</updated>
-    </task>
-    <task id="LOCAL-00009" summary="- setup modal, detailed info">
-      <option name="closed" value="true" />
-      <created>1726431000035</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726431000035</updated>
+      <workItem from="1730144666770" duration="8630000" />
+      <workItem from="1730190143962" duration="185000" />
+      <workItem from="1730194008481" duration="281000" />
+      <workItem from="1730233006972" duration="1073000" />
     </task>
     <task id="LOCAL-00010" summary="- finish modal">
       <option name="closed" value="true" />
@@ -641,7 +605,47 @@
       <option name="project" value="LOCAL" />
       <updated>1730145783627</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="- cleanup&#10;- pause button&#10;- refetching feedback etc.">
+      <option name="closed" value="true" />
+      <created>1730150338752</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1730150338752</updated>
+    </task>
+    <task id="LOCAL-00055" summary="- cleanup">
+      <option name="closed" value="true" />
+      <created>1730150841277</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1730150841277</updated>
+    </task>
+    <task id="LOCAL-00056" summary="- cleanup">
+      <option name="closed" value="true" />
+      <created>1730152063053</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1730152063053</updated>
+    </task>
+    <task id="LOCAL-00057" summary="- add images">
+      <option name="closed" value="true" />
+      <created>1730152674072</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1730152674073</updated>
+    </task>
+    <task id="LOCAL-00058" summary="- add images">
+      <option name="closed" value="true" />
+      <created>1730153042169</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1730153042169</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,9 +663,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- mobile login layout" />
-    <MESSAGE value="- sendalogo" />
-    <MESSAGE value="- styling" />
     <MESSAGE value="- styling fixes" />
     <MESSAGE value="- styling upgrades&#10;- toast setup" />
     <MESSAGE value="- setup styling, hovering, selection etc." />
@@ -684,6 +685,9 @@
     <MESSAGE value="- fixed, auto fetching&#10;- fixed socials links" />
     <MESSAGE value="- reorg" />
     <MESSAGE value="- reorg and reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="- reorg and reformat" />
+    <MESSAGE value="- cleanup&#10;- pause button&#10;- refetching feedback etc." />
+    <MESSAGE value="- cleanup" />
+    <MESSAGE value="- add images" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add images" />
   </component>
 </project>

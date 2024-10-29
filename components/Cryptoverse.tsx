@@ -18,6 +18,7 @@ import { generateRandomCoordinate } from "@/components/animationFunctions/genera
 import BottomCenterInfo from "@/components/animationFunctions/BottomCenterInfo";
 import { addGlobeCore } from "@/components/animationFunctions/addGlobeCore";
 import { delay } from "@/utils/delay";
+import { Asset } from "expo-asset";
 
 const SHARED_API_KEY_BASE = "WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX";
 export const BASE_USDC_CONTRACT_ADDRESS =
@@ -198,7 +199,8 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
   const onContextCreate = async (gl) => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
-
+    console.log("width: ", width);
+    console.log("height: ", height);
     const scene = new THREE.Scene();
     sceneRef.current = scene; // Store the scene in the ref
 
@@ -217,9 +219,14 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     // renderer.setClearColor(BACKGROUND_COLOR, 1);
     rendererRef.current = renderer; // Store the renderer in the ref
 
+    // const texture = new THREE.TextureLoader().load(
+    //   "../assets/images/Gaia_EDR3_darkened.png",
+    // );
+
     const texture = new THREE.TextureLoader().load(
-      "../assets/images/Gaia_EDR3_darkened.png",
+      Asset.fromModule(require("../assets/images/Gaia_EDR3_darkened.png")).uri,
     );
+
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
 
@@ -365,7 +372,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, width: "100%", height: "100%" }}>
       <Pressable onPress={togglePause} style={styles.pauseButtonContainer}>
         <Text style={{ color: "#656363" }}>
           {pausedRef.current ? "Resume" : "Pause"}
@@ -381,7 +388,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       {/*</Pressable>*/}
 
       <GLView
-        style={{ width: "100%", height: "100%" }}
+        style={{ flex: 1, width: "100%", height: "100%" }}
         onContextCreate={onContextCreate}
         onMouseDown={(e) => {
           if (Platform.OS === "web") {
@@ -408,7 +415,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
             );
           }
         }}
-        {...(Platform.OS !== "web" ? panResponder.panHandlers : {})}
+        {...panResponder.panHandlers}
       />
 
       <TxInfoOverlay clickedStar={clickedStar} />

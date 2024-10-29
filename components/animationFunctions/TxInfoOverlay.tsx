@@ -59,8 +59,8 @@ const TxInfoOverlay = ({ clickedStar }) => {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 20,
-    right: 20,
+    top: 10,
+    right: 10,
     backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
     padding: 10,
     borderRadius: 8,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   linkText: {
     color: "#ffffff", // Dodger blue for link color
     fontSize: 16,
-    textDecorationLine: "underline", // Underline to indicate it's a link
+    textDecorationLine: "underline",
     marginTop: 5,
   },
 });

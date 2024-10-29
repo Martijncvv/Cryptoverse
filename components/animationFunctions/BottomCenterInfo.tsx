@@ -39,7 +39,7 @@ export const BottomCenterInfo = ({ text, token }) => {
             )
           }
         >
-          <Text style={styles.tagText}>Crypto Explorer Chrome Extension,</Text>
+          <Text style={styles.tagText}>- Crypto Explorer Chrome Extension</Text>
         </Pressable>
         <Pressable
           onPress={() =>
@@ -48,10 +48,10 @@ export const BottomCenterInfo = ({ text, token }) => {
             )
           }
         >
-          <Text style={styles.tagText}>Network Gas Fee Tracker</Text>
+          <Text style={styles.tagText}>- Network Gas Fee Tracker</Text>
         </Pressable>
       </View>
-      <Text style={styles.tagText}>
+      <Text style={styles.footerText}>
         Big thanks to Etherscan for the free API
       </Text>
     </View>
@@ -60,32 +60,47 @@ export const BottomCenterInfo = ({ text, token }) => {
 
 const styles = StyleSheet.create({
   container: {
+    maxWidth: 400,
     position: "absolute",
-    bottom: 20,
+    bottom: 0,
     alignSelf: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent background
+    backgroundColor: "rgba(0, 0, 0, 0.8)", // Semi-transparent background
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 8,
     alignItems: "center",
+    gap: 4,
   },
   socials: {
+    flex: 1,
     flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
     gap: 14,
   },
   extensions: {
-    flexDirection: "row",
-    gap: 14,
+    flex: 1,
+    marginTop: 4,
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 4,
   },
   nameText: {
-    color: "#656363",
-    fontSize: 18,
+    color: "#ffffff",
+    fontSize: 16,
     fontWeight: "bold",
   },
   tagText: {
-    color: "#656363",
-    fontSize: 16,
+    color: "#ffffff",
+    fontSize: 14,
     fontStyle: "italic",
+    textDecorationLine: "underline",
+  },
+  footerText: {
+    color: "#ffffff",
+    fontStyle: "italic",
+    marginTop: 4,
   },
 });
 
