@@ -1,6 +1,6 @@
 export const COLOR_RANGES = [
-  { color: "#ffffff", label: "$100+", range: [100, 5000] },
-  { color: "#75cc78", label: "$5k+", range: [5000, 20000] },
+  { color: "#ffffff", label: "100+", range: [100, 5000] },
+  { color: "#75cc78", label: "5k+", range: [5000, 20000] },
   { color: "#1468e1", label: "20k+", range: [20000, 50_000] },
   { color: "#ffd700", label: "50k+", range: [50_000, 100_000] },
   { color: "#ff8c00", label: "100k+", range: [100_000, 300_000] },
