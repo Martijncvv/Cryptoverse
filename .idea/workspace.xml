@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix legenda label/ speed">
-      <change beforePath="$PROJECT_DIR$/.envOpen" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/abis/L2ResolverAbi.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/abis/erc1155Abi.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/abis/erc20Abi.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/land_ocean_ice_350.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/arbitrum-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/base-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/binance-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/ethereum-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/optimism-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/polygon-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/solana-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/networks/test-chain-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onchain/WalletWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/BoxedText.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/CopyableText.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/SubTitle.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Tag.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erc20approvalHelper.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/ModalProvider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/ToastProvider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/reset-project.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solidityContractSetup.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/formatTxExplorerLink.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getAccountName.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getChainLogo.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getNetworkDetails.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/timestampFormatter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/wagmi.ts" beforeDir="false" />
-    </list>
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix legenda label/ speed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
