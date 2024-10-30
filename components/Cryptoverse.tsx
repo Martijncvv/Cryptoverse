@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
-import { GLView } from "expo-gl";
+import { ExpoWebGLRenderingContext, GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
 import {
   PanResponder,
@@ -194,7 +194,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     }, 1000);
   };
 
-  const onContextCreate = async (gl) => {
+  const onContextCreate = async (gl: ExpoWebGLRenderingContext) => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
     const scene = new THREE.Scene();
     sceneRef.current = scene; // Store the scene in the ref
@@ -213,10 +213,6 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     renderer.setSize(width, height);
     // renderer.setClearColor(BACKGROUND_COLOR, 1);
     rendererRef.current = renderer; // Store the renderer in the ref
-
-    // const texture = new THREE.TextureLoader().load(
-    //   "../assets/images/Gaia_EDR3_darkened.png",
-    // );
 
     const texture = new THREE.TextureLoader().load(
       Asset.fromModule(require("../assets/images/Gaia_EDR3_darkened.png")).uri,
