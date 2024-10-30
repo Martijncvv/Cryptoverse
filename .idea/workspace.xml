@@ -4,8 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- downgrade three">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix legenda label/ speed">
+      <change beforePath="$PROJECT_DIR$/.envOpen" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/L2ResolverAbi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/erc1155Abi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/erc20Abi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/land_ocean_ice_350.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/arbitrum-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/base-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/binance-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/ethereum-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/optimism-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/polygon-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/solana-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/test-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/WalletWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/BoxedText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/CopyableText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/SubTitle.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Tag.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/erc20approvalHelper.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/ModalProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/ToastProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset-project.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solidityContractSetup.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/formatTxExplorerLink.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getAccountName.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getChainLogo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getNetworkDetails.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/timestampFormatter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/wagmi.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,33 +90,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/martijn/WebstormProjects/Cryptoverse",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build-web.executor": "Run",
-    "npm.buildCommand.executor": "Run",
-    "npm.format.executor": "Run",
-    "npm.ios.executor": "Run",
-    "npm.lint.executor": "Run",
-    "npm.start.executor": "Run",
-    "npm.web-build.executor": "Run",
-    "npm.web-server.executor": "Run",
-    "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build-web.executor&quot;: &quot;Run&quot;,
+    &quot;npm.buildCommand.executor&quot;: &quot;Run&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web-build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web-server.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/animationFunctions" />
@@ -85,22 +125,22 @@
       <recent name="$PROJECT_DIR$/assets/images/coins" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.buildCommand">
-    <configuration name="buildCommand" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="npm.web-build">
+    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="buildCommand" />
+        <script value="format" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="ios" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="ios" />
+        <script value="lint" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -138,11 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.buildCommand" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.web-server" />
-        <item itemvalue="npm.ios" />
         <item itemvalue="npm.web-build" />
+        <item itemvalue="npm.web-server" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.format" />
       </list>
     </recent_temporary>
   </component>
@@ -249,7 +289,63 @@
       <workItem from="1730233006972" duration="6584000" />
       <workItem from="1730242046913" duration="76000" />
       <workItem from="1730278681858" duration="1648000" />
-      <workItem from="1730316691599" duration="7411000" />
+      <workItem from="1730316691599" duration="736000" />
+    </task>
+    <task id="LOCAL-00015" summary="- setup: modal fixes&#10;- set startup page&#10;- setup walletconnect in header">
+      <option name="closed" value="true" />
+      <created>1727207529950</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727207529950</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- solidity contract setup">
+      <option name="closed" value="true" />
+      <created>1727281432633</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727281432633</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- allow ERC20 payments">
+      <option name="closed" value="true" />
+      <created>1727298048407</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727298048407</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- allow ERC20 minting">
+      <option name="closed" value="true" />
+      <created>1727337486700</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727337486700</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- allow ERC20 minting">
+      <option name="closed" value="true" />
+      <created>1727337735623</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1727337735623</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- setup erc20 approval&#10;- setup erc1155 mint">
+      <option name="closed" value="true" />
+      <created>1727386253964</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727386253965</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- onchainkit styling">
+      <option name="closed" value="true" />
+      <created>1727450714235</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727450714235</updated>
     </task>
     <task id="LOCAL-00022" summary="- WAGMI setup">
       <option name="closed" value="true" />
@@ -587,63 +683,7 @@
       <option name="project" value="LOCAL" />
       <updated>1730280264069</updated>
     </task>
-    <task id="LOCAL-00064" summary="- potential ios fix">
-      <option name="closed" value="true" />
-      <created>1730317489334</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1730317489335</updated>
-    </task>
-    <task id="LOCAL-00065" summary="- cleanup">
-      <option name="closed" value="true" />
-      <created>1730317496441</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1730317496441</updated>
-    </task>
-    <task id="LOCAL-00066" summary="- ios trial">
-      <option name="closed" value="true" />
-      <created>1730318669610</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1730318669610</updated>
-    </task>
-    <task id="LOCAL-00067" summary="- ios trial">
-      <option name="closed" value="true" />
-      <created>1730318827582</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1730318827582</updated>
-    </task>
-    <task id="LOCAL-00068" summary="- ios trial">
-      <option name="closed" value="true" />
-      <created>1730319628320</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1730319628320</updated>
-    </task>
-    <task id="LOCAL-00069" summary="- ios trial">
-      <option name="closed" value="true" />
-      <created>1730319678186</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1730319678186</updated>
-    </task>
-    <task id="LOCAL-00070" summary="- downgrade three">
-      <option name="closed" value="true" />
-      <created>1730324248150</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1730324248150</updated>
-    </task>
-    <option name="localTasksCounter" value="71" />
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,6 +701,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
+    <MESSAGE value="- sharing functionality&#10;- moving clouds, styling fixes" />
+    <MESSAGE value="- add clouds.&#10;- fix minting feedback" />
     <MESSAGE value="- fix donationsTable" />
     <MESSAGE value="- added baseENS names&#10;- fixed switch network tab&#10;- added clouds&#10;- fix &quot;donate now&quot; label" />
     <MESSAGE value="- setup manrope font" />
@@ -676,16 +719,13 @@
     <MESSAGE value="- reorg" />
     <MESSAGE value="- reorg and reformat" />
     <MESSAGE value="- cleanup&#10;- pause button&#10;- refetching feedback etc." />
+    <MESSAGE value="- cleanup" />
     <MESSAGE value="- add images" />
     <MESSAGE value="- fix image importing" />
     <MESSAGE value="- fix double star creation" />
     <MESSAGE value="- center pause button" />
     <MESSAGE value="- fix legenda label" />
     <MESSAGE value="- fix legenda label/ speed" />
-    <MESSAGE value="- potential ios fix" />
-    <MESSAGE value="- cleanup" />
-    <MESSAGE value="- ios trial" />
-    <MESSAGE value="- downgrade three" />
-    <option name="LAST_COMMIT_MESSAGE" value="- downgrade three" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix legenda label/ speed" />
   </component>
 </project>
