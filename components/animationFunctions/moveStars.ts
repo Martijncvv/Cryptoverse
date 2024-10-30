@@ -1,6 +1,7 @@
 // moveStars.js
 
 import { getMinStarDistanceByTxValue } from "@/components/animationFunctions/getMinStarDistanceByTxValue";
+import { getStarSpeedByTxValue } from "@/components/animationFunctions/getStarSpeedByTxValue";
 
 export const moveStars = ({ starsRef, sceneRef, SPHERE_RADIUS }) => {
   starsRef.current.forEach((star) => {
@@ -9,8 +10,7 @@ export const moveStars = ({ starsRef, sceneRef, SPHERE_RADIUS }) => {
       star.position.x ** 2 + star.position.y ** 2 + star.position.z ** 2,
     );
 
-    const starBaseSpeed = 0.003;
-    // console.log("star: ", star);
+    const starBaseSpeed = getStarSpeedByTxValue(star.userData.txValue);
     const minStarDistance = getMinStarDistanceByTxValue(
       star.userData.txValue,
       SPHERE_RADIUS,

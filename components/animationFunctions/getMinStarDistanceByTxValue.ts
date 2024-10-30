@@ -4,7 +4,8 @@ export const DISTANCE_RANGES = [
   { minDistanceFactor: 2, range: [20000, 50000] }, // Middle-Aged
   { minDistanceFactor: 2.5, range: [50_000, 100_000] }, // Older
   { minDistanceFactor: 3, range: [100_000, 300_000] }, // Older
-  { minDistanceFactor: 3.5, range: [300_000, 1000_000] }, // Aging
+  { minDistanceFactor: 3.5, range: [300_000, 500_000] }, // Aging
+  { minDistanceFactor: 4, range: [500_000, 1000_000] }, // Old
   { minDistanceFactor: 4.5, range: [1000_000, Infinity] }, // Old
 ];
 

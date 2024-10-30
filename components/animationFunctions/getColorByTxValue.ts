@@ -4,10 +4,10 @@ export const COLOR_RANGES = [
   { color: "#1468e1", label: "20k+", range: [20000, 50_000] },
   { color: "#ffd700", label: "50k+", range: [50_000, 100_000] },
   { color: "#ff8c00", label: "100k+", range: [100_000, 300_000] },
-  { color: "#ff4500", label: "300k+", range: [300_000, 1000_000] },
-  { color: "#8b0000", label: "1M+", range: [1000_000, 3000_000] },
-  { color: "#7c32e4", label: "3M+", range: [3000_000, 5000_000] },
-  { color: "#cd1eff", label: "5M+", range: [5000_000, Infinity] },
+  { color: "#ff4500", label: "300k+", range: [300_000, 500_000] },
+  { color: "#8b0000", label: "500k+", range: [500_000, 1000_000] },
+  { color: "#7c32e4", label: "1M+", range: [1000_000, 3000_000] },
+  { color: "#cd1eff", label: "3M+", range: [3000_000, Infinity] },
 ];
 export const getColorByTxValue = (txValue) => {
   // Loop through COLOR_RANGES and return the color for the matching range
