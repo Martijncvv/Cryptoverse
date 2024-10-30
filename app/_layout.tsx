@@ -32,9 +32,9 @@ export default function RootLayout() {
       }}
     >
       <Stack.Screen
-        name="HomeScreen"
+        name="index"
         options={{
-          title: "HomeScreen",
+          title: "index",
         }}
       />
       <Stack.Screen name="+not-found" />

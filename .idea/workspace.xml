@@ -4,10 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix double star creation">
+    <list default="true" id="f95b5bba-b461-4474-b764-874b0b9dfc75" name="Changes" comment="- fix legenda label/ speed">
+      <change beforePath="$PROJECT_DIR$/.envOpen" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Cryptoverse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Cryptoverse.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/animationFunctions/BottomCenterInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/L2ResolverAbi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/erc1155Abi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abis/erc20Abi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/land_ocean_ice_350.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/arbitrum-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/base-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/binance-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/ethereum-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/optimism-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/polygon-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/solana-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/networks/test-chain-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/AccountField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectAccountField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/ConnectorOption.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/onchain/WalletWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/BoxedText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/CopyableText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LabeledInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/SubTitle.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Tag.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/TextSF.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Toast.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ModalWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/wrapper/ScreenWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/erc20approvalHelper.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/ModalProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/ToastProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/reset-project.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solidityContractSetup.sol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/formatTxExplorerLink.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getAccountName.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getChainLogo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/getNetworkDetails.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/timestampFormatter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/wagmi.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,32 +90,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/martijn/WebstormProjects/Cryptoverse",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build-web.executor": "Run",
-    "npm.buildCommand.executor": "Run",
-    "npm.format.executor": "Run",
-    "npm.lint.executor": "Run",
-    "npm.start.executor": "Run",
-    "npm.web-build.executor": "Run",
-    "npm.web-server.executor": "Run",
-    "npm.web.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build-web.executor&quot;: &quot;Run&quot;,
+    &quot;npm.buildCommand.executor&quot;: &quot;Run&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web-build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web-server.executor&quot;: &quot;Run&quot;,
+    &quot;npm.web.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/martijn/WebstormProjects/Cryptoverse/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/animationFunctions" />
@@ -86,7 +125,7 @@
       <recent name="$PROJECT_DIR$/assets/images/coins" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web-server">
+  <component name="RunManager" selected="npm.web-build">
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -139,8 +178,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web-server" />
         <item itemvalue="npm.web-build" />
+        <item itemvalue="npm.web-server" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
@@ -247,31 +286,10 @@
       <workItem from="1730144666770" duration="8630000" />
       <workItem from="1730190143962" duration="185000" />
       <workItem from="1730194008481" duration="281000" />
-      <workItem from="1730233006972" duration="6408000" />
-    </task>
-    <task id="LOCAL-00012" summary="- setup: responsiveness; styling&#10;- footer&#10;- hamburger menu">
-      <option name="closed" value="true" />
-      <created>1727126162923</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1727126162923</updated>
-    </task>
-    <task id="LOCAL-00013" summary="- setup: donateModal">
-      <option name="closed" value="true" />
-      <created>1727162387781</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1727162387784</updated>
-    </task>
-    <task id="LOCAL-00014" summary="- setup: TextSF">
-      <option name="closed" value="true" />
-      <created>1727201142245</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1727201142245</updated>
+      <workItem from="1730233006972" duration="6584000" />
+      <workItem from="1730242046913" duration="76000" />
+      <workItem from="1730278681858" duration="1648000" />
+      <workItem from="1730316691599" duration="736000" />
     </task>
     <task id="LOCAL-00015" summary="- setup: modal fixes&#10;- set startup page&#10;- setup walletconnect in header">
       <option name="closed" value="true" />
@@ -641,7 +659,31 @@
       <option name="project" value="LOCAL" />
       <updated>1730238918495</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="- center pause button">
+      <option name="closed" value="true" />
+      <created>1730239561754</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1730239561754</updated>
+    </task>
+    <task id="LOCAL-00062" summary="- fix legenda label">
+      <option name="closed" value="true" />
+      <created>1730242107930</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1730242107930</updated>
+    </task>
+    <task id="LOCAL-00063" summary="- fix legenda label/ speed">
+      <option name="closed" value="true" />
+      <created>1730280264069</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1730280264069</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,9 +701,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- setup styling, hovering, selection etc." />
-    <MESSAGE value="- setup ToastProvider&#10;- styling fixes" />
-    <MESSAGE value="- styling&#10;- hamburger menu" />
     <MESSAGE value="- styling&#10;- hamburger menu&#10;- modals provider&#10;- confirmationmodal" />
     <MESSAGE value="- sharing functionality&#10;- moving clouds, styling fixes" />
     <MESSAGE value="- add clouds.&#10;- fix minting feedback" />
@@ -684,6 +723,9 @@
     <MESSAGE value="- add images" />
     <MESSAGE value="- fix image importing" />
     <MESSAGE value="- fix double star creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix double star creation" />
+    <MESSAGE value="- center pause button" />
+    <MESSAGE value="- fix legenda label" />
+    <MESSAGE value="- fix legenda label/ speed" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix legenda label/ speed" />
   </component>
 </project>
