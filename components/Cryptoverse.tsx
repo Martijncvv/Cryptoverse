@@ -12,12 +12,12 @@ import {
 import TxInfoOverlay from "@/components/animationFunctions/TxInfoOverlay";
 import ColorLegend from "@/components/animationFunctions/ColorLegend";
 import { moveStars } from "@/components/animationFunctions/moveStars";
+import { addStar } from "@/components/animationFunctions/addStar";
 import { generateRandomCoordinate } from "@/components/animationFunctions/generateRandomCoordinate";
 import BottomCenterInfo from "@/components/animationFunctions/BottomCenterInfo";
+import { addGlobeCore } from "@/components/animationFunctions/addGlobeCore";
 import { delay } from "@/utils/delay";
 import { Asset } from "expo-asset";
-import { addGlobeCore } from "@/components/animationFunctions/addGlobeCore";
-import { addStar } from "@/components/animationFunctions/addStar";
 
 const SHARED_API_KEY_BASE = "WE8V2FI55PN7K8J3U76CGT445CMVW9KKAX";
 export const BASE_USDC_CONTRACT_ADDRESS =
@@ -210,13 +210,10 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     cameraRef.current = camera;
 
     const renderer = new Renderer({ gl });
-    console.log(
-      "renderer.capabilities.isWebGL2 : ",
-      renderer.capabilities.isWebGL2,
-    );
-    console.log("gl.getParameter(gl.VERSION);.: ", gl.getParameter(gl.VERSION));
     renderer.setSize(width, height);
+    // renderer.setClearColor(BACKGROUND_COLOR, 1);
     rendererRef.current = renderer; // Store the renderer in the ref
+
     const texture = new THREE.TextureLoader().load(
       Asset.fromModule(require("../assets/images/Gaia_EDR3_darkened.png")).uri,
     );
