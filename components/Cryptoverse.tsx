@@ -197,69 +197,69 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   };
 
   const onContextCreate = async (gl: ExpoWebGLRenderingContext) => {
-    if (!gl.getExtension("WEBGL_2")) {
-      alert(
+    try {
+      const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
+      const scene = new THREE.Scene();
+      sceneRef.current = scene; // Store the scene in the ref
+
+      const maxView = CAMERA_DISTANCE + SPHERE_RADIUS * 1.5;
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        width / height,
+        0.1,
+        maxView,
+      );
+      camera.position.z = CAMERA_DISTANCE;
+      cameraRef.current = camera;
+
+      const renderer = new Renderer({ gl });
+      renderer.setSize(width, height);
+      // renderer.setClearColor(BACKGROUND_COLOR, 1);
+      rendererRef.current = renderer; // Store the renderer in the ref
+
+      const texture = new THREE.TextureLoader().load(
+        Asset.fromModule(require("../assets/images/Gaia_EDR3_darkened.png"))
+          .uri,
+      );
+
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+
+      scene.background = texture;
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.z = 15;
+      scene.add(directionalLight);
+
+      sceneReadyRef.current = true;
+
+      const globe = addGlobeCore(scene, SPHERE_RADIUS);
+
+      // Animation function to render the scene
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        cameraRef.current = camera;
+        raycaster.setFromCamera(pointer, camera);
+        if (!pausedRef.current) {
+          globe.rotation.y += 0.003;
+
+          moveStars({
+            starsRef,
+            sceneRef,
+            SPHERE_RADIUS,
+          });
+        }
+        renderer.render(scene, camera);
+        gl.endFrameEXP();
+      };
+
+      animate();
+    } catch (e) {
+      setError(
         "Browser doesn't support advanced 3d, try other browser, desktop or newer device.",
       );
-      return; // Stop further execution if WebGL2 is not supported
     }
-
-    const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
-    const scene = new THREE.Scene();
-    sceneRef.current = scene; // Store the scene in the ref
-
-    const maxView = CAMERA_DISTANCE + SPHERE_RADIUS * 1.5;
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      width / height,
-      0.1,
-      maxView,
-    );
-    camera.position.z = CAMERA_DISTANCE;
-    cameraRef.current = camera;
-
-    const renderer = new Renderer({ gl });
-    renderer.setSize(width, height);
-    // renderer.setClearColor(BACKGROUND_COLOR, 1);
-    rendererRef.current = renderer; // Store the renderer in the ref
-
-    const texture = new THREE.TextureLoader().load(
-      Asset.fromModule(require("../assets/images/Gaia_EDR3_darkened.png")).uri,
-    );
-
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-
-    scene.background = texture;
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.z = 15;
-    scene.add(directionalLight);
-
-    sceneReadyRef.current = true;
-
-    const globe = addGlobeCore(scene, SPHERE_RADIUS);
-
-    // Animation function to render the scene
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      cameraRef.current = camera;
-      raycaster.setFromCamera(pointer, camera);
-      if (!pausedRef.current) {
-        globe.rotation.y += 0.003;
-
-        moveStars({
-          starsRef,
-          sceneRef,
-          SPHERE_RADIUS,
-        });
-      }
-      renderer.render(scene, camera);
-      gl.endFrameEXP();
-    };
-
-    animate();
   };
 
   const handlePress = (x, y, width, height) => {
