@@ -401,7 +401,8 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       {/*    {token === "USDC" ? "HIGHER" : "USDC"}*/}
       {/*  </Text>*/}
       {/*</Pressable>*/}
-      {!sceneRef?.current ? (
+      {error ===
+      "Browser doesn't support advanced 3d, try other browser, desktop or newer device." ? (
         <Image
           source={require("../assets/images/cryptoverse-placeholder.png")}
           style={styles.placeholderImage}
