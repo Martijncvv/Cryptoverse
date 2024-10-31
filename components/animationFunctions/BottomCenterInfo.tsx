@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 
-export const BottomCenterInfo = ({ text, token }) => {
+export const BottomCenterInfo = ({ text, token, error }) => {
   const { width: windowWidth } = useWindowDimensions();
   const isMobileView = windowWidth < 724;
 
@@ -73,6 +73,19 @@ export const BottomCenterInfo = ({ text, token }) => {
 
   return (
     <View style={styles.container}>
+      {error ? (
+        <Text
+          style={{
+            flex: 1,
+            width: "100%",
+            height: "100%",
+            fontSize: 16,
+            color: "#ff0000",
+          }}
+        >
+          {error}
+        </Text>
+      ) : null}
       <Text style={styles.nameText}>
         {text ? text : `${token} Txs Explorer`}
       </Text>

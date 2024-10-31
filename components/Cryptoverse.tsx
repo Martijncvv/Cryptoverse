@@ -41,6 +41,7 @@ type CryptoverseProps = PropsWithChildren<{}>;
 export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   const [clickedStar, setClickedStar] = useState();
   const [bottomText, setBottomText] = useState("");
+  const [error, setError] = useState("");
   const [token, setToken] = useState("USDC");
   const [page, setPage] = useState(1);
   const [txs, setTxs] = useState([]);
@@ -72,7 +73,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
   const fetchTokenTxs = async () => {
     if (pausedRef.current) return;
-    setBottomText("Looking for stars");
+    setBottomText("Looking for stars..");
     const contractAddress =
       token === "USDC"
         ? BASE_USDC_CONTRACT_ADDRESS
@@ -233,7 +234,16 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
     // Animation function to render the scene
     const animate = () => {
+      if (!scene?.background) {
+        setError(
+          "Device's browser doesn't support advanced 3d, try other browser, desktop or newer device",
+        );
+      } else {
+        setError("");
+      }
+
       requestAnimationFrame(animate);
+
       cameraRef.current = camera;
       raycaster.setFromCamera(pointer, camera);
       if (!pausedRef.current) {
@@ -368,6 +378,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
           {pausedRef.current ? "Resume" : "Pause"}
         </Text>
       </Pressable>
+
       {/*<Pressable*/}
       {/*  onPress={handleTokenSwitchPress}*/}
       {/*  style={styles.switchButtonContainer}*/}
@@ -410,7 +421,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
       <TxInfoOverlay clickedStar={clickedStar} />
       <ColorLegend />
-      <BottomCenterInfo text={bottomText} token={token} />
+      <BottomCenterInfo text={bottomText} error={error} token={token} />
     </View>
   );
 };
