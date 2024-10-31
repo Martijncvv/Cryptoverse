@@ -1,50 +1,29 @@
-# Welcome to your Expo app 👋
+# Cryptoverse Project
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to the Cryptoverse! This project provides a 3D visual representation of blockchain transactions using WebGL,
+Three.js, and React Native. Users can explore transactions as stars in space, offering a unique and interactive
+experience to visualize on-chain data.
 
-## Get started
+## Website
 
-1. Install dependencies
+Explore the Cryptoverse live at [cryptoversemartycfly.vercel.app](https://cryptoversemartycfly.vercel.app/)
 
-   ```bash
-   npm install
-   ```
+![Cryptoverse Placeholder](./assets/images/cryptoverse-placeholder.png)
 
-2. Start the app
+## Table of Contents
 
-   ```bash
-    npx expo start
-   ```
+- [About](#about)
+- [Features](#features)
 
-In the output, you'll find options to open the app in a
+## About
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The Cryptoverse app retrieves and visualizes token transactions from blockchain APIs, presenting each as a 3D star
+within a virtual galaxy. By selecting or zooming in on stars, users can view transaction details, making it easier to
+understand the flow and volume of transactions in real time.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Features
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **3D Visualization**: Interact with stars representing blockchain transactions in a 3D space.
+- **Real-time Data Fetching**: Fetches blockchain transactions on supported tokens (e.g., USDC and HIGHER).
+- **Multi-Platform**: Runs on both iOS and Android with Expo and Three.js support.
+- **Customizable**: Easily switch tokens or customize transaction star characteristics.

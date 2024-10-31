@@ -372,7 +372,7 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
           "Browser doesn't support advanced 3d, try other browser, desktop or newer device.",
         );
       }
-    }, 3000);
+    }, 2000);
 
     // Clear the timeout if onContextCreate initializes the GLView
     return () => clearTimeout(initializationTimeout);
@@ -432,9 +432,11 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
         {...panResponder.panHandlers}
       />
 
-      <TxInfoOverlay clickedStar={clickedStar} />
-      <ColorLegend />
-      <BottomCenterInfo text={bottomText} error={error} token={token} />
+      <View style={styles.overlayContainer}>
+        <TxInfoOverlay clickedStar={clickedStar} />
+        <ColorLegend />
+        <BottomCenterInfo text={bottomText} error={error} token={token} />
+      </View>
     </View>
   );
 };
@@ -444,6 +446,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     resizeMode: "cover",
+    zIndex: 1,
+  },
+  overlayContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 3, // Ensures overlay is on top of everything
+    pointerEvents: "box-none", // Allows touch events to pass through
   },
 
   pauseButtonContainer: {
