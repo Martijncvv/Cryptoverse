@@ -234,14 +234,6 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
 
     // Animation function to render the scene
     const animate = () => {
-      if (!scene?.background) {
-        setError(
-          "Device's browser doesn't support advanced 3d, try other browser, desktop or newer device",
-        );
-      } else {
-        setError("");
-      }
-
       requestAnimationFrame(animate);
 
       cameraRef.current = camera;
@@ -370,6 +362,20 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     setPage(1);
     setToken((prev) => (prev === "USDC" ? "HIGHER" : "USDC"));
   };
+
+  useEffect(() => {
+    // Set a timer to check if GLView was initialized
+    const initializationTimeout = setTimeout(() => {
+      if (!sceneRef.current) {
+        setError(
+          "Device's browser doesn't support advanced 3d, try other browser, desktop or newer device",
+        );
+      }
+    }, 5000); // Timeout set to 5 seconds
+
+    // Clear the timeout if onContextCreate initializes the GLView
+    return () => clearTimeout(initializationTimeout);
+  }, []);
 
   return (
     <View style={{ flex: 1, width: "100%", height: "100%" }}>
