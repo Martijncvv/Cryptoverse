@@ -2,6 +2,7 @@ import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { ExpoWebGLRenderingContext, GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
 import {
+  Image,
   PanResponder,
   Platform,
   Pressable,
@@ -368,10 +369,10 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
     const initializationTimeout = setTimeout(() => {
       if (!sceneRef.current) {
         setError(
-          "Device's browser doesn't support advanced 3d, try other browser, desktop or newer device",
+          "Browser doesn't support advanced 3d, try other browser, desktop or newer device.",
         );
       }
-    }, 5000); // Timeout set to 5 seconds
+    }, 3000);
 
     // Clear the timeout if onContextCreate initializes the GLView
     return () => clearTimeout(initializationTimeout);
@@ -393,6 +394,12 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
       {/*    {token === "USDC" ? "HIGHER" : "USDC"}*/}
       {/*  </Text>*/}
       {/*</Pressable>*/}
+      {!sceneRef?.current ? (
+        <Image
+          source={require("../assets/images/cryptoverse-placeholder.png")}
+          style={styles.placeholderImage}
+        />
+      ) : null}
 
       <GLView
         style={{ flex: 1, width: "100%", height: "100%" }}
@@ -432,6 +439,14 @@ export const Cryptoverse: React.FC<CryptoverseProps> = () => {
   );
 };
 const styles = StyleSheet.create({
+  placeholderImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    // zIndex:
+  },
+
   pauseButtonContainer: {
     position: "absolute",
     top: 20,
